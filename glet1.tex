@@ -1,0 +1,277 @@
+\documentclass[german]{article}
+
+\usepackage{amsmath}
+\usepackage{pst-circ}
+\usepackage[utf8]{inputenc}
+\usepackage{ulem}
+
+\newcommand{\ohm}{\Omega}
+
+\begin{document}
+
+%%29.11.2010
+
+\section{Strom- und Spannungsmessung}
+
+\subsection{Spannungsmesser}
+
+$R_V = \infty, G_V = 0$
+
+$R_V$: mit Verstärker $10M\ohm$ und mehr
+			 ohne Verstärker $k\ohm/V$
+
+\subsection{Strommesser}
+
+ideal:
+$R_A = 0$
+$G_A = \infty$
+
+real:
+$R_A > 0$, z.B. $R_A = 150 m\ohm$
+
+\subsection{Strommessung}
+
+Ziel: Messen von $I_L$
+
+richtiger Wert: $I_r = \frac{U_q}{R_i + R_L}$
+angezeiger Wert: $I_a = \frac{U_q}{R_i + R_L + R_A}$
+
+Systematischer Fehler:
+Rel. Fehler: $F_R = \frac{I_a - I_r}{I_r} = \frac{\frac{U_q}{R_i + R_L + R_A} - \frac{U_q}{R_i + R_L}}{\frac{U_q}{R_i + R_L}} = \frac{-R_A}{R_i + R_L + R_A}$
+
+1. Der relative Fehler verändert sich mit $R_A$
+
+\subsection{Spannungsmessung}
+
+Richtiger Wert: $U_r = \frac{I_q}{G_i + G_L}$
+Angezeigter Wert: $U_a = \frac{I_q}{G_i + G_L + G_V}$
+rel. Fehler: $F_r = \frac{-G_V}{G_i + G_L + G_V}$
+
+\subsection{Gleichzeitiges Messen von Strom und Spannung}
+
+\subsubsection{Stromrichtiges Messen}
+$(U_q + R_i) || V || (A + I_L + R_L)$
+
+Angezeigter Wert: $U_a = U_{RL} + I_L R_A$
+
+Anwendung: hochohmige Last $R_L$, kleiner Strom $I_L$
+
+\subsubsection{Spannungsrichtiges Messen}
+%(U_q + R_i + A + (V || G_L)
+\begin{pspicture}(5,3)
+	\pnode(0,1){A}
+	\pnode(0,3){B}
+	\pnode(3,3){C}
+	\pnode(5,3){D}
+	\Ucc[labeloffset=1](A)(B){$U_q \downarrow$}
+	\resistor(B)(C){$R_i$}
+	\circledipole[labeloffset=0](C)(D){\Large\textbf{A}}
+\end{pspicture}
+
+Angezeigter Wert: $I_a = I_{L} + U_L G_V$
+
+Anwendung: niederohmige Last $R_L$, kleine Spannung $U_L$
+
+\section{Überlagerungsverfahren, Superpositionsverfahren}
+
+\underline{Anwendungsbereich:} \it{Lineare Zeitinvariante} NW
+\underline{Methode:} Man lässt jede Quelle einzeln wirken und überlagert die Teilwirkungen zur Gesamtwirkung.
+
+(1) Alle im NW befindlichen Quellen werden bis auf eine als in dem Sinne nicht vorhanden angesehen, dass die Quellspannung $U_q$ und die Quellströme $I_q$ zu Null gesetzt werden.
+
+(2) Ausgehen von der einzigen noch vorhandenen Quelle werden die benötigten Teilströme oder Teilspannungen berechnet. Für $n$ Quellen wird dieser Schritt $n$ mal ausgeführt.
+
+(3) Teilströme und Teilspannungen werden \it{vorzeichenrichtig} überlagert oder addiert.
+//bsp
+\[U_1 = 9V, U_2 = 12V, R_1 = 2.4\ohm, R_2 = 1\ohm, R_3 = 2\ohm, R_4 = 3\ohm, R_5 = 5\ohm\]
+
+(i) $U_2 = 0$
+
+\[
+	R_4* = R_4 || (R_3 + R_2 || R_5) = 1,4571\ohm
+	I_1' = \frac{U_1}{R_1 + R_4*} = 2,3333 A
+	U_4' = I_1'R_4* = 3,4V
+	I_4' = \frac{U_4'}{R_4} = 1,13A
+	I_3' = I_4' - I_1' = -1,2A
+	I_2' = I_3' * \frac{G_2}{G_2 + G_5} = -1A
+	I_5' = -I_3' * \frac{G_5}{G_2 + G_5} = 0,2A
+\]
+
+%% 03.12.2010
+
+(ii) $U_1 = 0$
+
+\begin{pspicture}(4,6)
+	\pnode(0,5){A}
+	\pnode(3,5){B}
+	\pnode(0,4){C}
+	\pnode(3,4){D}
+	\pnode(0,1){E}
+	\pnode(3,1){F}
+	\resistor[labeloffset=0.5](A)(B){$R_1$}
+	\resistor[labeloffset=0.5](C)(D){$R_4$}
+	\resistor[labeloffset=0.5](C)(E){$R_3$}
+	\resistor[labeloffset=0.5](D)(F){$R_2$}
+	\resistor[labeloffset=0.5](E)(D){$R_5$}
+	\Ucc[labeloffset=-0.85](E)(F){$\overrightarrow U_2$}
+	\psline(A)(C)
+	\psline(B)(D)
+\end{pspicture}
+
+\[
+	R_5* = R_5 || ( R_3 + R_1 || R_4 ) = 2\ohm
+	I_2'' = \frac{U_2}{R_2 + R_5*} = 4A
+	U_5'' = I_2'' R_5 = 8V
+	I_5'' = \frac{U_5''}{R_5} = 1,6A
+\]
+
+Aus $I_3'' + I_5'' = I_2''$ erhalten wir $I_3'' = 2,4A$
+
+\[
+	I_1'' = -I_3'' \frac{G_1}{G_1 + G_4} = -1,33A
+	I_4'' = I_3'' \frac{G_4}{G_1 + G_4} = 1,07A
+\]
+
+(iii) Überlagern
+\[
+	I_1 = I_1' + I_1'' = 1,0 A
+	I_2 = I_2' + I_2'' = 3,0 A
+	I_3 = I_3' + I_3'' = 1,2 A
+	I_4 = I_4' + I_4'' = 2,2 A
+	I_5 = I_5' + I_5'' = 1,8 A
+\]
+
+%bsp
+\begin{pspicture}(10,6)
+	\pnode(1,5){A}
+	\pnode(1,3){B}
+	\pnode(1,1){C}
+	\pnode(3,5){D}
+	\pnode(3,3){E}
+	\pnode(3,1){F}
+	\pnode(5,5){G}
+	\pnode(5,3){H}
+	\pnode(5,1){I}
+	\pnode(7,5){J}
+	\pnode(7,3){K}
+	\pnode(7,1){L}
+	\pnode(9,5){M}
+	\pnode(9,3){N}
+	\pnode(9,1){O}
+	\Ucc[tension,tensionlabel=$U_1$,tensionoffset=0.7,tensionlabeloffset=1](A)(B){}
+	\resistor(B)(C){$R_1$}
+	\Ucc[tension,tensionlabel=$U_2$,tensionoffset=0.7,tensionlabeloffset=1](D)(E){}
+	\resistor(E)(F){$R_2$}
+	\resistor(H)(I){$R_3$}
+\end{pspicture}
+
+\[
+	U_1 = 40V, U_2 = 60V, I_6 = 1,2A, R_1 = R_3 = R_5 = 50\ohm, R_2 = R_4 = 40\ohm
+\]
+Berechne $I_3$
+
+(i) $U_2 = 0$
+
+\[
+	R_2* = R_2 || (R_4 + R_5) = 27,6923\ohm
+	I_1' = \frac{-U_1}{R_1 + R_3 || R_2*} = -0,5898 A
+	I_3' = -I_1' \frac{G_3}{G_3 + G_2*} = 0,2102 A
+\]
+
+(ii) $U_1 = I_6 = 0$
+\[
+	R_1* = R_1 || (R_4 + R_5) = 32,1492\ohm
+	I_2'' = \frac{-U_2}{R_2 + R_1* || R_3} = -1,0073 A
+	I_3'' = -I_2'' \frac{G_3}{G_1* + G_3} = 0,3942 A
+\]
+
+(iii) $U_1 = U_2 = 0$
+
+\[
+	I_4''' = -I_6 \frac{G_4*}{G_4* + G_5} = - 0,5693 A
+	I_3''' = -I_4 \frac{G_3}{G_1 + G_2 + G_3} = 0,1752 A
+\]
+
+$I_3 = I_3' + I_3'' + I_3''' = 0,7795 A$
+
+\section{Topologische Methoden der NW-Analyse}
+
+Ersetzt man in einem NW, das nur Zweipole enthält, jeden Zweipol symbolisch durch eine Linie, so erhält man einen Netzwerkgraphen:
+\begin{itemize}
+	\item Die Linien heißen {\it Zweige}.
+	\item Die Punkte, in denen Zweige enden, heißen {\it Knoten}.
+	\item Werden die Zweige mit Bezugsrichtungen gekennzeichnet, spricht man vom {\it gerichteten Graphen}.
+	\item Die Zweige werden von $1$ bis $n$, die Knoten von $1$ bis $m$ nummeriert.
+	\item {\it Maschen} sind Folgen von Zweigen mit der Eigenschaft, dass zwei aufeinander folgende Zweige in einem Knoten zusammentreffen und der erste und letzte Zweig einen Knoten gemeinsam haben. Bis auf den Start/End-Knoten darf beim Durchlaufen kein Knoten mehr als einmal angetroffen werden.
+		Der Masche wird ein willkürlicher Umlaufsinn erteilt.
+	\item Ein {\it vollständiger Baum} ist ein
+		\begin{enumerate}
+			\item zusammenhängender
+			\item maschenfreier Untergraph, der
+			\item alle Knoten der Graphen enthält.
+		\end{enumerate}
+	\item Die Zweige eines Baumes heißen {\it Äste} oder {\it Zweige}. Die nicht zum Baum gehörenden Zweige heißen {\it Sehnen} oder {\it Verbindungszweige}.
+\end{itemize}
+
+Im linearen NW kann man jeden Zweig-Zweipol als lineare Ersatzspannungsquelle oder als lineare Ersatzstromquelle darstellen. Zweige haben den Index $j$ mit $j=1,...,n$.
+\begin{enumerate}
+	\item
+		\begin{pspicture}(3,3)
+			\pnode(1,1){A}
+			\pnode(3,1){B}
+		\end{pspicture}
+\end{enumerate}
+
+\[U_j = U_{qj} + I_j R_j\]
+$\downarrow$ Dualität
+\[I_j = I_{qj} + U_j G_j\]
+
+$U_j,I_j$: Zweigspannung, Zweigstrom
+$U_{qj},I_{qj}$: Zweigquellspannung, Zweigquellstrom
+$R_j, G_j$: Zweigwiderstand, Zweigleitwert
+
+Ein Zweig mit Index $j$ wird entweder mit Zweigwiderstand $R_j$ und Zweigquellspannung $U_{qj}$ oder mit Zweigleitwert $G_j$ und Zweigquellstrom $I_{qj}$ charakterisiert.
+
+\begin{tabular}{c||c|c|c|c|c}
+	Zweigindex $j$ & $U_{qj}$ & $I_{qj}$ & $R_j$ & $G_j$ \\
+	\hline
+	$1$ & $U_{q1}$ & $\frac{U_{q1}}{R_1}$ & $R_1$ & $\frac{1}{R_1}$ \\
+	$2$ & $0$ & $0$ & $R_1$ & $\frac{1}{R_1}$ \\
+	$3$ & $U_{q3}$ & $\frac{U_{q3}}{R_3}$ & $R_3$ & $\frac{1}{R_3}$ \\
+	$4$ & $0$ & $0$ & $R_4$ & $\frac{1}{R_4}$ \\
+	$5$ & $0$ & $0$ & $R_5$ & $\frac{1}{R_5}$ \\
+	$6$ & $0$ & $0$ & $R_6$ & $\frac{1}{R_6}$ \\
+\end{tabular}
+
+\section{Vollständiger Baum}
+
+Von den $n$ Zweigen werden $m-1$ ausgewählt, um mit ihnen alle Knoten zu verbinden. Eine Bewegung von einem Knoten zu einem anderen hat genau einen Weg, entweder direkt oder über weitere Knoten. Die Teilmenge dieser Zweige bildet den vollständigen Baum.
+
+\subsection{Methode des vollständigen Baums}
+
+Eine Masche darf beliebig viele Äste aber nur eine \sout{Verbindungszweig} Sehne enthalten.
+
+\[
+	MGl_1: U_1 + U_2 + U_3 + U_4 = 0 \\
+	MGl_2: -U_4 + U_5 + U_6 + U_7 = 0 \\
+	MGl_3: U_1 + U_2 + U_3 + U_5 + U_7 + U_6 + U_3 = 0
+\]
+
+Wähle einen vollständigen Baum
+%1,2,4,6,7
+%=> dritte masche nicht verwendbar, da zwei sehnen enthalten
+
+Ein vollständiger Graph hat für jedes Knotenpaar genau einen Zweig.
+\[
+	n = \sum_{k=1}^{m-1} k = \frac{m \cdot (m-1)}{2}
+\]
+
+$m = 4 \Rightarrow n=6$
+
+Die Anzahl der vollständigen Bäume im vollständigen Graphen beträgt: $B_{ANZ} = m^{m-2}$
+
+$m = 4 \Rightarrow B_{ANZ} = 16$
+
+%alle 16 vollständigen Bäume des Graphen mit 4 Knoten (siehe kua^^)
+
+\end{document}
