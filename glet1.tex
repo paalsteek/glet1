@@ -515,8 +515,30 @@ $m = 4 \Rightarrow B_{ANZ} = 16$
 \paragraph{Schritt 1}
 	Erstellung des gerichteten Graphen, Nummeriertung der Knoten und Zweige
 
-	%Knoten: D=2, E=1, F=3, H=4
-	%Zweige: 1:4->2, 2:1->4, 3:1->3, 4:3->4, 5:2->3, 6:2->1
+	\begin{pspicture}(8,7)
+		\pnode(1,1){A}
+		\pnode(1,6){C}
+		\pnode(6,6){D}
+		\pnode(3.5,3.5){E}
+		\pnode(4.5,3.5){E2}
+		\pnode(8.5,3.5){F}
+		\pnode(7.5,3.5){F2}
+		\pnode(6,3.5){G}
+		\pnode(6,1){H}
+		\uput[180](E){\pscirclebox{1}}
+		\uput[90](D){\pscirclebox{2}}
+		\uput[0](F){\pscirclebox{3}}
+		\uput[270](H){\pscirclebox{4}}
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$1$](A)(C)
+		\wire(C)(D)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$6$,intensitylabeloffset=-0.5](D)(E)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$5$](D)(F)
+		\wire(E2)(G)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$3$](E)(F)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$2$,intensitylabeloffset=-0.5](E)(H)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$4$](F)(H)
+		\wire(H)(A)
+	\end{pspicture}
 
 \paragraph{Schritt 2}
 	Festlegung des vollständigen Baums
@@ -609,11 +631,11 @@ $m = 4 \Rightarrow B_{ANZ} = 16$
 
 	%6, 1, 2
 	\[
-		\begin{array}{cccccc}
+		\begin{pmatrix}
 			0 & -1 & 1 & 1 & 0 & 0 \\
 			1 & 1 & -1 & 0 & 1 & 0 \\
 			1 & 1 & 0 & 0 & 0 & 1 \\
-		\end{array}
+		\end{pmatrix}
 	\]
 
 	Die Maschengleichungen lauten dann: $MU = 0$
