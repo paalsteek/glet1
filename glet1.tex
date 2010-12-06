@@ -101,15 +101,15 @@ Anwendung: niederohmige Last $R_L$, kleine Spannung $U_L$
 
 \section{Überlagerungsverfahren, Superpositionsverfahren}
 
-\underline{Anwendungsbereich:} \it{Lineare Zeitinvariante} NW
+\underline{Anwendungsbereich:} {\it Lineare Zeitinvariante} NW \\
 \underline{Methode:} Man lässt jede Quelle einzeln wirken und überlagert die Teilwirkungen zur Gesamtwirkung.
 
 (1) Alle im NW befindlichen Quellen werden bis auf eine als in dem Sinne nicht vorhanden angesehen, dass die Quellspannung $U_q$ und die Quellströme $I_q$ zu Null gesetzt werden.
 
 (2) Ausgehen von der einzigen noch vorhandenen Quelle werden die benötigten Teilströme oder Teilspannungen berechnet. Für $n$ Quellen wird dieser Schritt $n$ mal ausgeführt.
 
-(3) Teilströme und Teilspannungen werden \it{vorzeichenrichtig} überlagert oder addiert.
-//bsp
+(3) Teilströme und Teilspannungen werden {\it vorzeichenrichtig} überlagert oder addiert.
+%bsp
 \[U_1 = 9V, U_2 = 12V, R_1 = 2.4\ohm, R_2 = 1\ohm, R_3 = 2\ohm, R_4 = 3\ohm, R_5 = 5\ohm\]
 
 (i) $U_2 = 0$
@@ -300,5 +300,177 @@ Die Anzahl der vollständigen Bäume im vollständigen Graphen beträgt: $B_{ANZ
 $m = 4 \Rightarrow B_{ANZ} = 16$
 
 %alle 16 vollständigen Bäume des Graphen mit 4 Knoten (siehe kua^^)
+
+%% 06.12.2010
+
+\section{NW-Analyse mit dem Verfahren des vollständigen Baums}
+
+\begin{enumerate}
+	\item NW-Zahlwerte \\
+		$m$: Anzahl der Knoten, $i = 1, ..., m$ \\
+		$n$: Anzahl der Zweige, $j = 1, ..., n$
+	\item Baumzahlwerte \\
+		$k = m-1$: Anzahl der Äste im vollst. Baum, Anz. der Knotengleichungen \\
+		$l = n - m + 1$: Anzahl der Sehnen, Anzahl der Maschengleichungen \\
+		$l + k = n$
+	\item Zur Bestimmung von $n$ Zweiggrößen, Zweigspannungen und Zweigströme, mit unterschiedlichen Indices, benötigt man $n$ unabhängige Gleichungen:
+		\begin{enumerate}
+			\item $k = m-1$ Knotengleichungen, in dem man einen Knoten ``wegläßt'', zum Bezugsknoten erklärt
+			\item Die fehlenden $l = n - m + 1$ Machengleichungen werden mit dem Verfahren des vollständigen Baums beschafft.
+		\end{enumerate}
+\end{enumerate}
+
+\begin{pspicture}(8,6)
+	\pnode(1,1){A}
+	\pnode(1,3.5){B}
+	\pnode(1,6){C}
+	\pnode(6,6){D}
+	\pnode(3.5,3.5){E}
+	\pnode(4.5,3.5){E2}
+	\pnode(8.5,3.5){F}
+	\pnode(7.5,3.5){F2}
+	\pnode(6,3.5){G}
+	\pnode(6,1){H}
+	\Ucc(A)(B){$U_{q1}$}
+	\resistor[labeloffset=0.6](B)(C){$R_1$}
+	\wire(C)(D)
+	\resistor[labeloffset=-0.6](D)(E){$R_6$}
+	\resistor[labeloffset=0.6](D)(F){$R_5$}
+	\resistor[labeloffset=0.6](E2)(G){$R_3$}
+	\wire(E)(E2)
+	\Ucc(G)(F2){$U_{q3}$}
+	\wire(F)(F2)
+	\resistor[labeloffset=-0.6](E)(H){$R_2$}
+	\resistor[labeloffset=0.6](F)(H){$R_4$}
+	\wire(H)(A)
+\end{pspicture}
+
+\paragraph{Schritt 1}
+	Erstellung des gerichteten Graphen, Nummeriertung der Knoten und Zweige
+
+	%Knoten: D=2, E=1, F=3, H=4
+	%Zweige: 1:4->2, 2:1->4, 3:1->3, 4:3->4, 5:2->3, 6:2->1
+
+\paragraph{Schritt 2}
+	Festlegung des vollständigen Baums
+
+	%Zweige 1,2,3 %%äste rot, sehnen blau
+
+\paragraph{Schritt 3}
+	Aufstellung der Inzidenzmatrix, Knotenmatrix \\
+	Die vollständige ($m x n$)-Matrix $H_v$ verschreibt die NW-Struktur. Sie hat die Elemente $h_{ij},
+	h_{ij} \in \{-1,0,1\}$ mit $h_{ij} = \left\{ \begin{array}{c}1\\ -1\\ 0 \end{array} \right\}$, wenn der Zweigstrom mit Index $j$
+	\[
+		\left\{
+			\begin{array}{c}
+				\text{vom Knoten } i \text{ wegführt}\\
+				\text{zum Knoten } i \text{ hinführt}\\
+				\text{mit dem Knoten } i \text{ nicht inzident ist}
+			\end{array}
+		\right\}
+	\]
+
+	\[
+		\begin{array}{cccccc}
+			0 & 1 & 1 & 0 & 0 & -1 \\
+			-1 & 0 & 0 & 0 & 1 & 1 \\
+			0 & 0 & -1 & 1 & -1 & 0 \\
+			1 & -1 & 0 & -1 & 0 & 0
+		\end{array}
+	\]
+	Lezte Kontrollmöglichkeit: Die Spaltensummen müssen Null ergeben
+
+	In $H_v$ sind nur $m-1$ Zeilen unabhängig von einander. Wir gewinnen die reduzierte Matrix $H$, indem wir einen Knoten zum Bezugsknoten wählen. Wahl: Knoten $4$ ist Bezugsknoten.
+
+	$H$ wird gewonnen, in dem in $H_v$ die dem Bezugsknoten entsprechende Zeile gestrichen wird.
+
+	\[
+		\left(
+		\begin{array}{cccccc}
+			0 & 1 & 1 & 0 & 0 & -1 \\
+			-1 & 0 & 0 & 0 & 1 & 1 \\
+			0 & 0 & -1 & 1 & -1 & 0 \\
+		\end{array}
+		\right)
+		\left(
+		\begin{array}{c}
+			I_1 \\
+			I_2 \\
+			I_3 \\
+			I_4 \\
+			I_5 \\
+			I_6
+		\end{array}
+		\right)
+		=
+		\left(
+		\begin{array}{c}
+			0 \\
+			0 \\
+			0
+		\end{array}
+		\right)
+	\]
+	\[
+		HI = 0
+	\]
+
+\paragraph{Schritt 4}
+	Beschaffung der $l - n-m+1$ noch benötigten Machengleichungen
+
+	\underline{Satz:} Zu jeder Sehne werden Äste so hinzugenommen, daß sie zusammen eine Masche bilden. Die Umlaufrichrung der Masche wird durch die Richtung der erzeugenden Sehne bestimmt. Mit diesen Maschen wird die $((n-m+1) x (n))$-Machenmatrix $M$ aufgestellt, mit den Elementen
+	$m_{ij} = \left\{ \begin{array}{c} 1\\ -1\\ 0 \end{array} \right\}$ wenn der Zweig $j$
+	\[
+		\left\{
+			\begin{array}{c}
+				\text{zur Masche } i \text{ gehört und in seiner Richtung durchlaufen wird.}\\
+				\text{zur Masche } i \text{ gehört und entgegen seiner Richtung durchlaufen wird.}\\
+				\text{nicht zur Masche } i \text{ gehört.}
+			\end{array}
+		\right\}
+	\]
+
+	Masche 1, bzgl. Sehne mit Index 4
+
+	%4, 2, 3
+
+	Masche 2, bzgl. Sehne mit Index 5
+
+	%5, 3, 2, 1
+
+	Masche 3, bzgl. Sehne mit Index 6
+
+	%6, 1, 2
+	\[
+		\begin{array}{cccccc}
+			0 & -1 & 1 & 1 & 0 & 0 \\
+			1 & 1 & -1 & 0 & 1 & 0 \\
+			1 & 1 & 0 & 0 & 0 & 1 \\
+		\end{array}
+	\]
+
+	Die Maschengleichungen lauten dann: $MU = 0$
+
+	\[
+		\begin{pmatrix}
+			0 & -1 & 1 & 1 & 0 & 0 \\
+			1 & 1 & -1 & 0 & 1 & 0 \\
+			1 & 1 & 0 & 0 & 0 & 1 \\
+		\end{pmatrix}
+		\begin{pmatrix}
+			U_1 \\
+			U_2 \\
+			U_3 \\
+			U_4 \\
+			U_5 \\
+			U_6
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			0 \\
+			0 \\
+			0
+		\end{pmatrix}
+	\]
 
 \end{document}
