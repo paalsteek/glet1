@@ -541,9 +541,33 @@ $m = 4 \Rightarrow B_{ANZ} = 16$
 	\end{pspicture}
 
 \paragraph{Schritt 2}
-	Festlegung des vollständigen Baums
+	Festlegung des vollständigen Baums\\
+	\textcolor{blue}{Sehnen in blau}\\
+	\textcolor{red}{Äste in rot}
 
-	%Zweige 1,2,3 %%äste rot, sehnen blau
+	\begin{pspicture}(8,7)
+		\pnode(1,1){A}
+		\pnode(1,6){C}
+		\pnode(6,6){D}
+		\pnode(3.5,3.5){E}
+		\pnode(4.5,3.5){E2}
+		\pnode(8.5,3.5){F}
+		\pnode(7.5,3.5){F2}
+		\pnode(6,3.5){G}
+		\pnode(6,1){H}
+		\uput[180](E){\pscirclebox{1}}
+		\uput[90](D){\pscirclebox{2}}
+		\uput[0](F){\pscirclebox{3}}
+		\uput[270](H){\pscirclebox{4}}
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$1$,intensitycolor=red,linecolor=red](A)(C)
+		\wire[linecolor=red](C)(D)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$6$,intensitylabeloffset=-0.5,intensitycolor=blue,linecolor=blue](D)(E)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$5$,intensitycolor=blue,linecolor=blue](D)(F)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$3$,intensitycolor=red,linecolor=red](E)(F)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$2$,intensitylabeloffset=-0.5,intensitycolor=red,linecolor=red](E)(H)
+		\wire[intensity,intensitywidth=0.1,intensitylabel=$4$,intensitycolor=blue,linecolor=blue](F)(H)
+		\wire[intensitycolor=red,linecolor=red](H)(A)
+	\end{pspicture}
 
 \paragraph{Schritt 3}
 	Aufstellung der Inzidenzmatrix, Knotenmatrix \\
