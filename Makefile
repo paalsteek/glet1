@@ -5,3 +5,9 @@ all: glet1.pdf
 
 %.pdf: %.dvi
 		dvipdf $*
+
+clean:
+	rm *.log *.aux *.dvi
+
+dist-clean:
+	rm *.log *.aux *.dvi *.pdf

@@ -4,6 +4,7 @@
 \usepackage{pst-circ}
 \usepackage[utf8]{inputenc}
 \usepackage{ulem}
+\usepackage{color}
 
 \newcommand{\ohm}{\Omega}
 
@@ -685,5 +686,1146 @@ $m = 4 \Rightarrow B_{ANZ} = 16$
 			0
 		\end{pmatrix}
 	\]
+
+%TODO: hier fehlt noch was
+
+%%10.12.2010
+
+	Gleichungssystem für $n$ Zweigströme.
+	\[
+		\begin{pmatrix}
+			H \\
+			---- \\
+			M \cdot diag(R)
+		\end{pmatrix}
+		\cdot I =
+		\begin{pmatrix}
+			0 \\
+			--- \\
+			-M U_q
+		\end{pmatrix}
+	\]
+	Gleichungssystem für $n$ Zweigspannungen
+	\[
+		\begin{pmatrix}
+			H \cdot diag(G) \\
+			---- \\
+			M
+		\end{pmatrix}
+		\cdot U =
+		\begin{pmatrix}
+			-H I_q \\
+			--- \\
+			0
+		\end{pmatrix}
+	\]
+
+	Brückenschaltungsbeispiel
+	\[
+		%bla
+	\]
+
+	\paragraph{Zahlenbeispiel}
+	
+	%Schaltplan -> Daniel
+
+	\[
+		\begin{array}{cc}
+			U_{q2} = 300V & R_2 = 0.25\ohm \\
+			U_{q3} = 270V & R_3 = 0.12\ohm \\
+			R_1: \text{ Verbraucher}
+		\end{array}
+	\]
+
+	Wie verteilen sich die Ströme $I_1$, $I_2$ und $I_3$, wenn der Verbraucherwiderstand $R_1$ im Bereich $0 < R_1 < 10\ohm$ gewählt wird?
+
+	$n = 3, m = 2 \Rightarrow 1$ KGl, $2$ MGl
+
+	Gerichteter Graph
+	%\begin{pspicture}
+	%	\pnode(3)(1){A}
+	%	\pnode(3)(3){B}
+	%	\wire[intensity](B)(A){2}
+	%	\wire[intensity](B)(A){1}
+	%	\wire[intensity](B)(A){3}
+	%\end{pspicture}
+
+	Vollständiger Baum
+	%1 als Sehne
+
+	Inzidenzmatrix $(1x3)$-Vektor
+	\[
+		H =
+		\begin{pmatrix}
+			1 & -1 & -1
+		\end{pmatrix}
+	\]
+	Bezugsknoten $2$
+
+	Maschenmatrix
+	%masche 1 (2,1) und masche 2 (1,3) als graphen
+
+	\[
+		M = 
+		\begin{pmatrix}
+			1 & 1 & 0 \\
+			1 & 0 & 1
+		\end{pmatrix}
+	\]
+
+	Gleichungssysteme
+	\begin{eqnarray*}
+		H \cdot I & = & 0 \\
+		M \cdot U & = & 0
+	\end{eqnarray*}
+
+	Gleichuungssysteme für die Zweigströme in $I$
+	\[
+		M^* = M \cdot diag(R) =
+			\begin{pmatrix}
+				1 & 1 & 0 \\
+				1 & 0 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				R_1 & 0 & 0 \\
+				0 & R_2 & 0 \\
+				0 & 0 & R_3
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				R_1 & R_2 & 0 \\
+				R_1 & 0 & R_3
+			\end{pmatrix}
+	\]
+	\[
+		M \cdot U_q =
+			\begin{pmatrix}
+				1 & 1 & 0 \\
+				1 & 0 & 1
+			\end{pmatrix}
+			\begin{pmatrix}
+				0 \\
+				-U_{q2} \\
+				-U_{q3}
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				- U_{q2} \\
+				- U_{q3}
+			\end{pmatrix}
+	\]
+	\[
+		\text{Also: }
+		\begin{pmatrix}
+			1 & -1 & -1 \\
+			R_1 & R_2 & 0 \\
+			R_1 & 0 & R_3
+		\end{pmatrix}
+		\begin{pmatrix}
+			I_1 \\
+			I_2 \\
+			I_3
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			0 \\
+			U_{q2} \\
+			U_{q3}
+		\end{pmatrix}
+	\]
+
+	Gleichungssystem für die Zweigspannungen in $U$
+	\[
+		H^* = H \cdot diag(G) =
+			\begin{pmatrix}
+				1 & -1 & -1 \\
+			\end{pmatrix}
+			\begin{pmatrix}
+				G_1 & 0 & 0 \\
+				0 & G_2 & 0 \\
+				0 & 0 & G_3
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				G_1 & -G_2 & -G_3
+			\end{pmatrix}
+	\]
+	\[
+		H \cdot I_q =
+			\begin{pmatrix}
+				1 & -1 & -1
+			\end{pmatrix}
+			\begin{pmatrix}
+				0 \\
+				I_{q2} \\
+				I_{q3}
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				- I_{q2} - I_{q3}
+			\end{pmatrix}
+			=
+			\begin{pmatrix}
+				\frac{U_{q2}}{R_2} + \frac{U_{q3}}{R_3}
+			\end{pmatrix}
+	\]
+	\[
+		\text{Also: }
+		\begin{pmatrix}
+			G_1 & -G_2 & -G_3 \\
+			1 & 1 & 0 \\
+			1 & 0 & 1
+		\end{pmatrix}
+		\begin{pmatrix}
+			U_1 \\
+			U_2 \\
+			U_3
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			- \frac{U_{q2}}{R_2} - \frac{U_{q3}}{R_3} \\
+			0 \\
+			0
+		\end{pmatrix}
+	\]
+
+\paragraph{Komprimierte Verfahren}
+	\begin{itemize}
+		\item Berechnung von Sehnenströmen {\it (Machenstromverfahren)}
+		\item Berechnung der Knotenpotenziale {\it (Knotenpotenzialverfahren)}
+		\item Berechnung der Astspannungen {\it (Astspannungsverfahren)}
+	\end{itemize}
+
+\paragraph{Maschenstromverfahren}
+	\begin{enumerate}
+		\item Das NW wird allein mit Widerständen und Spannungsquellen dargestellt.
+		\item Der gerichtete Graph wird erstellt. Ein vollst. Baum wird so gewählt, daß die interessierenden Zweigströme Sehnenströme sind.
+		\item Maschen aufstellen. Die MGl dürfen nur Shenenströme einhalten.
+		\item Falls Astströme benötigt werden, berechnen wir sie aus den Sehnenströmen.
+	\end{enumerate}
+
+%Schaltung siehe Daniel
+
+Berechne die Zweigströme $I_1$, $I_2$ und $I_3$
+
+Knotengleichungen
+
+$I_4 = I_1 - I_3$
+$I_5 = I_2 + I_3$
+
+Masche 1
+
+$U_1 + U_4 = 0$
+$-U_{q1} + I_1 R_1 + I_4 R_4 = 0$
+...
+$I_1(R_1 + R_4) - I_3 R_3 - U_{q1} = 0$
+
+Masche 2
+
+$U_3 - U_4 + U_5 = 0$
+$I_3 R_3 - I_4 R_4 + I_5 R_5 = 0$
+$-I_1 R_4 + I_2 R_5 + I_3(R_3 + R_4 + R_5) = 0$
+
+Masche 3
+
+$U_2 + U_5 = 0$
+$I_2 R_2 + I_5 R_5 = 0$
+$I_2 ( R_2 + R_5 ) + I_3 R_5 - U_{q2} = 0$
+
+\[
+	\begin{pmatrix}
+		R_1 + R_4 & 0 & -R_4 \\
+		-R_4 & R_5 & R_3 + R_4 + R_5 \\
+		0 & R_2 + R_5 & R_5
+	\end{pmatrix}
+	\begin{pmatrix}
+		I_1 \\
+		I_2 \\
+		I_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		U_{q1} \\
+		0 \\
+		U_{q2}
+	\end{pmatrix}
+\]
+
+\[
+	\begin{pmatrix}
+		R_1 + R_4 & 0 & -R_4 \\
+		0 & R_2 + R_5 & R_5 \\
+		-R_4 & R_5 & R_3 + R_4 + R_5
+	\end{pmatrix}
+	\begin{pmatrix}
+		I_1 \\
+		I_2 \\
+		I_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		U_{q1} \\
+		U_{q2} \\
+		0
+	\end{pmatrix}
+\]
+
+\[
+	R^* \cdot I_S = U_q^*
+\]
+($I_S$ Vektor mit den Sehnenströmen)
+
+\paragraph{Beobachtungen}
+\begin{enumerate}
+	\item Hauptdiagonale $r_{ij}^*$, $i = j$, $i = 1, 2, \ldots, n-m+1$ Summen der in den jeweiligen Maschen liegenden Widerstände
+	\item Nebendiagonalen $r_{ij}^*$, $i \neq j$, $i = 1, 2, \ldots, n-m+1$, $j = 1, 2, \ldots, n - m + 1$, $r_{ij}^* = r_{ji}^*$ Widerstandssummen für die Widerstände, die die Maschen $i$ und $j$ gemeinsam haben. Positiv wird bei gleichsinnigem Durchlauf gerechnet.
+	\item Im Vektor $U_q^*$ werden die Summen der Maschenquellspannungen eingetragen. Positiv wird bei gegensinnigem Durchlauf gerechnet.
+\end{enumerate}
+
+%Schaltplan siehe Daniel
+
+\[
+	R^* = 
+	\begin{pmatrix}
+		r_{11}^* & r_{12}^* & ... \\
+		r_{21}^* & r_{22}^* & ... \\
+		... & ... & ...
+	\end{pmatrix}
+\]
+\begin{eqnarray*}
+	r_{11}^* & = & R_2 + R_3 + R_4 + R_5 + R_6 \\
+	r_{12}^* & = & R_2 + R_3 + R_4 = R_{21}^* \\
+	r_{22}^* & = & R_1 + R_2 + R_3 + R_4 + R_7
+\end{eqnarray*}
+
+%%13.12.2010
+
+%beispiel fehlt
+
+Wir wollen im weiteren die NW-Berechnung verallgemeinern und Berechnungsverfahren mit Dualitätsbeziehungen gewinnen. So gewinnen wir die Astspannungsanalyse aus der Sehnenstromalanyse (Maschenstromanalyse). Für diese Betrachtungen benötigen wir eine dritte Matrix, die mit der Knotenmatrix verwandte Schnittmatrix S (das ist eine Superknotenmatrix). Wir sorgen dafür, dass alle NW-Vektoren und NW-Matrizen in der Reihenfolge
+{\red Astgrößen} - {\blue Sehnengrößen}
+geordnet werden.
+
+\[
+	S = \begin{pmatrix}S_A & | & S_S\end{pmatrix}
+\]
+\[
+	I = \begin{pmatrix}
+		I_A \\
+		--- \\
+		I_S
+	\end{pmatrix}
+\]
+\[
+	U = \begin{pmatrix}
+		U_A \\
+		--- \\
+		U_S
+	\end{pmatrix}
+\]
+\[
+	I_q = \begin{pmatrix}
+		I_{qA} \\
+		--- \\
+		I_{qS}
+	\end{pmatrix}
+\]
+\[
+	U_q = \begin{pmatrix}
+		U_{qA} \\
+		--- \\
+		U_{qS}
+	\end{pmatrix}
+\]
+\[
+	H = \begin{pmatrix}
+		H_A & | & H_S
+	\end{pmatrix}
+\]
+\[
+	M = \begin{pmatrix}
+		M_A & | & M_S
+	\end{pmatrix}
+\]
+
+%graph 1 - 2 - 3 | 4 -- 1:31, 2:12, 3:32, 4:14, 5:42, 6:43
+
+vollst. Baum mit den Zweigen 1, 3 und 5
+
+%graph hier
+
+Wir sortieren die Zweige in der Reihenfolge
+{\red 1, 3, 5, }{\blue 2, 4, 6}
+und erden den Knoten 4.
+
+\paragraph{Schnittmatrix}
+Ein Schnitt teilt ein NW in zwei Teil-NW. Wir suchen die Tundamentalschnitte, die {\underline einen} Ast und im weiteren nur Sehnen schneiden. Das ist dual zur Masche, die {\underline eine} Sehne und im weitern nur Äste enthält. Die Anzahl der (Fundamental-) Schnitte entspricht der Anzahl der Äste $m-1$. Die Orientierung des Schnitts entspricht der Orientierung des Bezugsasts.
+
+%S_1: schneidet 1,2 und 4
+%S_2: schneidet 2,3,4 und 6
+%S_3: schneidet 4,5 und 6
+
+Schnitt $S_1$
+%NW_1: Knoten 1, NW_2 Knoten 2,3,4 (Superknoten), Verbunden über 1,2 und 4
+Kirchhoff: $I_1 = I_2 + I_4$
+
+\[
+	S =
+	\begin{pmatrix}
+		{\red 1} & {\red 0} & {\red 0} & | & {\blue -1} & {\blue -1} & {\blue 0} \\
+		{\red 0} & {\red 1} & {\red 0} & | & {\blue 1} & {\blue 1} & {\blue -1} \\
+		{\red 0} & {\red 0} & {\red 1} & | & {\blue 0} & {\blue -1} & {\blue 1}
+	\end{pmatrix} =
+	\begin{pmatrix}
+		E & | & S_S
+	\end{pmatrix}
+\]
+
+E: Einheistmatrix in der passenden Dimension
+\[
+	\begin{pmatrix}
+		1 & 0 & 0 & \cdots & 0 \\
+		0 & 1 & 0 & \cdots & 0 \\
+		\vdots & 0 & \ddots & 0 & \vdots \\
+		0 & \cdots & \cdots & 0 & 1
+	\end{pmatrix}
+\]
+
+\paragraph{Maschenmatrix $M$}
+
+\[
+	M = \begin{pmatrix} M_A & | & M_S \end{pmatrix}
+	\begin{pmatrix}
+		{\red 1} & {\red -1} & {\red 0} & | & {\blue 1} & {\blue 0} & {\blue 0} \\
+		{\red 1} & {\red -1} & {\red 1} & | & {\blue 0} & {\blue 1} & {\blue 0} \\
+		{\red 0} & {\red 1} & {\red -1} & | & {\blue 0} & {\blue 0} & {\blue 1}
+	\end{pmatrix} = \begin{pmatrix} M_A & | & E \end{pmatrix}
+\]
+
+\[
+	H = \begin{pmatrix} H_A & | & H_S \end{pmatrix} =
+	\begin{pmatrix}
+		{\red -1} & {\red 0} & {\red 0} & | & {\blue 1} & {\blue 1} & {\blue 0} \\
+		0 & -1 & -1 & | & -1 & 0 & 0 \\
+		1 & 1 & 0 & | & 0 & 0 & -1 \\
+	\end{pmatrix}
+\]
+
+Kirchhoffsche Gesetze
+
+HI = 0 Die Summe der Ströme im Knoten ist Null
+SI = 0 Die Summe der Ströme im Superknoten ist Null
+MU = 0 Die Maschenumlaufspannung ist Null
+
+\paragraph{Zusammenhang zwischen Schnitt- und Inzidenzmatrix}
+\[
+	\left. \begin{array}{l}
+	SI = 0 \Rightarrow \begin{pmatrix} S_A & | & S_S \end{pmatrix} \begin{pmatrix} I_A \\ --- \\ I_S \end{pmatrix} = S_A I_A + S_S I_S = E I_A + S_S I_S = I_A + S_S I_S = 0 \Rightarrow I_A = - S_S I_S
+	HI = 0 \Rightarrow \begin{pmatrix} H_A & | & H_S \end{pmatrix} \begin{pmatrix} I_A \\ --- \\ I_S \end{pmatrix} = H_A I_A + H_S I_S = 0 \Rightarrow I_A = -H_A^{-1} H_S I_S
+	\end{array} \right\} \Rightarrow S_S = H_A^{-1} H_S
+\]
+Also $S = \begin{pmatrix} S_A & | & S_S \end{pmatrix} = \begin{pmatrix} E & | & H_A^{-1} H_S \end{pmatrix}$
+
+\paragraph{Zusammenhang zwischen Maschen- und Inzidenzmatrix}
+\[
+	MU = 0 + \begin{pmatrix} M_A & | & \underbrace{M_S}_{=E} \end{pmatrix} \begin{pmatrix} U_A \\ --- \\ U_S \end{pmatrix} = M_A U_A + U_S = 0 \Rightarrow U_S = - M_A U_A
+\]
+\[
+	H M^T = \begin{pmatrix} H_A & | & H_S \end{pmatrix} \begin{pmatrix} M_A^T \\ --- \\ M_S^T \end{pmatrix} = \begin{pmatrix} H_A & | & H_S \end{pmatrix} \begin{pmatrix} M_A^T \\ --- \\ E \end{pmatrix} = H_A M_A^T + H_S E = 0 \Rightarrow M_A^T = -H_A^{-1} H_S = -S_S
+\]
+
+Zusammenfassung: Wir müssen nur die Inzidenzmatrix berechnen und gewinnen
+\[
+	M = \begin{pmatrix} ( -H_A^{-1} H_S )^T & | & E \end{pmatrix} = \begin{pmatrix} - S_S^T & | & E \end{pmatrix}
+\]
+\[
+	S = \begin{pmatrix} E & | & -H_A^{-1} H_S \end{pmatrix} = \begin{pmatrix} E & | & - M_A^T \end{pmatrix}
+\]
+
+Mit diesen Erkenntnissen definieren wir das Maschenstromverfahren
+
+Ausgangspunkt: $M \cdot diag(R) \cdot I = -M \cdot U_q$ Aus $I = M^T I_S$, folgt aus $S M^T = 0$
+\[
+	\underbrace{M diag(R) M^T}_{R^*} I_S = \underbrace{-M U_q}_{U_q^*}
+\]
+\[
+	I_A = M_A^T I_S = ( -H_A^{-1} H_S ) I_S = - S_S I_S
+\]
+
+Astspannungsanalyse
+\[
+	S diag(G) S^T U_A = -S I_q
+\]
+\[
+	U_S = S_S^T U_A = ( -H_A^{-1} H_S ) U_A = - M_A U_A
+\]
+
+%%17.12.2010
+\paragraph{Schnittmatrix für die Brückenschaltung}
+%brückenschaltung mit 1-4, 4-2 und 2-3 als vollständiger Baum
+
+Fundamentalschnitte
+%S_1: knoten 1
+%S_2: knoten 2 und 3
+%S_3: knoten 3
+
+\[
+	S =
+	\begin{pmatrix}
+		{\red 1} & 0 & 0 & | & {\blue 0} & -1 & -1 \\
+		0 & 1 & 0 & | & 1 & -1 & -1 \\
+		0 & 0 & 1 & | & -1 & 1 & 0
+	\end{pmatrix}
+\]
+
+Dualitätsbeziehungen
+\begin{tabular}{c|c|c}
+	Maschenstromverfahren & & Astspannungsverfahren \\
+	 & & Knotenspannungsverfahren (nicht so richtig dual, da Knotenpotenziale nicht notwendigerweise Zweigspannungen) \\
+	 Anzahl der Sehnen (n-m+1) & Anzahl der Gleichungen & Anzahl der Äste (m-1) \\
+	 Masche &  & Superknoten / Knoten \\
+	 Strom & & Spannung \\
+	 Sehne & & Ast \\
+	 Alle Zweige enthalten nur Spannungsquellen und Widerstände & & Alle Zweige enthalten nur Stromquellen und Leitwerte \\
+	 $M \cdot diag(R) M^T I_S = - M U_q$ & & $S \cdot diag(G) S^T U_A = -S I_q$ Astspannungsverfahren \\
+	 $I_A = M_A^T I_S$ & & $U_S = S_S^T U_A$ \\
+	  & & $H \cdot diag(G) H^T U_K = -H I_q$ Knotenspannungsverfahren \\
+		& & $U = H^T U_K$ $U_K$ Vektor der Knotenpotenziale \\
+	Summe der Widerstände in einer Masche & & Summe der Leitwerte am (Super-) Knoten \\
+	Widerstände zwischen den Maschen & & Leitwerte zwischen den (Super-) Knoten \\
+	Summe der Quellspannungen in einer Masche & & Summe der Quellströme an einem (Super-) Knoten
+\end{tabular}
+
+Knotenpotenziale - Astspannungen
+%Brückenschaltung 2 | 1 - 3 | 4
+%U_1: 4-2, U_2: 4-1, U_3: 1-3, U_4: 4-3, U_5: 2-3, U_6: 2-1
+%U_K_1: 1-4, U_K_2: 2-4, U_K_3: 3-4
+
+{\color{orange} $U_1$, $U_2$, ..., $U_6$: Astspannungen} \\
+{\color{red} $U_1$, $U_2$, $U_3$: Astspannungen} \\
+{\color{blue} $U_4$, $U_5$, $U_6$: Sehnenspannungen} \\
+Bezugsknoten: 4 \\
+{\color{yellow} $U_{K_1}$, $U_{K_2}$, $U_{K_3}$: Knotenpotentiale}
+
+Knotenpotential
+\begin{enumerate}
+	\item Erklärung eines Bezugsknotens
+	\item Die Knotenpotentiale sind die Knotenpotentiale bzgl. des Bezugsknotens
+\end{enumerate}
+
+\begin{eqnarray*}
+	U_{K_1} & = & -U_2 \\
+	U_{K_2} & = & -U_1 \\
+	U_{K_3} & = & U_4
+\end{eqnarray*}
+
+\paragraph{Knotenpotenzialverfahren}
+%graph siehe sonst wer
+%modifizierter graph auch
+%I_q1 || G_1 || G_4 + G_3 + G_5 || G_2 || I_q2
+
+\subparagraph{Bezugsknoten 1}
+
+Stelle die Knotengleichungen bzgl. der Knotenpotenziale auf.
+
+$K_2$:
+\[
+	G_1 U_{21} + G_4 U_{21} + I_{q1} = G_3 (U_{31} - U_{21})
+\]
+\[
+	U_{21} ( G_1 + G_4 + G_3 ) - U_{31} G_3 = - I_{q1}
+\]
+
+$K_3$:
+\[
+	G_2 U_{31} + G_5 U_{31} + I_{q2} + G_3 (U_{31} - U_{21}) = 0
+\]
+\[
+	-U_{21} G_3 + U_{31} ( G_2 + G_3 + G_5 ) = -I_{q2}
+\]
+
+\[
+	\begin{pmatrix}
+		G_1 + G_3 + G_4 & - G_3 \\
+		- G_3 & G_2 + G_3 + G_4
+	\end{pmatrix}
+	\begin{pmatrix}
+		U_{21} \\
+		U_{31}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		- I_{q1} \\
+		- I_{q2}
+	\end{pmatrix}
+\]
+\[
+	G_K^* U_K = I_{qk}^*
+\]
+
+Beobachtungen:
+\begin{tabular}{rl}
+	Matrix $G_K^*$: & Auf der Hauptdiagonalen werden die Summen der am Knoten angeschlossenen Leitwerte eingetragen. \\
+	 & Auf der Nebendiagonalen werden die negativen Summen der Leitwerte zwischen den Knoten eingetragen. \\
+	Vektor $I_{qk}^*$: & Summe der Quellströme am Knoten. Hinfließend positiv, wegfließend negativ.
+\end{tabular}
+
+Beispiel:
+%I_q1 || G_1 || G_4 + G_3 + G_5 || G_2 || I_q2
+
+Bezugsknoten 2
+
+\[
+	\begin{pmatrix}
+		G_1 + G_2 + G_4 + G_5 & -G_2 - G_5 \\
+		-G_2 - G_5 & G_2 + G_3 + G_5
+	\end{pmatrix}
+	\begin{pmatrix}
+		U_{12} \\
+		U_{32}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		I_{q1} + I_{q2} \\
+		- I_{q2}
+	\end{pmatrix}
+\]
+
+Alle Schaltungssimulatoren benutzen das {\it modifizierte} Knotenpotentialverfahren, das auch Spannungsquellen (zuwachs an der Anzahl der Gleichungen) verwenden kann.
+
+\paragraph{Astspannungsanalyse}
+%knoten im dreieck, verbindungskanten 4 (ou) und 5 (ou), unten 3 (5-4), außenrum bei 4 1 und bei 5 2
+%unten s1 (43) und s2 (53)
+
+\[
+	\begin{pmatrix}
+		G_1 + G_3 + G_4 & -G_3\\
+		-G_3 & G_2 + G_3 + G_5
+	\end{pmatrix}
+	\begin{pmatrix}
+		U_4 \\
+		U_5
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		I_{q1} \\
+		I_{q2}
+	\end{pmatrix}
+\]
+
+Das Knotenpotentialverfahren in Matrixform lautet:
+\begin{eqnarray*}
+	H \cdot diag(G) H_T U_K & = & - H I_q \\
+	U & = & H^T U_K
+\end{eqnarray*}
+
+%graph von eben wieder
+Knoten 2 Bezugsknoten
+\[
+	H = \begin{pmatrix}
+		-1 & -1 & 0 & 1 & 1 \\
+		0 & 1 & 1 & 0 & -1
+	\end{pmatrix}
+\]
+\[
+	diag(G) = \begin{pmatrix}
+		G_1 & 0 & 0 & 0 & 0 \\
+		0 & G_2 & 0 & 0 & 0 \\
+		0 & 0 & G_3 & 0 & 0 \\
+		0 & 0 & 0 & G_4 & 0 \\
+		0 & 0 & 0 & 0 & G_5
+	\end{pmatrix}
+\]
+\[
+	H \cdot diag(G) =
+	\begin{pmatrix}
+		-1 & -1 & 0 & 1 & 1 \\
+		0 & 1 & 1 & 0 & -1
+	\end{pmatrix}
+	\begin{pmatrix}
+		G_1 & 0 & 0 & 0 & 0 \\
+		0 & G_2 & 0 & 0 & 0 \\
+		0 & 0 & G_3 & 0 & 0 \\
+		0 & 0 & 0 & G_4 & 0 \\
+		0 & 0 & 0 & 0 & G_5
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		-G_1 & -G_2 & 0 & G_4 & G_5 \\
+		0 & G_2 & G_3 & 0 & -G_5
+	\end{pmatrix}
+\]
+
+%%20.12.2010
+
+%graph siehe block
+
+\[
+	U_{q1} = 10V, U_{q2} = 50V, U_{q3} = U_{q4} = U_{q5} = 20V, R_i = 10 \ohm, i = 1, ..., 6
+\]
+Berechne die Zweigströme
+
+\begin{enumerate}
+	\item Rekusives Berechnen, Ersatzquellenmethode: scheiden beide aus.
+	\item Überlagerungsverfahren: Aufwand ist die Berechnung von 5 mal 6 Strömen.
+	\item Gleichungssystem für die Zweigströme: Inversion einer (6x6)-Matrix.
+	\item Maschenstromverfahren: Vollst. Baum - Inversion einer (3x3)-Matrix - Multiplikation mit einer (3x3)-Matrix.
+	\item Knotenpotential- und Astspannungsverf.: Ersatzstromquellen mit Innenleitwerten - Inversion einer (3x3)-Matrix - Multiplikation mit einer Matrix - Zweigströme aus Zweigspannungen berechnen.
+\end{enumerate}
+
+\subparagraph{Maschenstromverfahren}
+Vollst. Baum mit den Zweigen 4, 5 und 6
+
+%bäume siehe block
+
+Sortierfolge
+\[
+	I_A = \begin{pmatrix}I_4\\ I_5\\ I_6 \end{pmatrix},
+	I_S = \begin{pmatrix}I_1\\ I_2\\ I_3 \end{pmatrix}
+\]
+
+\[
+	R^* \cdot I_S = U_q^*
+\]
+\[
+	\begin{pmatrix}
+		R_1 + R_5 + R_6 & -R_5 & -R_6 \\
+		-R_5 & R_2 + R_4 + R+5 & -R_4 \\
+		-R_6 & -R_4 & R_3 + R_4 + R_6
+	\end{pmatrix}
+	\begin{pmatrix}
+		I_1 \\
+		I_2 \\
+		I_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		U_{q1} + U_{q5} \\
+		U_{q2} + U_{q4} - U_{q5} \\
+		U_{q3} + U_{q4}
+	\end{pmatrix}
+\]
+
+\[
+	\begin{pmatrix}
+		30 & -10 & -10 \\
+		-10 & 30 & -10 \\
+		-10 & -10 & 30
+	\end{pmatrix} \ohm
+	\begin{pmatrix}
+		I_1 \\
+		I_2 \\
+		I_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		30 \\
+		50 \\
+		0
+	\end{pmatrix}
+\]
+
+\subparagraph{Gauß-Tableaux}
+\[
+	\begin{array}{ccc|c}
+		30 & -10 & -10 & 30 \\
+		-10 & 30 & -10 & 50 \\
+		10 & -10 & 30 & 0
+	\end{array}
+	\rightarrow
+	\begin{array}{ccc|c}
+		30 & -10 & -10 & 30 \\
+		0 & \frac{80}{3} & \frac{-40}{3} & 60 \\
+		0 & \frac{-40}{3} & \frac{80}{3} & 10
+	\end{array}
+	\rightarrow
+	\begin{array}{ccc|c}
+		30 & -10 & -10 & 30 \\
+		0 & \frac{80}{3} & \frac{-40}{3} & 60 \\
+		0 & 0 & 20 & 40
+	\end{array}
+\]
+\[
+	\rightarrow I_3 = 2A, I_2 = 3,25A, I_1 = 2,75A
+\]
+
+Astströme - $I_A = M_A^T I_S$ oder Knotengleichungen
+
+Knotengleichungen
+\begin{eqnarray*}
+	K_1: I_6 & = & I_1 - I_3 \\
+	K_2: I_5 & = & I_2 - I_1 \\
+	K_4: I_4 & = & I_2 - I_3
+\end{eqnarray*}
+
+\[
+	\begin{pmatrix}
+		0 & 1 & -1 \\
+		-1 & 1 & 0 \\
+		1 & 0 & -1
+	\end{pmatrix}
+	\begin{pmatrix}
+		I_1 \\
+		I_2 \\
+		I_3
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		I_4 \\
+		I_5 \\
+		I_6
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1,25 A \\
+		0,5 A \\
+		0,75 A
+	\end{pmatrix}
+\]
+
+Astpartition der Maschenmatrix
+
+\underline{Sortierfolge: 4, 5, 6, 1, 2, 3}
+
+\[
+	M = (M_A | M_S) = (M_A | E) =
+	\begin{pmatrix}
+		0 & -1 & 1 & | & 1 & 0 & 0 \\
+		1 & 1 & 0 & | & 0 & 1 & 0 \\
+		-1 & 0 & -1 & | & 0 & 0 & 1
+	\end{pmatrix}
+\]
+\[
+	M_A = \begin{pmatrix}
+		0 & -1 & 1 \\
+		1 & 1 & 0 \\
+		-1 & 0 & -1
+	\end{pmatrix},
+	M_A^T = \begin{pmatrix}
+		0 & 1 & -1 \\
+		-1 & 1 & 0 \\
+		1 & 0 & -1
+	\end{pmatrix}
+\]
+
+%umgebautes netz siehe block
+
+\begin{tabular}{c|c|c|c|c}
+	Zweig j & $U_{qj}$ & $R_j$ & $I_{qj}$ & $G_j$ \\
+	1 & 10 V & 10 $\ohm$ & 1 A & 150 mS \\
+	2 & 50 V & 10 $\ohm$ & 5 A & 150 mS \\
+	3 & 20 V & 10 $\ohm$ & 2 A & 150 mS \\
+	4 & 20 V & 10 $\ohm$ & 2 A & 150 mS \\
+	5 & 20 V & 10 $\ohm$ & {\color{yellow} -2 A} & 150 mS \\
+	6 & 0 & 10 $\ohm$ & 0 & 150 mS \\
+\end{tabular}
+
+Bezugsknoten: 3
+
+\[
+	U_K = \begin{pmatrix}
+		U_{K1} \\
+		U_{K2} \\
+		U_{K3}
+	\end{pmatrix} = \begin{pmatrix}
+		U_{13} \\
+		U_{23} \\
+		U_{43}
+	\end{pmatrix} = \begin{pmatrix}
+		- U_6 \\
+		- U_5 \\
+		U_4
+	\end{pmatrix}
+\]
+
+Knotenpotentialverfahren: $G_K^* U_K = I_{Kq}^*$
+
+\[
+	\begin{pmatrix}
+		G_1 + G_3 + G_6 & -G_1 & -G_3 \\
+		-G_1 & G_1 + G_2 + G_5 & -G_2 \\
+		-G_3 & -G_2 & G_2 + G_3 + G_4
+	\end{pmatrix}
+	\begin{pmatrix}
+		U_{K1} \\
+		U_{K2} \\
+		U_{K3}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		-I_{q1} + I_{q3} \\
+		I_{q1} - I_{q2} + I_{q5} \\
+		I_{q2} - I_{q4} - I_{q3}
+	\end{pmatrix}
+\]
+\[
+	S \begin{pmatrix}
+		0,3 & -0.1 & -0,1 \\
+		-0,1 & 0.3 & -0,1 \\
+		-0,1 & -0.1 & 0,3
+	\end{pmatrix}
+	\begin{pmatrix}
+		U_{K1} \\
+		U_{K2} \\
+		U_{K3}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		1 A \\
+		-6 A \\
+		1 A
+	\end{pmatrix}
+\]
+\[
+	\begin{pmatrix}
+		U_{13} \\
+		U_{23} \\
+		U_{43}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		-7,5 V \\
+		-25 V
+		-7,5 V
+	\end{pmatrix}
+\]
+
+Fehlende Spannungen - Ablesen oder $U = H^T U_K$
+
+%graph siehe block
+
+\begin{eqnarray*}
+	U_1 & = U_{13} - U_{23} = & 17,5V \\
+	U_2 & = U_{23} - U_{43} = & -17,5V \\
+	U_3 & = - U_{13} + U_{43} - & 0 \\
+	U_4 & = U_{43} = & -7,5 V \\
+	U_5 & = - U_{23} = & 25V \\
+	U_6 & = - U_{13} = & 7,5V
+\end{eqnarray*}
+
+\[
+	I_j = U_j G_j + I_{qj} = \left( \begin{pmatrix}
+		17,5 \\
+		-17,5 \\
+		0 \\
+		-7,5 \\
+		25 \\
+		7,5
+	\end{pmatrix} 0,1 + \begin{pmatrix}
+		1 \\
+		5 \\
+		2 \\
+		2 \\
+		-2 \\
+		0
+	\end{pmatrix} \right) A
+\]
+\[
+	I = \begin{pmatrix}
+		2,75 \\
+		3,25 \\
+		2,0 \\
+		1,25 \\
+		0,5 \\
+		0,75
+	\end{pmatrix}
+\]
+
+Methode 2: H-Matrix
+
+\[
+	H = \begin{pmatrix}
+		0 & 0 & -1 & 1 & 0 & -1 \\
+		0 & -1 & 0 & -1 & 1 & 0 \\
+		1 & 0 & 0 & 0 & -1 & 1
+	\end{pmatrix}
+\]
+\[
+	U = \begin{pmatrix}
+		0 & 0 & 1 \\
+		0 & -1 & 0 \\
+		-1 & 0 & 0 \\
+		1 & -1 & 0 \\
+		0 & 1 & -1 \\
+		-1 & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		U_{K1} \\
+		U_{K2} \\
+		U_{K3}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		U_{43} \\
+		- U_{23} \\
+		- U_{13} \\
+		U_{13} - U_{23} \\
+		U_{23} - U_{43} \\
+		- U_{13} + U_{43}
+	\end{pmatrix}
+	=
+	\begin{pmatrix}
+		U_4 \\
+		U_5 \\
+		U_6 \\
+		U_1 \\
+		U_2 \\
+		U_3
+	\end{pmatrix}
+\]
+
+Astspannungsverfahren
+
+%graph siehe block (nr 5)
+
+\[
+	S = ( S_A | S_S ) = \begin{pmatrix}
+		1 & 0 & 0 & | & 0 & -1 & 1 \\
+		0 & 1 & 0 & | & 1 & -1 & 0 \\
+		0 & 0 & 1 & | & -1 & 0 & 1
+	\end{pmatrix}
+\]
+
+\[
+	G^* U_A = I_q^*, G^* = S \cdot diag(G) S^T
+\]
+
+$G^*: \begin{array}{l}
+	Hauptdiagonalen: Summe der am Superknoten angeschlossenen Leitwerte \\
+	Nebendiagonalen: Summe der Leitwerte zwischen den Superknoten (liegen auf Sehnen), positiv bei gleicher Schnittorientierung, negativ bei ungleicher Schnittorientierung
+\end{array}$
+
+$I_q^*$: Summe der Quellströme an den Superknoten, negativ wenn Stromrichtung und Schnittorientierung gleich, positiv sonst
+
+\[
+	G^* = \begin{pmatrix}
+		G_2 + G_3 + G_4 & G_2 & G_3 \\
+		G_2 & G_1 + G_2 + G_5 & -G_1 \\
+		G_3 & -G_1 & G_1 + G_3 + G_6
+	\end{pmatrix}
+\]
+
+\[
+	I_q^* = \begin{pmatrix}
+		I_{q2} - I_{q3} - I_{q4} \\
+		- I_{q1} - I_{q5} + I_{q2} \\
+		I_{q1} - I_{q3}
+	\end{pmatrix}
+\]
+
+\[
+	U_A = \left( G^* \right)^{-1} I_q^*, U_S = S_S^T U_A
+\]
+
+\[
+	S \cdot diag(G) \cdot S^T = \begin{pmatrix}
+		1 & 0 & 0 & 0 & -1 & 1 \\
+		0 & 1 & 0 & 1 & -1 & 0 \\
+		0 & 0 & 1 & -1 & 0 & 1
+	\end{pmatrix}
+	\begin{pmatrix}
+		G_4 & 0 & 0 & 0 & 0 & 0 \\
+		0 & G_5 & 0 & 0 & 0 & 0 \\
+		0 & 0 & G_6 & 0 & 0 & 0 \\
+		0 & 0 & 0 & G_1 & 0 & 0 \\
+		0 & 0 & 0 & 0 & G_2 & 0 \\
+		0 & 0 & 0 & 0 & 0 & G_3
+	\end{pmatrix}
+	\begin{pmatrix}
+		1 & 0 & 0 \\
+		0 & 1 & 0 \\
+		0 & 0 & 1 \\
+		0 & 1 & -1 \\
+		-1 & -1 & 0 \\
+		1 & 0 & 1
+	\end{pmatrix}
+\]
+
+%% 07.01.2011
+
+\section{Netzwerke mit nichtlinearen Bauelementen}
+
+Drei Berechnungsverfahren
+\begin{enumerate}
+	\item Der Kennlinienverlauf wird durch eine geeignete mathematische Funktion genähert und das Netzwerk mit Hilfe von Knoten- und Maschengleichungen analysiert.
+		Die auftretenden Gleichungen sind nichtlinear.
+	\item Die Kennlinie des nichtlinearen Bauelements wird in der Umgebung eines {\it vermuteten} Arbeitspunkts linearisiert. Hier ist es oft nötig, nach der Analyse die Abweichung vom Verhalten des Bauelements nachzuprüfen und die Vermutungen iterativ zu verbessern.
+	\item Im NW mit nur einem nichtlinearen Bauelement und beliebig vielen linearen Bauelementen ist eine graphische AP-Bestimmung mit einem Ersatzzweipolquellenverfahren möglich.
+	% TODO: Graphen siehe Daniel
+		Wir bringen beide Kennlinien zum Schnitt, d.h. wir lösen $U_L(I) = U_{NL}(I)$
+		{\color{yellow} AP: $(I^*, U^*)$, für den gilt: $U_{NL}(I^*) = U_L(I^*) = U_0 - R_i I^*$
+\end{enumerate}
+
+Bsp. Linearisierungsverfahren
+% diode (A, K)
+Lineare Ersatzschaltung
+% R_{iE}
+% U_{oE}
+
+%tabelle plus graph
+U_D; I_D
+0,6; 0
+0,7; 1
+0,8; 5
+0,9; 17
+0,95; 25
+
+Für die Linearisierung wählen wir einen Punkt $P_L: (U_L, I_L) = (0,82V, 7A)$
+
+\underline{Ablesen:} $R_{iE} = 7,4m\ohm, U_{oE} = 0,78V$
+
+Die Ersatzschaltung repräsentiert die Diode mit brauchbarer Übereinstimmung im Strombereich zwischen $7A$ und $30A$.
+
+Wir überprüfen die Linearisierung für das NW
+(i) $R_i = 10m\ohm$ (ii) $R_i = 100m\ohm$
+
+Linearisierter Fall
+$I_{DE} = \frac{U_0 - U_{oE}}{R_i + R_{iE}}$
+$U_{DE} = U_{oE} + I_{DE} R_{iE}$
+
+\begin{tabular}{c|c|c|c|c}
+	 & \multicol{2}{Reale Diode} & \multicol{2}{Ersatzschaltung} \\
+	 & $I_D/A$ & $U_D/V$ & $I_{DE}/A$ & $U_{DE}/V$ \\
+	R_i = 10m\ohm & \ungefähr 12 & \ca 0,88 & 12,64 & 0,87 \\
+	R_i = 100m\ohm & \ca 3 & \ca 0,78 & 2,05 & 0,80
+\end{tabular}
+
+Anwendung einer Zener-Diode zur Spannungsstabilisierung
+%schaltung siehe Daniel
+
+Ersatzschaltung
+%schaltung siehe Daniel
+
+$U_0 = 30V, R_L = 2200\ohm, U_{oE} = 5,6V, R_{iE} = 10\ohm$
+
+\begin{enumerate}
+	\item Bestimmen sie einen Vorwiderstand $R_v$ so, dass sich ein Z-Diodenstrom von 3,5mA einstellt. (Das ist der AP)
+	\item Wie ändert sich die Lastspannung $U_L$, wenn sich die Eingangsspannung $U_0$ um $10 \percent$ ändert?
+	\item Wie ändert sich die Lastspannung $U_L$, wenn sich der Lastwiderstand $R_L$ um $10 \percent$ ändert?
+\end{enumerate}
+
+Ersatzschaltung
+
+%schaltung siehe daniel
+$I = I_Z + I_L$
+Da $I_Z R_{iE} << U_{oE}$ ist, setzen wir $U_L \ca $U_{oE}$.
+
+$I_L = \frac{U_{oE}}{R_L} = \frac{5,6V}{2,2 k\Ohm} = 2,55 mA$
+$I = I_L + I_Z = 2,55 mA + 3,5 mA = 6,05 mA$
+$R_v = \frac{U_0 - U_{oE}}{I} = 4,03 k\Ohm$
+
+Überprüfung der Vernachlässigung
+$U_Z = U_{oE} + R_{iE} I_Z = U_{oE} + 35mV = 5,6{\it 35} V$
+
+(2) Gesucht wird der funktionale Zusammenhang $U_Z = U_L = f(U_0)$
+
+KGl: $I = I_Z + I_L$ \\
+MGl_1: $U_0 = IR_V + I_Z R_{iE} + U_{oE}$ \\
+MGl_2: $U_Z = I_Z R_{iE} + U_{oE} = I_L R_L = U_L
+
+$\Rightarrow U_0 = U_L \left( \frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}} \right) + U_{oE} \left( 1 - \frac{R_V + R_{iE}}{R_{iE}} \right)$
+
+$\delta U_L = \delta U_0 \frac{1}{\frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}}}$ $\delta U_0 = 0,1 \cdot U_0 = 3V$ $\frac{\delta U_0}{U_0} = 0,1$
+$\frac{\delta U_L}{U_L} = \frac{\delta U_0}{U_L} \frac{1}{\frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}}} = 0,0013 = 0,13 \percent$
 
 \end{document}
