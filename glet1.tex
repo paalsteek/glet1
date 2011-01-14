@@ -1828,4 +1828,78 @@ $\Rightarrow U_0 = U_L \left( \frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}} \rig
 $\delta U_L = \delta U_0 \frac{1}{\frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}}}$ $\delta U_0 = 0,1 \cdot U_0 = 3V$ $\frac{\delta U_0}{U_0} = 0,1$
 $\frac{\delta U_L}{U_L} = \frac{\delta U_0}{U_L} \frac{1}{\frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}}} = 0,0013 = 0,13 \percent$
 
+%% 10.01.2011 fehlt
+
+%% 14.01.2011
+
+\subsection{Leistung}
+\begin{enumerate}
+	\item $I$ und $U$ sind konstant oder Effektivwerte, wenn Strom und Spannung proportional zueinander sind, z.B. Strom und Spannung sind in Phase bei sinusförmigen Größen.
+		\[ P = \frac{W}{t} = U \cdot I \]
+	\item Augenblicksleistung
+		\[ p(t) = u(t) \cdot i(t) \]
+	\item Wirkleistung
+		\[ P = \={\p} = \frac1T \int_{t_0}^{t_0 + T} p(t) dt = \frac1T \int_{t_0}^{t_0 + T} u(t) \cdot i(t) dt \]
+	\item Scheinleistung, Strom und Spannung sind nicht mehr proportional
+		\[ S = U \cdot I = \sqrt{\frac1T \int_{t_0}^{t_0 + T} u^2 (t) dt} \cdot \sqrt{\frac1T \int_{t_0}^{t_0 + T} i^2 (t) dt} \]
+	\item Komplexe Leistung $\underline P$
+		\[ P = Re\{\underline P\} \text{: Wirkleistung, } [P] = W \]
+		\[ Q = Im\{\underline P\} \text{: Blindleistung, } [Q] = VA_r \]
+		\[ |\underline P| = \sqrt{P^2 + Q^2} = S \text{: Scheinleistung, } [S] = VA \]
+\end{enumerate}
+
+\subsection{Sinusgrößen}
+%diagramm siehe daniel
+
+\begin{eqnarray*}
+	i(t) & = & \^{\i} \cdot sin(\omega t + \phi_i) \\
+	u(t) & = & u^ \cdot sin(\omega t + \phi_u) \\
+	\phi = \phi_u - \phi_i \text{: Phasenwinkel}
+\end{eqnarray*}
+$\phi_i, \phi_u$: Winkel zum \underline{nächst}gelegenen Nulldurchgang mit anwachsender Funktion.
+
+$\phi_i > 0, \phi_u < 0, \phi < 0$
+
+\subsection{Sprachgebrauch}
+$\phi < 0$: Der Strom eilt der Spannung voraus oder die Spannung eilt dem Strom nach \\
+$\phi > 0$: Der Strom eilt der Spannung nach oder die Spannung eilt dem Strom vor
+
+\subsection{Mittelwerte von Sinusgrößen}
+Arith. Mittelwert:
+	\[ \={\i} = \frac1T \int_0^1 \^{\i} \cdot sin(\omega t) dt = \frac{i^}T \left( \left. \frac{- cos(\omega t)}\omega \right|_0^1 \right) = \frac{i^}T \left( cos(0) - \underbrace{cos(\omega T)}_{cos(2\pi)}) = 0 \]
+
+Gleichrichtwert:
+	\[ | \={\i} | = \frac1T \int_0^1 |i(t)| dt = \frac1{\fracT2} \int_0^{\fracT2} \^{\i} sin(\omega t) dt = \ldots = \frac{2i^}\pi = 0,6366 \^{\i} \]
+
+Effektivwert:
+	\[ I = \sqrt{ \frac1T \int_0^T \left( \^{\i} \cdot sin(\omega t) \right)^2 dt } = \sqrt{ \frac1T \underbrace{\int_0^T \frac{{i^}^2}2 dt}_{\frac{i^}2 \cdot T} - \underbrace{\frac1T \int_0^T \frac12 {i^}^2 \cdot cos(2\omega t) dt}_{=0 \text{arith. Mittelwert einer Wechselgröße}} } = \frac{i^}{\sqrt{2}} ~= 0,7071 i^\]
+	Spitzenwertfaktor: $\tchi = \frac{i^}I = \sqrt{2}$ \\
+	Formfaktor: $F = \fracI{|\={\i}|} = \frac{\pi}{2 \sqrt{2}} = 1,111$
+
+Bsp. %siehe Daniel
+Stromwinkel $0 \leq \alpha \lqq 150\grad \frac{\pi}{180\grad}$
+Effektivwert der Spannung: $U = 220V$
+Zwischen welchen Grenzen läßt sich der Effektivwert $I$ einstellen, wenn $\alpa$ zwischen $0$ und $\pi \frac{150}{180}$ gewählt wird?
+
+%TODO (zu lange rechnung)
+
+$I(\alpha = 0) = 1,56 A$, $I(\alpha = \pi \frac{150}{180}) = 0,26A$
+
+Parameter sinusförmiger Größen, Zeigerdiagramme
+\[ i(t) = \^{\i} \cdot sin(\omega t + \phi i) \]
+Parameter: Kreisfrequenz $\omega$, $\omega = 2 \pi f$, $f:$ Frequenz
+Spitzenwert $\^{\i}$
+	$\rightarrow$ Effektivwert $I = \frac{\^{\i}}{\sqrt{2}}$
+	$\rightarrow$ Gleichrichtwert $|\={\i}| = 0,6366 \^{\i}$
+	$\rightarrow$ ...faktor $\tchi = \sqrt{2}$
+	$\rightarrow$ Formfaktor $F = 1,111$
+Phasenwinkel $\phi_i$
+
+Die symbolische Darstellung erfolgt mit dem Zeigerdiagramm.
+
+Wir analysieren in GLET1 {\it lineare} NW und gehen davon aus, dass {\it alle} Quellen {\it sinusförmige} Spannungen oder Ströme mit {\it derselben Frequenz} erzeugen. Dann sind alle Zweigspannungen und Zweigströme sinusförmig mit ebendieser Frequenz.
+\[ \sum_{\nu} \^{\u}_{\nu} sin( \omega_0 t + \phi_{\nu} ) = \^{\u} \cdot sin( \omega_0 t + \phi ) \]
+komplex:
+\[ \sum_{\nu} a_{\nu} e^{j(\omega_0 t + \phi_{\nu})} = \sum_{\nu} a_{\nu} e^{... \] %TODO
+
 \end{document}
