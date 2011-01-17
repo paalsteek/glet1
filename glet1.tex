@@ -1902,4 +1902,129 @@ Wir analysieren in GLET1 {\it lineare} NW und gehen davon aus, dass {\it alle} Q
 komplex:
 \[ \sum_{\nu} a_{\nu} e^{j(\omega_0 t + \phi_{\nu})} = \sum_{\nu} a_{\nu} e^{... \] %TODO
 
+%% 17.01.2011
+\subsection{Addition und Subtraktion von Sinusgrößen}
+
+Gegeben sind zwei Spannungen mit gleicher Frequenz und wir berechnen die Summenspannung.
+
+\begin{eqnarray}
+	u_g(t) & = & u_1(t) + u_2(t) \\
+	\^{\u}_g \cdot sin(\omega t + \phi_g) & = & \^{\u}_1 \cdot sin(\omega t + \phi_1) + \^{\u}_2 \cdot sin(\omega t + \phi_2)
+\end{eqnarray}
+nach ermüdender Rechnung erhält man
+\[ \^{\u}_g = \sqrt{\^{\u}_1^2 + \^{\u}_2^2 + 2 \^{\u}_1 \^{\u}_2 cos(\phi_2 - \phi_1)}, \phi_g = arctan\left( \frac{\^{\u}_1 \cdot sin(\phi_1) + \^{\u}_2 \cdot sin(\phi_2)}{\^{\u}_1 \cdot cos(\phi_1) + \^{\u}_2 \cdot cos(\phi_2) } \right) \]
+
+Spitzenwertzeiger $\underline{\^{\u}}$ \\
+Effektivwertzeiger $\underline{U} = \frac{\underline{\^{\u}}}{\sqrt{2}}$
+
+Bsp. 
+...
+a) und b) schaltung mit 2 spannungsquellen u_1 und u_2, bei a gleiche richtung, bei b entgegengesetzt
+
+Zur Vereinfachung der Rechnung setzen wir einen Winkel zu Null, z.B. $\phi_1 = 0$ \\
+a) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(60\grad)} = 70V \]
+\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(60\grad)}{50 + 30 \cdot cos(60\grad)} \right) = 21,79\grad \]
+
+b) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(-120\grad)} = 43,59V \]
+\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(-120\grad)}{50 + 30 \cdot cos(-120\grad)} \right) = -36,59\grad \]
+
+\subsection{Differentiation und Integration von Sinusgrößen}
+\paragraph{Differentiation nach der Zeit}
+\[ f(t) = \frac{d}{dt} ( \^{\i} \cdot sin(\omega t + \phi_i) ) = \omega \cdot \^{\i} \cdot cos(\omega t + \phi_i) = \omega \cdot \^{\i} \cdot sin(\omega t + \phi_i + \frac{\pi}2 ) \]
+\begin{itemize}
+	\item Wir erhalten eine Sinusschwingung mit derselben Frequenz, die der ursprünglich um $\frac{\pi}2$ oder $90\grad$ voreilt.
+	\item Die Amplitude entspricht dem $\omega$-fachen der Ursprungsamplitude.
+\end{itemize}
+
+\paragraph{Integration über der Zeit}
+\[ g(t) = \int \^{\i} \cdot sin(\omega t + \phi_i) dt = \frac{-1}{\omega} \^{\i} cos(\omega t + \phi_i) = \frac1{\omega} \^{\i} \cdot sin(\omega t + \phi_i - \frac{\pi}2) \]
+\begin{itemize}
+	\item Wir erhalten eine Sinusschwingung mit der selben Frequenz, die der ursprünglichen um $\frac{\pi}2$ oder $90\grad$ nacheilt.
+	\item Die Amplitude entspricht dem $\left( \frac1{\omega} \right)$-fachen der Ursprungsamplitude.
+\end{itemize}
+
+Induktivität
+%kasten mit spule (Kennzeichen: L)
+$L$: Induktivität
+$[L] = \frac{V_s}A = H$
+
+%schaltung mit einer Induktivität L, der Spannung \underline{U} und dem Strom i
+
+Allg. $u = L \cdot \frac{di}{dt}$ $i = \frac1L \int u dt$
+
+Sinusförmige Größen
+Sei $i(t) = \^{\i} \cdot sin(\omega t + \phi_i)$, dann ist $u(t) = L \cdot \frac{d}{dt} i(t) = L \cdot \omega \cdot \^{\i} \cdot sin(\omega t + \phi_i + \frac{\pi}2) = \^{\u} \cdot sin(\omega t + \phi_u)$, $\^{\u} = L \omega \^{\i}$, $\phi_u = \phi_i + \frac{\pi}2$
+
+Kondensator, Kapazität
+%konsensator schaltzeichen
+
+%schaltung mit strom i_t, einer Spannung u_t
+$i = c \cdot \frac{du}{dt}$
+$u = \frac1c \cdot \int i dt$
+
+Sinusförmige Größen
+Sei $u(t) = \^{\u} \cdot sin(\omega t + \phi_u)$, dann ist $i(t) = \^{\u} \cdot c \cdot \omega \cdot sin(\omega t + \phi_u + \frac{\pi}2) = \^{\i} \cdot sin(\omega t + \phi_i)$ mit $\^{\i} = \^{\u} \cdot c \cdot \omega$ und $\phi_i = \phi_u + \frac{\pi}2$
+
+Rechenbeispiel
+%u(t) + i(t) + ((i_R(t) + R) || (i_L(t) + L))
+
+kGl: $i(t) = i_L(t) + i_R(t)$
+
+\begin{enumerate}
+	\item Augenblicksleistung in der Parallelschaltung
+	\item Wrikleistung im Widerstand
+	\item Scheinleistung in der Induktivität
+\end{enumerate}
+
+$u(t) = \^{\u} \cdot(\omega t)$, $t \geq 0$, $i_L(t=0) = 0$
+
+\begin{enumerate}
+	\item \[ i_R(t) = \frac{u(t)}{R} = \frac{\^{\u} \cdot sin(\omega t)}{R} \]
+				\[ i_L(t) = \frac1L \int u(t) dt = \frac{\^{\u}}{L} \int sin(\omega t) dt = \frac{-\^{\u}}{\omega L} cos(\omega t) \]
+				\[ i(t) = \frac{\^{\u}}R sin(\omega t) - \frac{\^{\u}}{\omega L} cos(\omega t) \]
+				\[ p(t) = u(t) i(t) = \^{\u} \cdot sin(\omega t) \left( \frac{\^{\u}}R sin(\omega t) - \frac{\^{\u}}{\omega L} cos(\omega t) \right) = \frac{\^{\u}^2}R sin^2(\omega t) - \frac{\^{\u}^2}{2 \omega L} sin(2 \omega t) = \frac{\^{\u}^2}R \cdot \frac12 (Gleichanteil) - \frac{\^{\u}^2}{2R} cos(2 \omega t) (Wechselanteil)  - \frac{\^{\u}^2}{2\omega L} sin(2 \omega t) (Wechselanteil) \]
+	\item \[ P = \frac1{\pi} \int_{t_0}^{t_0 + T} p(t) dt = \frac{\^{\u}^2}{2R} = \frac{U^2}R \]
+	\item Scheinleistung in der Induktivität
+		\[ S = U \cdot I = \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \^{\u}^2 \cdot sin^2(\omega t) dt} \cdot \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \frac{\^{\u}^2}{(\omega L)^2} cos^2(\omega t) dt} \cdot \frac{\^{\u}}{\sqrt{2}} \cdot \frac{\^{\u}}{\sqrt{2} \cdot \omega \cdot L} = \frac{U^2}{\omega L} \]
+		$\omega L = |Z_L|$ Betrag der Impedanz der Induktivität
+\end{enumerate}
+
+\paragraph{Komplexe Zeiger}
+Euler: $\underline{z} = e^{jx} = cos(x) + j \cdot sin(x)$
+$Re\{\underline{z}\} = \frac12 (\underline{z} + \underline{z}^*)$
+$cos(x) = \frac12 (e^{jx} + e^{-jx})$
+$Im\{\underline{z}\} = \frac1{2j} (e^{jx} - e^{-jx})$
+$sin(x) = \frac1{2j} (e^{jx} - e^{-jx})$
+
+De Moivre:
+(cos(\phi) + j sin(\phi))^n = cos(n\phi) + j \cdot sin(n \phi)$
+
+komplexe Schwingung $\underline{u} = \^{\u} \cdot e^{j(\omega t + \phi_u)}$
+Zeitfunktion $u(t) = \^{\u} \cdot sin(\omega t + \phi_u) = Im\{\underline{u}\}
+
+Differentiation nach der Zeit $\rightarrow$ Multiplikation mit $j \omega = \omega \cdot e^{j \frac{\pi}2}$
+Integration über der Zeit $\rightarrow$ Multiplikation mit $\frac1{j \omega} = -j \frac1{\omega} = \frac1{\omega} e^{-j \frac{\pi}2}$
+
+Bsp.: Gesucht sind die komplexen Zahlen $\underline{z_1} = x_1 + jy_1$ und $\underline{z_2} = x_2 + jy_2$, die zueinander reziprok sind und die Realteile $x_1 = 0,3$ sowie $x_2 = 1,2$ haben.
+$\underline{z_1} = 0,3 + jy_1 = \frac1{\underline{z_2}} = \frac1{1,2 + jy_2}$
+
+konjugiertkomplex erweitern: $\frac1{\underline{z}} = \frac{\underline{z^*}}{\underline{z}\underline{z^*}} = \frac{\underline{z^*}}{|\underline{z}|^2}
+$\frac1{1,2 + jy_2} = \frac{1,2 - jy_2}{(1,2)^2 + y_2^2}$
+Realteile $0,3 = \frac{1,2}{(1,2)^2 + y_2^2} \rightarrow y_2 = \pm 1,6$
+Imaginärteile $y_2 = \frac{-y_2}{(1,2)^2 + y_2^2} \rightarrow y_2 = \mp 0,4$
+
+$\underline{z_1} = 0,3 - j0,4$
+$\underline{z_2} = 1,2 + j1,6$
+oder
+$\underline{z_1} = 0,3 + j0,4$
+$\underline{z_2} = 1,2 - j1,6$
+
+Bsp.: Für $f = 50 Hz$ und $\phi_u = 60 \grad$ sollen bei $U = 230V$ der Spitzenwert $\^{\u}$ berechnet und die komplexe Darstellung angegeben werden. Zudem soll $u(t)$ an der Stelle $t = 12ms$ berechnet werden.
+reelle Darstellung: $u(t) = \^{\u} \cdot sin(\omega t + \phi_u)$
+komplexe Darstellung: $\underline{u} = \^{\u} \cdot e^{j(\omega t + \phi_u)}
+Zusammenhang: $u(t) = Im\{\underline{u}\}$
+\[ \^{\u} = \sqrt{2} \cdot U = 325,3V \]
+\[ \underline{u} = 325,3V \cdot e^{j(2\pi \cdot 50 \cdot \frac1s \cdot t - \frac{\pi}3)} = 325,3V \cdot e^{j(314 \frac1s - \frac{\pi}3)} \]
+\[ t(t = 12ms) = Im\{ 325,3V \cdot e^{j(314 \frac{0,012s}{s} \cdot \frac{\pi}3)}\} = 325,3V \cdot sin(314 \cdot 0,012 - \frac{\pi}3) = 132,3V \]
+
 \end{document}
