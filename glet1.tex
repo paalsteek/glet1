@@ -2027,4 +2027,71 @@ Zusammenhang: $u(t) = Im\{\underline{u}\}$
 \[ \underline{u} = 325,3V \cdot e^{j(2\pi \cdot 50 \cdot \frac1s \cdot t - \frac{\pi}3)} = 325,3V \cdot e^{j(314 \frac1s - \frac{\pi}3)} \]
 \[ t(t = 12ms) = Im\{ 325,3V \cdot e^{j(314 \frac{0,012s}{s} \cdot \frac{\pi}3)}\} = 325,3V \cdot sin(314 \cdot 0,012 - \frac{\pi}3) = 132,3V \]
 
+## 21.01.2011
+\subsection{Komplexe Größen zur Analyse von Sinusstrom-NW}
+
+\paragraph{Komplexer Drehzeiger}
+\[ \underline{u} = \^{\u} e^{j(\omega t + \phi_u)} = \^{\u} e^{j\phi_u} e^{j\omega t} \]
+$\underline{u}$: ruhender Zeiger zum Zeitpunkt $t=0$ \\
+Komplexe Amplitude: $\underline{\^{\u}} = \^{\u} \cdot e^{j\phi_u}$, $\underline{u} = \underline{\^{\u}} e^{j\omega t}$ \\
+Die komplexe Amplitude entspricht dem rudenen Drehzeiger zum Zeitpunkt $t=0$ \\
+Im zeitinvarianten NW ändern sich die Verhältniss der Zweiggrößen zueinander nicht mit der Zeit, somit können wir sie zu $t=0$ setzen.
+
+Effektivwertzeiger $U = \frac{\^{\u}}{\sqrt{2}}$, $\underline{u} = U \cdot e^{j\phi_u}$, $\underline{I} = I \cdot e^{j\phi_i}$
+
+$\phi = \phi_u - \phi_i$: Phasendifferenz \\
+$\phi_u, \phi_i$: Nullphasenwinkel
+
+\paragraph{Komplexe Widerstände (Impedanzen) und komplexe Leitwerte (Admittanzen)}
+\[ \underline{z} = \frac{\underline{U}}{\underline{I}} = \frac{U e^{j\phi_u}}{I e^{j\phi_i}} = \frac{U}{I} e^{j(\phi_u - \phi_i)} = \frac{U}{I} e^{j\phi} = z e^{j\phi} \hspace z = \frac{U}{I} \]
+\[ \underline{z} = R + jX, |\underline{z}| = z = \sqrt{R^2 + X^2}, \phi = arctan\left( \frac{X}{U} \right) \]
+
+$|\underline{z}| = z = \sqrt{R^2 + X^2}$: Scheinwiderstand \\
+$R = \underline{z} cos(\phi) = Re\{\underline{z}\}$: Wirkwiderstand \\
+$X = \underline{z} sin(\phi) = Im\{\underline{z}\}$: Blindwiderstand, Reaktanz
+
+Komplexer Leitwert: $\underline{y} = \frac{\underline{I}}{\underline{U}} = \frac{I \cdot e^{j\phi_i}}{U \cdot e^{j\phi_u}} = \frac{I}{U} e^{j(\phi_i - \phi_u)} = \frac{I}{U} e^{-j\phi} = \frac{I}{U} e^{j\phi_y}$
+Kartesische Koordinaten: $\underline{y} = G + jB$, $\phi_y = arctan\left( \frac{R}{G} \right)$ \\
+$\undeline{y}$: komplexer Leitwert, $Y = |\underline{y}| = \sqrt{G^2 + R^2}$: Scheinleitwert \\
+$G = Re\{\underline{y}\} = \underline{y} cos(\phi_y)$: Wirkleitwert, Konduktanz \\
+$B = Im\{\underline{y}\} = \underline{y} sin(\phi_y)$: Blindleitwert, Suszeptanz
+
+Zusammenhang zwischen $\underline{z}$ und $\undelrine{y}$: $\underline{y} = \frac1{\underline{y}} = \frac1z e^{-j\phi}$, $\underline{y} = \frac1z e^{j\phi_y}$ mit $\phi_y$ = -\phi$
+
+Rechnen mit kartesischer Darstellung
+\[ \underline{y} = \frac1{\underline{z}} = G + jB = \frac1{R + jX} = \frac{R - jX}{R^2 + X^2} = \frac{R}{R^2 + X^2} - j\frac{X}{R^2 - X^2} = \frac{R}{z^2} - j \frac{X}{z^2}\]
+\[ \rightarrow G = \frac{R}{R^2 + X^2} \rightarrow B = \frac{-X}{R^2 + X^2} \]
+$G = \frac1R$, gültig für $X = 0$
+
+\[ \underline{z} = \frac1{\underline{y}} = R + jX = \frac1{G + jB} = \frac{G}{G^2 + B^2} - j\frac{B}{G^2 - B^2} = \frac{G}{y^2} - j \frac{B}{y^2}\]
+\[ \rightarrow R = \frac{G}{G^2 + B^2} = \frac{G}{y^2} \rightarrow X = \frac{-B}{G^2 + B^2} = \frac{-B}{y^2} \]
+
+Komplexe Leistung
+Der ohmsche Verbraucher $R$ nimmt die Wirkleistung $P = RI^2 = GU^2$ auf. Eine komplexe Leistung $\underline{S} = \underline{Z}I^2 = RI^2 + jXI^2 = P + jQ$
+
+$\underline{s} = \underline{y} {\it \cdot} U^2 = GU^2 {\it -} jBU^2$ \hspace $\winkel \underline{s} = \winkel \underline{z} = - \winkel \underline{y}$
+
+$\underline{S}$: komplexe Leistung, $|\underline{S}| = S = UI$: Scheinleistung, $Q = XI^2 = {\it -} BU^2$: Blindleistung
+
+$\underline{S} = \underline{U} \underline{I}^*$, beim ohmschen Verbraucher sind Strom und Spannung in Phase.
+
+$\pni_u = \phi_i = \~\phi$, $\underline{S} = \underline{U} \underline{I}^* e^{j\~\phi} e^{-j\~\phi} = UI$
+
+#TODO: hier fehlt was
+
+Leistungsfaktor: $cos(\phi) = \frac{P}{\sqrt{P^2 + Q^2}} = \frac{R}{\sqrt{R^2 + X^2}}$
+
+\begin{tabular}{cccccc}
+	 & Zeitfunktionen & Eff.Zeiger & komplexe Größen & Impedanzen & komplexe Leistung \\
+	R(wiederstand) & $u = Ri$ $i = \frac1R u$ & $\underline{U} = R\underline{I}$ $\underline{I} = \frac1R \underline{U}$ & (in phase) & 
+#am arsch
+\end{tabular}
+
+Bsp. An einer Spule mit vernachlässigbarem Wirkwiederstand (Kupfer-, Eigenverlust) liegt eine Wechselspannung mit $f = 40Hz$ und $U = 125V$ an. Der Effektivstrom beträgt $I = 10A$. Wie groß ist die Spuleninduktivität $L$?
+
+$\underline{z} = j\omega L = j \frac{U}{I} ($\underline{z} = \frac{\underline{U}}{\underline{I}} = \frac{U}{I} e^{j(\phi_u - \phi_i)} = \frac{U}{I} j )$
+
+$L = \frac{U}{\omega I} = \frac{125V}{2 \pi \cdot 40 \cdot \frac1s \cdot 10A} = 49,74mH$
+
+#noch ein bleistift
 \end{document}
