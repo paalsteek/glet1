@@ -7,6 +7,7 @@
 \usepackage{color}
 
 \newcommand{\ohm}{\Omega}
+\newcommand{\degree}{\ensuremath{^\circ}}
 
 \begin{document}
 
@@ -1753,7 +1754,7 @@ Drei Berechnungsverfahren
 	\item Im NW mit nur einem nichtlinearen Bauelement und beliebig vielen linearen Bauelementen ist eine graphische AP-Bestimmung mit einem Ersatzzweipolquellenverfahren möglich.
 	% TODO: Graphen siehe Daniel
 		Wir bringen beide Kennlinien zum Schnitt, d.h. wir lösen $U_L(I) = U_{NL}(I)$
-		{\color{yellow} AP: $(I^*, U^*)$, für den gilt: $U_{NL}(I^*) = U_L(I^*) = U_0 - R_i I^*$
+		{\color{yellow} AP: $(I^*, U^*)$, für den gilt: $U_{NL}(I^*) = U_L(I^*) = U_0 - R_i I^*$}
 \end{enumerate}
 
 Bsp. Linearisierungsverfahren
@@ -1763,12 +1764,14 @@ Lineare Ersatzschaltung
 % U_{oE}
 
 %tabelle plus graph
-U_D; I_D
-0,6; 0
-0,7; 1
-0,8; 5
-0,9; 17
-0,95; 25
+\begin{tabular}{cc}
+	$U_D$ & $I_D$ \\
+	$0.6$ & $0$ \\
+	$0.7$ & $1$ \\
+	$0.8$ & $5$ \\
+	$0.9$ & $17$ \\
+	$0.95$ & $25$
+\end{tabular}
 
 Für die Linearisierung wählen wir einen Punkt $P_L: (U_L, I_L) = (0,82V, 7A)$
 
@@ -1784,10 +1787,10 @@ $I_{DE} = \frac{U_0 - U_{oE}}{R_i + R_{iE}}$
 $U_{DE} = U_{oE} + I_{DE} R_{iE}$
 
 \begin{tabular}{c|c|c|c|c}
-	 & \multicol{2}{Reale Diode} & \multicol{2}{Ersatzschaltung} \\
+	 & \multicolumn{2}{|c|}{Reale Diode} & \multicolumn{2}{|c|}{Ersatzschaltung} \\
 	 & $I_D/A$ & $U_D/V$ & $I_{DE}/A$ & $U_{DE}/V$ \\
-	R_i = 10m\ohm & \ungefähr 12 & \ca 0,88 & 12,64 & 0,87 \\
-	R_i = 100m\ohm & \ca 3 & \ca 0,78 & 2,05 & 0,80
+	$R_i$ = $10m\ohm$ & $\approx 12$ & $\approx 0,88$ & $12,64$ & $0,87$ \\
+	$R_i$ = $100m\ohm$ & $\approx 3$ & $\approx 0,78$ & $2,05$ & $0,80$
 \end{tabular}
 
 Anwendung einer Zener-Diode zur Spannungsstabilisierung
@@ -1800,19 +1803,19 @@ $U_0 = 30V, R_L = 2200\ohm, U_{oE} = 5,6V, R_{iE} = 10\ohm$
 
 \begin{enumerate}
 	\item Bestimmen sie einen Vorwiderstand $R_v$ so, dass sich ein Z-Diodenstrom von 3,5mA einstellt. (Das ist der AP)
-	\item Wie ändert sich die Lastspannung $U_L$, wenn sich die Eingangsspannung $U_0$ um $10 \percent$ ändert?
-	\item Wie ändert sich die Lastspannung $U_L$, wenn sich der Lastwiderstand $R_L$ um $10 \percent$ ändert?
+	\item Wie ändert sich die Lastspannung $U_L$, wenn sich die Eingangsspannung $U_0$ um $10 \%$ ändert?
+	\item Wie ändert sich die Lastspannung $U_L$, wenn sich der Lastwiderstand $R_L$ um $10 \%$ ändert?
 \end{enumerate}
 
 Ersatzschaltung
 
 %schaltung siehe daniel
 $I = I_Z + I_L$
-Da $I_Z R_{iE} << U_{oE}$ ist, setzen wir $U_L \ca $U_{oE}$.
+Da $I_Z R_{iE} << U_{oE}$ ist, setzen wir $U_L \approx U_{oE}$.
 
-$I_L = \frac{U_{oE}}{R_L} = \frac{5,6V}{2,2 k\Ohm} = 2,55 mA$
+$I_L = \frac{U_{oE}}{R_L} = \frac{5,6V}{2,2 k\ohm} = 2,55 mA$
 $I = I_L + I_Z = 2,55 mA + 3,5 mA = 6,05 mA$
-$R_v = \frac{U_0 - U_{oE}}{I} = 4,03 k\Ohm$
+$R_v = \frac{U_0 - U_{oE}}{I} = 4,03 k\ohm$
 
 Überprüfung der Vernachlässigung
 $U_Z = U_{oE} + R_{iE} I_Z = U_{oE} + 35mV = 5,6{\it 35} V$
@@ -1820,13 +1823,13 @@ $U_Z = U_{oE} + R_{iE} I_Z = U_{oE} + 35mV = 5,6{\it 35} V$
 (2) Gesucht wird der funktionale Zusammenhang $U_Z = U_L = f(U_0)$
 
 KGl: $I = I_Z + I_L$ \\
-MGl_1: $U_0 = IR_V + I_Z R_{iE} + U_{oE}$ \\
-MGl_2: $U_Z = I_Z R_{iE} + U_{oE} = I_L R_L = U_L
+$MGl_1$: $U_0 = IR_V + I_Z R_{iE} + U_{oE}$ \\
+$MGl_2$: $U_Z = I_Z R_{iE} + U_{oE} = I_L R_L = U_L$
 
 $\Rightarrow U_0 = U_L \left( \frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}} \right) + U_{oE} \left( 1 - \frac{R_V + R_{iE}}{R_{iE}} \right)$
 
 $\delta U_L = \delta U_0 \frac{1}{\frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}}}$ $\delta U_0 = 0,1 \cdot U_0 = 3V$ $\frac{\delta U_0}{U_0} = 0,1$
-$\frac{\delta U_L}{U_L} = \frac{\delta U_0}{U_L} \frac{1}{\frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}}} = 0,0013 = 0,13 \percent$
+$\frac{\delta U_L}{U_L} = \frac{\delta U_0}{U_L} \frac{1}{\frac{R_V}{R_L} + \frac{R_V + R_{iE}}{R_{iE}}} = 0,0013 = 0,13 \%$
 
 %% 10.01.2011 fehlt
 
@@ -1839,7 +1842,7 @@ $\frac{\delta U_L}{U_L} = \frac{\delta U_0}{U_L} \frac{1}{\frac{R_V}{R_L} + \fra
 	\item Augenblicksleistung
 		\[ p(t) = u(t) \cdot i(t) \]
 	\item Wirkleistung
-		\[ P = \={\p} = \frac1T \int_{t_0}^{t_0 + T} p(t) dt = \frac1T \int_{t_0}^{t_0 + T} u(t) \cdot i(t) dt \]
+		\[ P = \tilde{p} = \frac1T \int_{t_0}^{t_0 + T} p(t) dt = \frac1T \int_{t_0}^{t_0 + T} u(t) \cdot i(t) dt \]
 	\item Scheinleistung, Strom und Spannung sind nicht mehr proportional
 		\[ S = U \cdot I = \sqrt{\frac1T \int_{t_0}^{t_0 + T} u^2 (t) dt} \cdot \sqrt{\frac1T \int_{t_0}^{t_0 + T} i^2 (t) dt} \]
 	\item Komplexe Leistung $\underline P$
@@ -1852,7 +1855,7 @@ $\frac{\delta U_L}{U_L} = \frac{\delta U_0}{U_L} \frac{1}{\frac{R_V}{R_L} + \fra
 %diagramm siehe daniel
 
 \begin{eqnarray*}
-	i(t) & = & \^{\i} \cdot sin(\omega t + \phi_i) \\
+	i(t) & = & \hat{i} \cdot sin(\omega t + \phi_i) \\
 	u(t) & = & u^ \cdot sin(\omega t + \phi_u) \\
 	\phi = \phi_u - \phi_i \text{: Phasenwinkel}
 \end{eqnarray*}
@@ -1866,41 +1869,41 @@ $\phi > 0$: Der Strom eilt der Spannung nach oder die Spannung eilt dem Strom vo
 
 \subsection{Mittelwerte von Sinusgrößen}
 Arith. Mittelwert:
-	\[ \={\i} = \frac1T \int_0^1 \^{\i} \cdot sin(\omega t) dt = \frac{i^}T \left( \left. \frac{- cos(\omega t)}\omega \right|_0^1 \right) = \frac{i^}T \left( cos(0) - \underbrace{cos(\omega T)}_{cos(2\pi)}) = 0 \]
+	\[ \tilde{i} = \frac1T \int_0^1 \hat{i} \cdot sin(\omega t) dt = \frac{\hat{i}}T \left( \left. \frac{- cos(\omega t)}\omega \right|_0^1 \right) = \frac{\hat{i}}T \left( cos(0) - \underbrace{cos(\omega T)}_{cos(2\pi)}\right) = 0 \]
 
 Gleichrichtwert:
-	\[ | \={\i} | = \frac1T \int_0^1 |i(t)| dt = \frac1{\fracT2} \int_0^{\fracT2} \^{\i} sin(\omega t) dt = \ldots = \frac{2i^}\pi = 0,6366 \^{\i} \]
+	\[ | \tilde{i} | = \frac1T \int_0^1 |i(t)| dt = \frac1{\frac{T}2} \int_0^{\frac{T}2} \hat{i} sin(\omega t) dt = \ldots = \frac{2\hat{i}}\pi = 0,6366 \hat{i} \]
 
 Effektivwert:
-	\[ I = \sqrt{ \frac1T \int_0^T \left( \^{\i} \cdot sin(\omega t) \right)^2 dt } = \sqrt{ \frac1T \underbrace{\int_0^T \frac{{i^}^2}2 dt}_{\frac{i^}2 \cdot T} - \underbrace{\frac1T \int_0^T \frac12 {i^}^2 \cdot cos(2\omega t) dt}_{=0 \text{arith. Mittelwert einer Wechselgröße}} } = \frac{i^}{\sqrt{2}} ~= 0,7071 i^\]
-	Spitzenwertfaktor: $\tchi = \frac{i^}I = \sqrt{2}$ \\
-	Formfaktor: $F = \fracI{|\={\i}|} = \frac{\pi}{2 \sqrt{2}} = 1,111$
+	\[ I = \sqrt{ \frac1T \int_0^T \left( \hat{i} \cdot sin(\omega t) \right)^2 dt } = \sqrt{ \frac1T \underbrace{\int_0^T \frac{{\hat{i}}^2}2 dt}_{\frac{\hat{i}}2 \cdot T} - \underbrace{\frac1T \int_0^T \frac12 {\hat{i}}^2 \cdot cos(2\omega t) dt}_{=0 \text{arith. Mittelwert einer Wechselgröße}} } = \frac{\hat{i}}{\sqrt{2}} \approx 0,7071 \hat{i}\]
+	Spitzenwertfaktor: $\xi = \frac{\hat{i}}I = \sqrt{2}$ \\
+	Formfaktor: $F = \frac{I}{|\tilde{i}|} = \frac{\pi}{2 \sqrt{2}} = 1,111$
 
 Bsp. %siehe Daniel
-Stromwinkel $0 \leq \alpha \lqq 150\grad \frac{\pi}{180\grad}$
+Stromwinkel $0 \leq \alpha \leq 150\degree \frac{\pi}{180\degree}$
 Effektivwert der Spannung: $U = 220V$
-Zwischen welchen Grenzen läßt sich der Effektivwert $I$ einstellen, wenn $\alpa$ zwischen $0$ und $\pi \frac{150}{180}$ gewählt wird?
+Zwischen welchen Grenzen läßt sich der Effektivwert $I$ einstellen, wenn $\alpha$ zwischen $0$ und $\pi \frac{150}{180}$ gewählt wird?
 
 %TODO (zu lange rechnung)
 
 $I(\alpha = 0) = 1,56 A$, $I(\alpha = \pi \frac{150}{180}) = 0,26A$
 
 Parameter sinusförmiger Größen, Zeigerdiagramme
-\[ i(t) = \^{\i} \cdot sin(\omega t + \phi i) \]
+\[ i(t) = \hat{i} \cdot sin(\omega t + \phi i) \]
 Parameter: Kreisfrequenz $\omega$, $\omega = 2 \pi f$, $f:$ Frequenz
-Spitzenwert $\^{\i}$
-	$\rightarrow$ Effektivwert $I = \frac{\^{\i}}{\sqrt{2}}$
-	$\rightarrow$ Gleichrichtwert $|\={\i}| = 0,6366 \^{\i}$
-	$\rightarrow$ ...faktor $\tchi = \sqrt{2}$
+Spitzenwert $\hat{i}$
+	$\rightarrow$ Effektivwert $I = \frac{\hat{i}}{\sqrt{2}}$
+	$\rightarrow$ Gleichrichtwert $|\tilde{i}| = 0,6366 \hat{i}$
+	$\rightarrow$ ...faktor $\xi = \sqrt{2}$
 	$\rightarrow$ Formfaktor $F = 1,111$
 Phasenwinkel $\phi_i$
 
 Die symbolische Darstellung erfolgt mit dem Zeigerdiagramm.
 
 Wir analysieren in GLET1 {\it lineare} NW und gehen davon aus, dass {\it alle} Quellen {\it sinusförmige} Spannungen oder Ströme mit {\it derselben Frequenz} erzeugen. Dann sind alle Zweigspannungen und Zweigströme sinusförmig mit ebendieser Frequenz.
-\[ \sum_{\nu} \^{\u}_{\nu} sin( \omega_0 t + \phi_{\nu} ) = \^{\u} \cdot sin( \omega_0 t + \phi ) \]
+\[ \sum_{\nu} \hat{u}_{\nu} sin( \omega_0 t + \phi_{\nu} ) = \hat{u} \cdot sin( \omega_0 t + \phi ) \]
 komplex:
-\[ \sum_{\nu} a_{\nu} e^{j(\omega_0 t + \phi_{\nu})} = \sum_{\nu} a_{\nu} e^{... \] %TODO
+\[ \sum_{\nu} a_{\nu} e^{j(\omega_0 t + \phi_{\nu})} = \sum_{\nu} a_{\nu} e^{...} \] %TODO
 
 %% 17.01.2011
 \subsection{Addition und Subtraktion von Sinusgrößen}
@@ -1909,37 +1912,37 @@ Gegeben sind zwei Spannungen mit gleicher Frequenz und wir berechnen die Summens
 
 \begin{eqnarray}
 	u_g(t) & = & u_1(t) + u_2(t) \\
-	\^{\u}_g \cdot sin(\omega t + \phi_g) & = & \^{\u}_1 \cdot sin(\omega t + \phi_1) + \^{\u}_2 \cdot sin(\omega t + \phi_2)
+	\hat{u}_g \cdot sin(\omega t + \phi_g) & = & \hat{u}_1 \cdot sin(\omega t + \phi_1) + \hat{u}_2 \cdot sin(\omega t + \phi_2)
 \end{eqnarray}
 nach ermüdender Rechnung erhält man
-\[ \^{\u}_g = \sqrt{\^{\u}_1^2 + \^{\u}_2^2 + 2 \^{\u}_1 \^{\u}_2 cos(\phi_2 - \phi_1)}, \phi_g = arctan\left( \frac{\^{\u}_1 \cdot sin(\phi_1) + \^{\u}_2 \cdot sin(\phi_2)}{\^{\u}_1 \cdot cos(\phi_1) + \^{\u}_2 \cdot cos(\phi_2) } \right) \]
+\[ \hat{u}_g = \sqrt{\hat{u}_1^2 + \hat{u}_2^2 + 2 \hat{u}_1 \hat{u}_2 cos(\phi_2 - \phi_1)}, \phi_g = arctan\left( \frac{\hat{u}_1 \cdot sin(\phi_1) + \hat{u}_2 \cdot sin(\phi_2)}{\hat{u}_1 \cdot cos(\phi_1) + \hat{u}_2 \cdot cos(\phi_2) } \right) \]
 
-Spitzenwertzeiger $\underline{\^{\u}}$ \\
-Effektivwertzeiger $\underline{U} = \frac{\underline{\^{\u}}}{\sqrt{2}}$
+Spitzenwertzeiger $\underline{\hat{u}}$ \\
+Effektivwertzeiger $\underline{U} = \frac{\underline{\hat{u}}}{\sqrt{2}}$
 
 Bsp. 
 ...
-a) und b) schaltung mit 2 spannungsquellen u_1 und u_2, bei a gleiche richtung, bei b entgegengesetzt
+a) und b) schaltung mit 2 Spannungsquellen $u_1$ und $u_2$, bei a gleiche richtung, bei b entgegengesetzt
 
 Zur Vereinfachung der Rechnung setzen wir einen Winkel zu Null, z.B. $\phi_1 = 0$ \\
-a) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(60\grad)} = 70V \]
-\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(60\grad)}{50 + 30 \cdot cos(60\grad)} \right) = 21,79\grad \]
+a) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(60\degree)} = 70V \]
+\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(60\degree)}{50 + 30 \cdot cos(60\degree)} \right) = 21,79\degree \]
 
-b) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(-120\grad)} = 43,59V \]
-\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(-120\grad)}{50 + 30 \cdot cos(-120\grad)} \right) = -36,59\grad \]
+b) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(-120\degree)} = 43,59V \]
+\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(-120\degree)}{50 + 30 \cdot cos(-120\degree)} \right) = -36,59\degree \]
 
 \subsection{Differentiation und Integration von Sinusgrößen}
 \paragraph{Differentiation nach der Zeit}
-\[ f(t) = \frac{d}{dt} ( \^{\i} \cdot sin(\omega t + \phi_i) ) = \omega \cdot \^{\i} \cdot cos(\omega t + \phi_i) = \omega \cdot \^{\i} \cdot sin(\omega t + \phi_i + \frac{\pi}2 ) \]
+\[ f(t) = \frac{d}{dt} ( \hat{i} \cdot sin(\omega t + \phi_i) ) = \omega \cdot \hat{i} \cdot cos(\omega t + \phi_i) = \omega \cdot \hat{i} \cdot sin(\omega t + \phi_i + \frac{\pi}2 ) \]
 \begin{itemize}
-	\item Wir erhalten eine Sinusschwingung mit derselben Frequenz, die der ursprünglich um $\frac{\pi}2$ oder $90\grad$ voreilt.
+	\item Wir erhalten eine Sinusschwingung mit derselben Frequenz, die der ursprünglich um $\frac{\pi}2$ oder $90\degree$ voreilt.
 	\item Die Amplitude entspricht dem $\omega$-fachen der Ursprungsamplitude.
 \end{itemize}
 
 \paragraph{Integration über der Zeit}
-\[ g(t) = \int \^{\i} \cdot sin(\omega t + \phi_i) dt = \frac{-1}{\omega} \^{\i} cos(\omega t + \phi_i) = \frac1{\omega} \^{\i} \cdot sin(\omega t + \phi_i - \frac{\pi}2) \]
+\[ g(t) = \int \hat{i} \cdot sin(\omega t + \phi_i) dt = \frac{-1}{\omega} \hat{i} cos(\omega t + \phi_i) = \frac1{\omega} \hat{i} \cdot sin(\omega t + \phi_i - \frac{\pi}2) \]
 \begin{itemize}
-	\item Wir erhalten eine Sinusschwingung mit der selben Frequenz, die der ursprünglichen um $\frac{\pi}2$ oder $90\grad$ nacheilt.
+	\item Wir erhalten eine Sinusschwingung mit der selben Frequenz, die der ursprünglichen um $\frac{\pi}2$ oder $90\degree$ nacheilt.
 	\item Die Amplitude entspricht dem $\left( \frac1{\omega} \right)$-fachen der Ursprungsamplitude.
 \end{itemize}
 
@@ -1953,7 +1956,7 @@ $[L] = \frac{V_s}A = H$
 Allg. $u = L \cdot \frac{di}{dt}$ $i = \frac1L \int u dt$
 
 Sinusförmige Größen
-Sei $i(t) = \^{\i} \cdot sin(\omega t + \phi_i)$, dann ist $u(t) = L \cdot \frac{d}{dt} i(t) = L \cdot \omega \cdot \^{\i} \cdot sin(\omega t + \phi_i + \frac{\pi}2) = \^{\u} \cdot sin(\omega t + \phi_u)$, $\^{\u} = L \omega \^{\i}$, $\phi_u = \phi_i + \frac{\pi}2$
+Sei $i(t) = \hat{i} \cdot sin(\omega t + \phi_i)$, dann ist $u(t) = L \cdot \frac{d}{dt} i(t) = L \cdot \omega \cdot \hat{i} \cdot sin(\omega t + \phi_i + \frac{\pi}2) = \hat{u} \cdot sin(\omega t + \phi_u)$, $\hat{u} = L \omega \hat{i}$, $\phi_u = \phi_i + \frac{\pi}2$
 
 Kondensator, Kapazität
 %konsensator schaltzeichen
@@ -1963,7 +1966,7 @@ $i = c \cdot \frac{du}{dt}$
 $u = \frac1c \cdot \int i dt$
 
 Sinusförmige Größen
-Sei $u(t) = \^{\u} \cdot sin(\omega t + \phi_u)$, dann ist $i(t) = \^{\u} \cdot c \cdot \omega \cdot sin(\omega t + \phi_u + \frac{\pi}2) = \^{\i} \cdot sin(\omega t + \phi_i)$ mit $\^{\i} = \^{\u} \cdot c \cdot \omega$ und $\phi_i = \phi_u + \frac{\pi}2$
+Sei $u(t) = \hat{u} \cdot sin(\omega t + \phi_u)$, dann ist $i(t) = \hat{u} \cdot c \cdot \omega \cdot sin(\omega t + \phi_u + \frac{\pi}2) = \hat{i} \cdot sin(\omega t + \phi_i)$ mit $\hat{i} = \hat{u} \cdot c \cdot \omega$ und $\phi_i = \phi_u + \frac{\pi}2$
 
 Rechenbeispiel
 %u(t) + i(t) + ((i_R(t) + R) || (i_L(t) + L))
@@ -1976,16 +1979,16 @@ kGl: $i(t) = i_L(t) + i_R(t)$
 	\item Scheinleistung in der Induktivität
 \end{enumerate}
 
-$u(t) = \^{\u} \cdot(\omega t)$, $t \geq 0$, $i_L(t=0) = 0$
+$u(t) = \hat{u} \cdot(\omega t)$, $t \geq 0$, $i_L(t=0) = 0$
 
 \begin{enumerate}
-	\item \[ i_R(t) = \frac{u(t)}{R} = \frac{\^{\u} \cdot sin(\omega t)}{R} \]
-				\[ i_L(t) = \frac1L \int u(t) dt = \frac{\^{\u}}{L} \int sin(\omega t) dt = \frac{-\^{\u}}{\omega L} cos(\omega t) \]
-				\[ i(t) = \frac{\^{\u}}R sin(\omega t) - \frac{\^{\u}}{\omega L} cos(\omega t) \]
-				\[ p(t) = u(t) i(t) = \^{\u} \cdot sin(\omega t) \left( \frac{\^{\u}}R sin(\omega t) - \frac{\^{\u}}{\omega L} cos(\omega t) \right) = \frac{\^{\u}^2}R sin^2(\omega t) - \frac{\^{\u}^2}{2 \omega L} sin(2 \omega t) = \frac{\^{\u}^2}R \cdot \frac12 (Gleichanteil) - \frac{\^{\u}^2}{2R} cos(2 \omega t) (Wechselanteil)  - \frac{\^{\u}^2}{2\omega L} sin(2 \omega t) (Wechselanteil) \]
-	\item \[ P = \frac1{\pi} \int_{t_0}^{t_0 + T} p(t) dt = \frac{\^{\u}^2}{2R} = \frac{U^2}R \]
+	\item \[ i_R(t) = \frac{u(t)}{R} = \frac{\hat{u} \cdot sin(\omega t)}{R} \]
+				\[ i_L(t) = \frac1L \int u(t) dt = \frac{\hat{u}}{L} \int sin(\omega t) dt = \frac{-\hat{u}}{\omega L} cos(\omega t) \]
+				\[ i(t) = \frac{\hat{u}}R sin(\omega t) - \frac{\hat{u}}{\omega L} cos(\omega t) \]
+				\[ p(t) = u(t) i(t) = \hat{u} \cdot sin(\omega t) \left( \frac{\hat{u}}R sin(\omega t) - \frac{\hat{u}}{\omega L} cos(\omega t) \right) = \frac{\hat{u}^2}R sin^2(\omega t) - \frac{\hat{u}^2}{2 \omega L} sin(2 \omega t) = \frac{\hat{u}^2}R \cdot \frac12 (Gleichanteil) - \frac{\hat{u}^2}{2R} cos(2 \omega t) (Wechselanteil)  - \frac{\hat{u}^2}{2\omega L} sin(2 \omega t) (Wechselanteil) \]
+	\item \[ P = \frac1{\pi} \int_{t_0}^{t_0 + T} p(t) dt = \frac{\hat{u}^2}{2R} = \frac{U^2}R \]
 	\item Scheinleistung in der Induktivität
-		\[ S = U \cdot I = \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \^{\u}^2 \cdot sin^2(\omega t) dt} \cdot \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \frac{\^{\u}^2}{(\omega L)^2} cos^2(\omega t) dt} \cdot \frac{\^{\u}}{\sqrt{2}} \cdot \frac{\^{\u}}{\sqrt{2} \cdot \omega \cdot L} = \frac{U^2}{\omega L} \]
+		\[ S = U \cdot I = \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \hat{u}^2 \cdot sin^2(\omega t) dt} \cdot \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \frac{\hat{u}^2}{(\omega L)^2} cos^2(\omega t) dt} \cdot \frac{\hat{u}}{\sqrt{2}} \cdot \frac{\hat{u}}{\sqrt{2} \cdot \omega \cdot L} = \frac{U^2}{\omega L} \]
 		$\omega L = |Z_L|$ Betrag der Impedanz der Induktivität
 \end{enumerate}
 
@@ -1997,10 +2000,10 @@ $Im\{\underline{z}\} = \frac1{2j} (e^{jx} - e^{-jx})$
 $sin(x) = \frac1{2j} (e^{jx} - e^{-jx})$
 
 De Moivre:
-(cos(\phi) + j sin(\phi))^n = cos(n\phi) + j \cdot sin(n \phi)$
+$(cos(\phi) + j sin(\phi))^n = cos(n\phi) + j \cdot sin(n \phi)$
 
-komplexe Schwingung $\underline{u} = \^{\u} \cdot e^{j(\omega t + \phi_u)}$
-Zeitfunktion $u(t) = \^{\u} \cdot sin(\omega t + \phi_u) = Im\{\underline{u}\}
+komplexe Schwingung $\underline{u} = \hat{u} \cdot e^{j(\omega t + \phi_u)}$
+Zeitfunktion $u(t) = \hat{u} \cdot sin(\omega t + \phi_u) = Im\{\underline{u}\}$
 
 Differentiation nach der Zeit $\rightarrow$ Multiplikation mit $j \omega = \omega \cdot e^{j \frac{\pi}2}$
 Integration über der Zeit $\rightarrow$ Multiplikation mit $\frac1{j \omega} = -j \frac1{\omega} = \frac1{\omega} e^{-j \frac{\pi}2}$
@@ -2008,42 +2011,42 @@ Integration über der Zeit $\rightarrow$ Multiplikation mit $\frac1{j \omega} = 
 Bsp.: Gesucht sind die komplexen Zahlen $\underline{z_1} = x_1 + jy_1$ und $\underline{z_2} = x_2 + jy_2$, die zueinander reziprok sind und die Realteile $x_1 = 0,3$ sowie $x_2 = 1,2$ haben.
 $\underline{z_1} = 0,3 + jy_1 = \frac1{\underline{z_2}} = \frac1{1,2 + jy_2}$
 
-konjugiertkomplex erweitern: $\frac1{\underline{z}} = \frac{\underline{z^*}}{\underline{z}\underline{z^*}} = \frac{\underline{z^*}}{|\underline{z}|^2}
-$\frac1{1,2 + jy_2} = \frac{1,2 - jy_2}{(1,2)^2 + y_2^2}$
-Realteile $0,3 = \frac{1,2}{(1,2)^2 + y_2^2} \rightarrow y_2 = \pm 1,6$
-Imaginärteile $y_2 = \frac{-y_2}{(1,2)^2 + y_2^2} \rightarrow y_2 = \mp 0,4$
+konjugiertkomplex erweitern: $\frac1{\underline{z}} = \frac{\underline{z^*}}{\underline{z}\underline{z^*}} = \frac{\underline{z^*}}{|\underline{z}|^2}$ \\
+$\frac1{1,2 + jy_2} = \frac{1,2 - jy_2}{(1,2)^2 + y_2^2}$ \\
+Realteile $0,3 = \frac{1,2}{(1,2)^2 + y_2^2} \rightarrow y_2 = \pm 1,6$ \\
+Imaginärteile $y_2 = \frac{-y_2}{(1,2)^2 + y_2^2} \rightarrow y_2 = \mp 0,4$ \\
 
-$\underline{z_1} = 0,3 - j0,4$
-$\underline{z_2} = 1,2 + j1,6$
-oder
-$\underline{z_1} = 0,3 + j0,4$
+$\underline{z_1} = 0,3 - j0,4$ \\
+$\underline{z_2} = 1,2 + j1,6$ \\
+oder \\
+$\underline{z_1} = 0,3 + j0,4$ \\
 $\underline{z_2} = 1,2 - j1,6$
 
-Bsp.: Für $f = 50 Hz$ und $\phi_u = 60 \grad$ sollen bei $U = 230V$ der Spitzenwert $\^{\u}$ berechnet und die komplexe Darstellung angegeben werden. Zudem soll $u(t)$ an der Stelle $t = 12ms$ berechnet werden.
-reelle Darstellung: $u(t) = \^{\u} \cdot sin(\omega t + \phi_u)$
-komplexe Darstellung: $\underline{u} = \^{\u} \cdot e^{j(\omega t + \phi_u)}
+Bsp.: Für $f = 50 Hz$ und $\phi_u = 60 \degree$ sollen bei $U = 230V$ der Spitzenwert $\hat{u}$ berechnet und die komplexe Darstellung angegeben werden. Zudem soll $u(t)$ an der Stelle $t = 12ms$ berechnet werden.
+reelle Darstellung: $u(t) = \hat{u} \cdot sin(\omega t + \phi_u)$
+komplexe Darstellung: $\underline{u} = \hat{u} \cdot e^{j(\omega t + \phi_u)}$
 Zusammenhang: $u(t) = Im\{\underline{u}\}$
-\[ \^{\u} = \sqrt{2} \cdot U = 325,3V \]
+\[ \hat{u} = \sqrt{2} \cdot U = 325,3V \]
 \[ \underline{u} = 325,3V \cdot e^{j(2\pi \cdot 50 \cdot \frac1s \cdot t - \frac{\pi}3)} = 325,3V \cdot e^{j(314 \frac1s - \frac{\pi}3)} \]
 \[ t(t = 12ms) = Im\{ 325,3V \cdot e^{j(314 \frac{0,012s}{s} \cdot \frac{\pi}3)}\} = 325,3V \cdot sin(314 \cdot 0,012 - \frac{\pi}3) = 132,3V \]
 
-## 21.01.2011
+%% 21.01.2011
 \subsection{Komplexe Größen zur Analyse von Sinusstrom-NW}
 
 \paragraph{Komplexer Drehzeiger}
-\[ \underline{u} = \^{\u} e^{j(\omega t + \phi_u)} = \^{\u} e^{j\phi_u} e^{j\omega t} \]
+\[ \underline{u} = \hat{u} e^{j(\omega t + \phi_u)} = \hat{u} e^{j\phi_u} e^{j\omega t} \]
 $\underline{u}$: ruhender Zeiger zum Zeitpunkt $t=0$ \\
-Komplexe Amplitude: $\underline{\^{\u}} = \^{\u} \cdot e^{j\phi_u}$, $\underline{u} = \underline{\^{\u}} e^{j\omega t}$ \\
+Komplexe Amplitude: $\underline{\hat{u}} = \hat{u} \cdot e^{j\phi_u}$, $\underline{u} = \underline{\hat{u}} e^{j\omega t}$ \\
 Die komplexe Amplitude entspricht dem rudenen Drehzeiger zum Zeitpunkt $t=0$ \\
 Im zeitinvarianten NW ändern sich die Verhältniss der Zweiggrößen zueinander nicht mit der Zeit, somit können wir sie zu $t=0$ setzen.
 
-Effektivwertzeiger $U = \frac{\^{\u}}{\sqrt{2}}$, $\underline{u} = U \cdot e^{j\phi_u}$, $\underline{I} = I \cdot e^{j\phi_i}$
+Effektivwertzeiger $U = \frac{\hat{u}}{\sqrt{2}}$, $\underline{u} = U \cdot e^{j\phi_u}$, $\underline{I} = I \cdot e^{j\phi_i}$
 
 $\phi = \phi_u - \phi_i$: Phasendifferenz \\
 $\phi_u, \phi_i$: Nullphasenwinkel
 
 \paragraph{Komplexe Widerstände (Impedanzen) und komplexe Leitwerte (Admittanzen)}
-\[ \underline{z} = \frac{\underline{U}}{\underline{I}} = \frac{U e^{j\phi_u}}{I e^{j\phi_i}} = \frac{U}{I} e^{j(\phi_u - \phi_i)} = \frac{U}{I} e^{j\phi} = z e^{j\phi} \hspace z = \frac{U}{I} \]
+\[ \underline{z} = \frac{\underline{U}}{\underline{I}} = \frac{U e^{j\phi_u}}{I e^{j\phi_i}} = \frac{U}{I} e^{j(\phi_u - \phi_i)} = \frac{U}{I} e^{j\phi} = z e^{j\phi} \hspace{10pt} z = \frac{U}{I} \]
 \[ \underline{z} = R + jX, |\underline{z}| = z = \sqrt{R^2 + X^2}, \phi = arctan\left( \frac{X}{U} \right) \]
 
 $|\underline{z}| = z = \sqrt{R^2 + X^2}$: Scheinwiderstand \\
@@ -2052,11 +2055,11 @@ $X = \underline{z} sin(\phi) = Im\{\underline{z}\}$: Blindwiderstand, Reaktanz
 
 Komplexer Leitwert: $\underline{y} = \frac{\underline{I}}{\underline{U}} = \frac{I \cdot e^{j\phi_i}}{U \cdot e^{j\phi_u}} = \frac{I}{U} e^{j(\phi_i - \phi_u)} = \frac{I}{U} e^{-j\phi} = \frac{I}{U} e^{j\phi_y}$
 Kartesische Koordinaten: $\underline{y} = G + jB$, $\phi_y = arctan\left( \frac{R}{G} \right)$ \\
-$\undeline{y}$: komplexer Leitwert, $Y = |\underline{y}| = \sqrt{G^2 + R^2}$: Scheinleitwert \\
+$\underline{y}$: komplexer Leitwert, $Y = |\underline{y}| = \sqrt{G^2 + R^2}$: Scheinleitwert \\
 $G = Re\{\underline{y}\} = \underline{y} cos(\phi_y)$: Wirkleitwert, Konduktanz \\
 $B = Im\{\underline{y}\} = \underline{y} sin(\phi_y)$: Blindleitwert, Suszeptanz
 
-Zusammenhang zwischen $\underline{z}$ und $\undelrine{y}$: $\underline{y} = \frac1{\underline{y}} = \frac1z e^{-j\phi}$, $\underline{y} = \frac1z e^{j\phi_y}$ mit $\phi_y$ = -\phi$
+Zusammenhang zwischen $\underline{z}$ und $\underline{y}$: $\underline{y} = \frac1{\underline{y}} = \frac1z e^{-j\phi}$, $\underline{y} = \frac1z e^{j\phi_y}$ mit $\phi_y = -\phi$
 
 Rechnen mit kartesischer Darstellung
 \[ \underline{y} = \frac1{\underline{z}} = G + jB = \frac1{R + jX} = \frac{R - jX}{R^2 + X^2} = \frac{R}{R^2 + X^2} - j\frac{X}{R^2 - X^2} = \frac{R}{z^2} - j \frac{X}{z^2}\]
@@ -2069,29 +2072,198 @@ $G = \frac1R$, gültig für $X = 0$
 Komplexe Leistung
 Der ohmsche Verbraucher $R$ nimmt die Wirkleistung $P = RI^2 = GU^2$ auf. Eine komplexe Leistung $\underline{S} = \underline{Z}I^2 = RI^2 + jXI^2 = P + jQ$
 
-$\underline{s} = \underline{y} {\it \cdot} U^2 = GU^2 {\it -} jBU^2$ \hspace $\winkel \underline{s} = \winkel \underline{z} = - \winkel \underline{y}$
+$\underline{s} = \underline{y} {\it \cdot} U^2 = GU^2 {\it -} jBU^2$ \hspace{10pt} $\angle \underline{s} = \angle \underline{z} = - \angle \underline{y}$
 
 $\underline{S}$: komplexe Leistung, $|\underline{S}| = S = UI$: Scheinleistung, $Q = XI^2 = {\it -} BU^2$: Blindleistung
 
 $\underline{S} = \underline{U} \underline{I}^*$, beim ohmschen Verbraucher sind Strom und Spannung in Phase.
 
-$\pni_u = \phi_i = \~\phi$, $\underline{S} = \underline{U} \underline{I}^* e^{j\~\phi} e^{-j\~\phi} = UI$
+$\phi_u = \phi_i = \tilde\phi$, $\underline{S} = \underline{U} \underline{I}^* e^{j\tilde\phi} e^{-j\tilde\phi} = UI$
 
-#TODO: hier fehlt was
+%TODO: hier fehlt was
 
 Leistungsfaktor: $cos(\phi) = \frac{P}{\sqrt{P^2 + Q^2}} = \frac{R}{\sqrt{R^2 + X^2}}$
 
 \begin{tabular}{cccccc}
 	 & Zeitfunktionen & Eff.Zeiger & komplexe Größen & Impedanzen & komplexe Leistung \\
 	R(wiederstand) & $u = Ri$ $i = \frac1R u$ & $\underline{U} = R\underline{I}$ $\underline{I} = \frac1R \underline{U}$ & (in phase) & 
-#am arsch
+%am arsch
 \end{tabular}
 
 Bsp. An einer Spule mit vernachlässigbarem Wirkwiederstand (Kupfer-, Eigenverlust) liegt eine Wechselspannung mit $f = 40Hz$ und $U = 125V$ an. Der Effektivstrom beträgt $I = 10A$. Wie groß ist die Spuleninduktivität $L$?
 
-$\underline{z} = j\omega L = j \frac{U}{I} ($\underline{z} = \frac{\underline{U}}{\underline{I}} = \frac{U}{I} e^{j(\phi_u - \phi_i)} = \frac{U}{I} j )$
+$\underline{z} = j\omega L = j \frac{U}{I} (\underline{z} = \frac{\underline{U}}{\underline{I}} = \frac{U}{I} e^{j(\phi_u - \phi_i)} = \frac{U}{I} j )$
 
 $L = \frac{U}{\omega I} = \frac{125V}{2 \pi \cdot 40 \cdot \frac1s \cdot 10A} = 49,74mH$
 
-#noch ein bleistift
+%noch ein bleistift
+
+%% 24.01.2011
+\subsection{Kirchhoffsche Gesetze bei Sinusstrom-NW}
+Knoten und Maschensatz können nicht selbstverständlich auf Wechselgrößen übertragen werden. Unter der Voraussetzung konzentrierter Bauelemente (z.B. Fremderregung einer Spule) können wir Maschen- und Knotensatz wie im Gleichstromfall anwenden.
+
+Maschensatz: $\sum_{\nu = 1}^N \underline{U}_\nu = 0$ Die Umlaufspannung verschwindet. \\
+Knotensatz: $\sum_{\nu = 1}^N \underline{I}_\nu = 0$ Die Summe der Ströme im Knoten verschwindet.
+
+Impedanz von Reihenschaltungen $\underline{Z} = \sum_{\nu = 1}^N \underline{Z}_\nu$ \\
+Spannungsteilerregel $\frac{\underline{U}_{\mu}}{\underline{U}_{\nu}} = \frac{\underline{Z}_{\mu}}{\underline{Z}_{\mu}}$ oder $\frac{\underline{U}_{\nu}}{\underline{U}} = \frac{\underline{Z}_{\nu}}{\underline{Z}}$
+
+Parallelschaltung von Admittanzen $\underline{Y} = \sum_{\nu = 1}^N = \underline{Y}_\nu$ \\
+Stromteilerregel $\frac{\underline{I}_{\mu}}{\underline{I}_{\nu}} = \frac{\underline{Y}_{\mu}}{\underline{Y}_{\mu}}$ oder $\frac{\underline{I}_{\nu}}{\underline{I}} = \frac{\underline{Y}_{\nu}}{\underline{Y}}$
+
+Reihenschaltungen
+\begin{enumerate}
+	\item RL-Reihenschaltung
+		% \underline{I} + R + L
+		MGl: $\underline{U} = \underline{U}_R + \underline{U}_L = R \underline{I} + j\omega L \underline{I} = \underline{I} (R + j\omega L)$ \\
+		Impedanz: $\underline{Z} = R + j \omega L = Z e^{j\phi}$ \\
+		Scheinwiderstand: $Z = \frac{U}{I} = \sqrt{R^2 + (\omega L)^2}$, $\phi = arctan\left( \frac{\omega L}{R} \right)$ \\
+		Admittanz: $\underline{Y} = \frac1{\underline{Y}} = \frac1{R + j\omega L} = \frac{R}{R^2 + (\omega L)^2} + j \frac{-\omega L}{R^2 + (\omega L)^2}$ \\
+		Komplexleistung: $\underline{S} = P + j Q = RI^2 + j\omega L I^2 = \frac{R}{Z^2} - j\frac{\omega L}{Z^2}$ \\
+		Leistungsfaktor: $\frac{P}{S} = cos(\phi) = \frac{R}{\sqrt{R^2 + (\omega L)^2}}$
+	\item RC-Reihenschaltung
+		% \underline{I} + \underline{U}_R + \underline{U}_C
+		MGl: $\underline{U} = \underline{U}_R + \underline{U}_C = R\underline{I} + \frac1{j\omega C} \underline{I}$ \\
+		Impedanz: $\underline{Z} = R + j \frac{-1}{\omega C} = \sqrt{R^2 + \left( \frac1{\omega C} \right)^2} e^{j\phi}$ \\
+		Scheinwiderstand: $Z = \sqrt{R^2 + \left( \frac1{\omega C} \right)^2}$, $\phi = - arctan\left( \frac1{\omega CR} \right)$ \\
+		Admittanz: $\underline{Y} = \frac1{\underline{Z}} = \frac1{R - j \frac1{\omega C}} = \frac{R}{R^2 + \left( \frac1{\omega C} \right)^2} + j \frac{\frac1{\omega C}}{R^2 + \left( \frac1{\omega C} \right)^2}$ \\
+		Komplexleistung: $\underline{S} = R I^2 = \frac{j}{\omega C} I^2 = \sqrt{R^2 + \left( \frac1{\omega C} \right)^2} I^2 e^{j\phi}$
+	\item RLC-Reihenschaltung
+		% \underline{I} + R + L + C
+		MGl: $\underline{U} = \underline{U}_R + \underline{U}_L + \underline{U}_C = R \underline{I} + j \omega L \underline{I} + \frac1{j \omega C} \underline{I}$ \\
+		$| \omega L | > | \frac1{\omega C} |$ \\
+		Impedanz: $\underline{Z} = R + j(\omega L - \frac1{\omega C})$ \\
+		Scheinwiderstand: $Z = \sqrt{R^2 + \left( \omega L - \frac1{\omega C} \right)^2}$, $\phi = arctan\left( \frac{\omega L - \frac1{\omega C}}R \right)$ \\
+		Admittanz: $\underline{Y} = \frac{R}{R^2 + \left( \omega L - \frac1{\omega C} \right)^2} + j \frac{\frac1{\omega C} - \omega L}{R^2 + \left( \omega L - \frac1{\omega C} \right)^2}$ \\
+		Komplexleistung: $\underline{S} = P + j(Q_L + Q_C) = RI^2 + jI^2 \left( \omega L - \frac1{\omega C} \right)$ \\
+		Leistungsfaktor: $cos(\phi) = \frac{R}{\sqrt{R^2 + \left( \omega L - \frac1{\omega C} \right)^2}}$
+\end{enumerate}
+
+Bemerkungen: Näherungs-Ersatzschaltungen \\
+$\omega L > \frac1{\omega C}$, ohmsch-induktiv, große Frequenz, %R^* + L^* \\
+$\omega L < \frac1{\omega C}$, ohmsch-kapazitiv, niedrige Frequenz, %R^* + C^* \\
+$\omega L = \frac1{\omega C}$, ohmsch, %R^* \\
+
+Parallelschaltungen
+\begin{enumerate}
+	\item GC-Parallelschaltung 
+		%\underline{I} + (G || C)
+		KGl: $\underline{I} = \underline{I}_G + \underline{I}_C = \underline{U} G + \underline{U} j \omega G$ \\
+		Komplexer Leitwert: $\underline{Y} = G + j \omega C$ \\
+		Impedanz: $\underline{Z} = \frac{G}{G^2 + ( \omega C )^2} + j \frac{- \omega C}{G^2 + (\omega C)^2} = \frac{G}{Y^2 = \underline{Y}\underline{Y}^*} + j \frac{- \omega C}{Y^2}$ \\
+		Scheinleitwert: $Y = \sqrt{G^2 + (\omega C)^2}$, $\phi_Y = - \phi = arctan\left( \frac{\omega C}{G} \right)$ \\
+		komplexe Leistung: $\underline{S} = GU^2 - j\omega C U^2 = Y^{\it *} U^2 = \sqrt{G^2 + \omega^2 C^2} U^2 \cdot e^{\it j\phi_y}$ %da steht noch irgendwas \\
+		Leistungsfaktor: $cos(\phi) = \frac{G}{\sqrt{G^2 + (\omega C)^2}}$
+	\item GL-Parallelschaltung
+		%\underline{I} + (G || L)
+		KGl: $\underline{I} = \underline{I}_G + \underline{I}_L = \underline{U}G + \frac1{j\omega L} \underline{U}$ \\
+		Admittanz: $\underline{Y} = G - j \frac1{\omega L}$ \\
+		Scheinleitwert: $Y = \sqrt{G^2 + \frac1{(\omega L)^2}}$, $\phi_Y = arctan\left( \frac{-1}{G\omega L} \right)$ \\
+		Impedanz: $\underline{Z} = \frac{G}{Y^2} + j \frac{\frac1{\omega L}}{Y^2}$ \\
+		komplexe Leistung: $\underline{S} = \underline{Y}^{\it *} U^2 = \sqrt{G^2 + \frac1{(\omega L)^2}} U^2 e^{{\it -}j\phi_Y}$ \\
+		Leistungsfaktor: $cos(\phi) = \frac{G}{\sqrt{G^2 + \frac1{(\omega L)^2}}}$
+	\item GLC-Parallelschaltung
+		%\underline{I} + (G || L || C)
+		KGl: $\underline{I} = \underline{I}_G + \underline{I}_C = \underline{I}_L = G \underline{U} + j \omega C \underline{U} + \frac1{j \omega L} \underline{U} = G\underline{U} + j \left(\omega C + \frac1{\omega L}\right)\underline{U}$ \\
+		Admittanz: $\underline{Y} = G + j\left( \omega C - \frac1{\omega L} \right)$ \\
+		Scheinleitwert: $Y = \sqrt{G^2 + \left( \omega C - \frac1{\omega l} \right)^2}$, $\phi_Y = arctan\left( \frac{\omega C - \frac1{\omega L}}{G} \right)$ \\
+		Impedanz: $\underline{Z} = \frac{G}{Y^2} + j \frac{\frac1{\omega L} - \omega C}{Y^2}$ \\
+		komplexe Leistung: $\underline{S} = GU^2 + j U^2 \left( \frac1{\omega L} - \omega C \right)$ \\
+		Leistungsfaktor: $cos(\phi) = \frac{G}{\sqrt{G^2 + \left( \frac1{\omega L} - \omega C \right)^2}}$
+\end{enumerate}
+
+Bsp: Der Widerstand $R = 150\ohm$, die Induktivität $L = 250mH$ und die Kapazität $C = 15\mu F$ sind in Reihe geschaltet. Bei welcher Kreisfrequenz $\omega$ fließt für $U = 36V$ der Strom $I = 0,2A$. $Z = \frac{U}{I} = \frac{36V}{0,2A} = 150\ohm$
+
+Ansatz: $Z = 150\ohm = \sqrt{R^2 + \left(\omega L - \frac1{\omega C} \right)^2} \rightarrow \omega L - \frac1{\omega C} = \pm \sqrt{Z^2 - R^2} = \pm 149,7 \ohm \rightarrow \left\{ \begin{array}{l}\omega_1 = 297,5 \frac1s \\ \omega_2 = 896,2 \frac1s \end{array} \right.$
+
+Verzweigter Sinusstromkreis
+\begin{enumerate}
+	\item %\underline{I} + ( C || (R + L ))
+		%kreisdiagramm
+	\item %\underline{I} + L  + ( \underline{I}_C C || \underline{I}_R + R )
+		%kreisdiagramm
+\end{enumerate}
+
+%%31.01.2011
+\subsection{Zeigerdiagramm T(B)}
+Summation von mit Zeigern repräsentierten Sinusgrößen bei einer Frequenz in der komplexen Zahlenebene
+
+\subsection{Ortskurve}
+Bild einer komplexen Funktion mit einem reellen Parameter in der komplexen Zahlenebene. Parameter sind z.B. die Frequenz $\omega$ oder ein (normierter) Einstellwinkel eines Potentiometers.
+
+Bsp. %R + L
+$\underline{Z}(\omega) = R + j\omega L$
+$\underline{Z}i = \underline{Z}(\omega_i) = R + j\omega_i L$
+
+Inversion komplexer Größen
+$\underline{Z} = Z \cdot e^{j\phi}, \underline{Y} = \frac1{\underline{Z}} = \frac1Z e^{-j\phi} = Y \cdot e^{j\phi Y}$
+
+\begin{itemize}
+	\item Die Inversion einer Geraden durch den Nullpunkt ergibt wieder eine Gerade durch den Nullpunkt.
+	\item Die Inversion einer Geraden, die nicht durch den Nullpunkt geht, ergibt einen Kreis, der durch den Nullpunkt geht.
+	\item Die Inversion eines Kreises durch den Nullpunkt ergibt eine Gerade, die nicht durch den Nullpunkt geht.
+	\item Die Inversion eines Kreises, der nicht durch den Nullpunkt ghet, ergibt einen Kreis, der nicht durch den Nullpunkt geht.
+\end{itemize}
+
+Man benötigt i.A. nur wenige Punkte, um eine Ortskurve zeichnerisch darstellen zu können.
+
+Bsp. Für eine Reihenschaltung aus konstantem Blindwiderstand $X=2\ohm$ und einstellbarem Widerstand $R$ sind die Ortskurve $\underline{Z} = R + jX$ und $\underline{Y} = \frac1{\underline{Z}}$ zu zeichnen. Im weiteren sind die Impedanz- und Admittanzzeiger für $R_0 = 0 \ohm$, $R_1 = 2 \ohm$ und $R_2 = 6 \ohm$ zu zeichen.
+
+\begin{eqnarray*}
+	\underline{Z}_0 = j 2\ohm & \underline{Z}_1 = 2\ohm + j 2\ohm & \underline{Z}_2 = 6 \ohm + j 2\ohm \\
+	\underline{Y}_0 = - j 0.5S & \underline{Y}_1 = (0.25 - j0.25)S & \underline{Y}_2 = (0.15 - j0.05)S
+\end{eqnarray*}
+
+\section{Vierpole, Übertragunsfunktionen, Bode-Diagramme}
+Besonders häufig sit die (Kreis-)Frequenz der wichtige Parameter.
+%R + C als Vierpol mit U_e(omega) und U_a(omega)
+Übertragungsfunktion
+\[\frac{\underline{U}_a(\omega)}{\underline{U}_e(\omega)} = \underline{H}(\omega) = \frac{\frac1{j\omega C}}{R + \frac1{j\omega C}} = \frac1{1 + j\omega RC}\]
+Für ein $\omega_0$ berechnen wir den Übertragungsfaktor $\underline{H}(\omega_0)$. \\
+Darstellung als Ortskurve in der komplexen Ebene. Wir bevorzugen eine normierte Darstellung mit $\underline{H}(\frac{\omega}{\omega_g})$. $\omega_g$ ist eine Kennfreqenz. Hier ist die {\it naheliegende} Kennfrequenz $\omega_g = \frac1{RC}$.
+
+Aussagekräftiger sind die Bilder von Betrags- und Phasenfreqenzgang $\underline{H}(\omega) = |\underline{H}(\omega)|e^{j\phi(\omega)}$.
+
+\section{Bode-Diagramm, Asymptoten, Doppelt-Logarithmische Darstellung}
+Übertragungsmaß $G\left(\frac{\omega}{\omega_g}\right) = 20 \cdot \log_{10} \left|\underline{H}\left(\frac{\omega}{\omega_g}\right)\right|$.
+
+Im Beispiel: $G\left(\frac{\omega}{\omega_g}\right) = 20 \cdot \log_{10}\left(\frac1{\left|1 + j\frac{\omega}{\omega_g}\right|}\right) = 20 \cdot \log_{10}(1) - 20 \cdot \log_{10}\left(\sqrt{1 + \left(\frac{\omega}{\omega_g}\right)^2}\right) = -10 \cdot \log_{10}\left(1 + \left(\frac{\omega}{\omega_g}\right)^2\right)$
+
+Für große Frequenzen $\omega > \omega_g$ \\
+$G\left(\frac{\omega}{\omega_g}\right) ~= -20 \cdot \log_{10}\left(\frac{\omega}{\omega_g}\right) {\it dB}$
+
+$\omega = 0$
+$G(0) = 0 {\it dB}$
+
+$\omega = \omega_g$
+$G(1) = -3 {\it dB}$
+
+\begin{tabular}{c|c|c}
+	$\frac{\omega}{\omega_g}$ & $G\left(\frac{\omega}{\omega_g}\right)$ & $\phi\left(\frac{\omega}{\omega_g}\right)$ \\ \hline
+	$0$ & $0$ & $0$ \\
+	$0.1$ & $~-0.01$ & $-0.0997$ \\
+	$1$ & $-3dB$ & $-\frac{\pi}{4}$ \\
+	$10$ & $~-20dB$ & $-1.47$ \\
+	$\omega >> \omega_g$ & $\rightarrow -\infty$ & $-\frac{\pi}2$
+\end{tabular}
+
+\section{Schwingkreise}
+Schwingkreise enthalten gegensätzlich wirkende Energiespeicher.
+z.B.
+\begin{itemize}
+	\item Induktivitäten - Speichern im magnetischen Feld
+	\item Kapazitäten - Speicher im elektrischen Feld
+\end{itemize}
+
+Eine Schaltung, in der beide Energiespeicher ihre Energie wechselseitig austauschen, bezeichnet man als Schwingkreis. Wir unterscheiden freie Schwingungen, d.h. Schwingungen ohne äußeren Einfluß, und erzwungene Schwingungen, die von aussen gesteuert werden.
+
+\paragraph{Reihenschwingkreis}
+%R + L + C mit \underline{U} und I
+MGl: $\underline{U} = R \cdot \underline{I} + j\omega L \cdot \underline{I} + \frac1{j\omega C} \cdot \underline{I}$
+
+\paragraph{Parallelschwingkreis}
+{\red{Dualität}}
+%G || L || C 
+KGl: $\underline{I} = G \cdot \underline{U} + j\omega C \cdot \underline{U} + \frac1{j\omega L} \cdot \underline{U}$
+
 \end{document}
