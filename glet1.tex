@@ -1004,7 +1004,7 @@ $I_2 ( R_2 + R_5 ) + I_3 R_5 - U_{q2} = 0$
 %beispiel fehlt
 
 Wir wollen im weiteren die NW-Berechnung verallgemeinern und Berechnungsverfahren mit Dualitätsbeziehungen gewinnen. So gewinnen wir die Astspannungsanalyse aus der Sehnenstromalanyse (Maschenstromanalyse). Für diese Betrachtungen benötigen wir eine dritte Matrix, die mit der Knotenmatrix verwandte Schnittmatrix S (das ist eine Superknotenmatrix). Wir sorgen dafür, dass alle NW-Vektoren und NW-Matrizen in der Reihenfolge
-{\red Astgrößen} - {\blue Sehnengrößen}
+{\color{red} Astgrößen} - {\color{blue} Sehnengrößen}
 geordnet werden.
 
 \[
@@ -1056,7 +1056,7 @@ vollst. Baum mit den Zweigen 1, 3 und 5
 %graph hier
 
 Wir sortieren die Zweige in der Reihenfolge
-{\red 1, 3, 5, }{\blue 2, 4, 6}
+{\color{red} 1, 3, 5, }{\color{blue} 2, 4, 6}
 und erden den Knoten 4.
 
 \paragraph{Schnittmatrix}
@@ -1073,9 +1073,9 @@ Kirchhoff: $I_1 = I_2 + I_4$
 \[
 	S =
 	\begin{pmatrix}
-		{\red 1} & {\red 0} & {\red 0} & | & {\blue -1} & {\blue -1} & {\blue 0} \\
-		{\red 0} & {\red 1} & {\red 0} & | & {\blue 1} & {\blue 1} & {\blue -1} \\
-		{\red 0} & {\red 0} & {\red 1} & | & {\blue 0} & {\blue -1} & {\blue 1}
+		{\color{red} 1} & {\color{red} 0} & {\color{red} 0} & | & {\color{blue} -1} & {\color{blue} -1} & {\color{blue} 0} \\
+		{\color{red} 0} & {\color{red} 1} & {\color{red} 0} & | & {\color{blue} 1} & {\color{blue} 1} & {\color{blue} -1} \\
+		{\color{red} 0} & {\color{red} 0} & {\color{red} 1} & | & {\color{blue} 0} & {\color{blue} -1} & {\color{blue} 1}
 	\end{pmatrix} =
 	\begin{pmatrix}
 		E & | & S_S
@@ -1097,16 +1097,16 @@ E: Einheistmatrix in der passenden Dimension
 \[
 	M = \begin{pmatrix} M_A & | & M_S \end{pmatrix}
 	\begin{pmatrix}
-		{\red 1} & {\red -1} & {\red 0} & | & {\blue 1} & {\blue 0} & {\blue 0} \\
-		{\red 1} & {\red -1} & {\red 1} & | & {\blue 0} & {\blue 1} & {\blue 0} \\
-		{\red 0} & {\red 1} & {\red -1} & | & {\blue 0} & {\blue 0} & {\blue 1}
+		{\color{red} 1} & {\color{red} -1} & {\color{red} 0} & | & {\color{blue} 1} & {\color{blue} 0} & {\color{blue} 0} \\
+		{\color{red} 1} & {\color{red} -1} & {\color{red} 1} & | & {\color{blue} 0} & {\color{blue} 1} & {\color{blue} 0} \\
+		{\color{red} 0} & {\color{red} 1} & {\color{red} -1} & | & {\color{blue} 0} & {\color{blue} 0} & {\color{blue} 1}
 	\end{pmatrix} = \begin{pmatrix} M_A & | & E \end{pmatrix}
 \]
 
 \[
 	H = \begin{pmatrix} H_A & | & H_S \end{pmatrix} =
 	\begin{pmatrix}
-		{\red -1} & {\red 0} & {\red 0} & | & {\blue 1} & {\blue 1} & {\blue 0} \\
+		{\color{red} -1} & {\color{red} 0} & {\color{red} 0} & | & {\color{blue} 1} & {\color{blue} 1} & {\color{blue} 0} \\
 		0 & -1 & -1 & | & -1 & 0 & 0 \\
 		1 & 1 & 0 & | & 0 & 0 & -1 \\
 	\end{pmatrix}
@@ -1173,7 +1173,7 @@ Fundamentalschnitte
 \[
 	S =
 	\begin{pmatrix}
-		{\red 1} & 0 & 0 & | & {\blue 0} & -1 & -1 \\
+		{\color{red} 1} & 0 & 0 & | & {\color{blue} 0} & -1 & -1 \\
 		0 & 1 & 0 & | & 1 & -1 & -1 \\
 		0 & 0 & 1 & | & -1 & 1 & 0
 	\end{pmatrix}
@@ -2257,13 +2257,178 @@ z.B.
 
 Eine Schaltung, in der beide Energiespeicher ihre Energie wechselseitig austauschen, bezeichnet man als Schwingkreis. Wir unterscheiden freie Schwingungen, d.h. Schwingungen ohne äußeren Einfluß, und erzwungene Schwingungen, die von aussen gesteuert werden.
 
-\paragraph{Reihenschwingkreis}
-%R + L + C mit \underline{U} und I
+\subsection{Reihenschwingkreis}
+
+\begin{pspicture}(9,3)
+	\pnode(1,1){A}
+	\pnode(2,1){B}
+	\pnode(4,1){C}
+	\pnode(6,1){D}
+	\pnode(8,1){E}
+	\pnode(9,1){F}
+	\resistor[labeloffset=0.5](B)(C){$R$}
+	\coil[dipolestyle=rectangle,labeloffset=0.5](C)(D){$L$}
+	\capacitor[labeloffset=0.8](D)(E){$C$}
+	\tension[labeloffset=0.5](2,2)(8,2){$\underline{U}$}
+	\wire[intensitylabel=$I$,arrows=o-](A)(B)
+	\wire[arrows=-o](E)(F)
+\end{pspicture}
+
 MGl: $\underline{U} = R \cdot \underline{I} + j\omega L \cdot \underline{I} + \frac1{j\omega C} \cdot \underline{I}$
 
-\paragraph{Parallelschwingkreis}
-{\red{Dualität}}
-%G || L || C 
+\subsection{Parallelschwingkreis}
+\textcolor{red}{Dualität}
+
+\begin{pspicture}(5,3)
+	\pnode(1,2){A}
+	\pnode(2,2){B}
+	\pnode(4,2){C}
+	\pnode(5,2){D}
+	\pnode(2,3){E}
+	\pnode(4,3){F}
+	\pnode(2,1){G}
+	\pnode(4,1){H}
+	\resistor[labeloffset=0.5](E)(F){$G$}
+	\coil[dipolestyle=rectangle,labeloffset=0.5](B)(C){$L$}
+	\capacitor[labeloffset=-0.8](G)(H){$C$}
+	\wire[arrows=o-](A)(B)
+	\wire[arrows=-o](C)(D)
+	\wire(E)(B)
+	\wire(G)(B)
+	\wire(F)(C)
+	\wire(H)(C)
+\end{pspicture}
+
 KGl: $\underline{I} = G \cdot \underline{U} + j\omega C \cdot \underline{U} + \frac1{j\omega L} \cdot \underline{U}$
+
+%% 07.02.2011
+Viele technische Ströme und Spannungen sind zwar periodisch, nicht aber sinusförmig:
+\begin{itemize}
+	\item Phasenanschnittssteuerungen
+	\item Rechteck- und Dreieckschwingungen
+	\item Übersteuerter Verstärker
+	\item nichtlinear verarbeitete sinusförmige Signale
+	\item ...
+\end{itemize}
+
+$U_e = \hat{U}_e \cdot sin(\omega_0 t + \phi_U_e)$
+$U_a = \hat{U}_a \cdot sin(\omega_0 t + \phi_U_a)$
+\begin{pspicture}(5,3)
+	\pnode(1,1){A}
+	\pnode(2,1){B}
+	\pnode(4,1){C}
+	\pnode(5,1){D}
+	\pnode(1,3){E}
+	\pnode(4,3){F}
+	\pnode(5,3){G}
+	\resistor[labeloffset=0.5](B)(C){$R$}
+	\capacitor[labeloffset=-0.8](C)(F){$C$}
+	\wire[arrows=o-](E)(F)
+	\wire[arrows=-o](F)(G)
+	\wire[arrows=o-](A)(B)
+	\wire[arrows=-o](C)(D)
+\end{pspicture}
+\[ U_e = \sum_{n=0}^\infty \hat{U}_e_n \cdot sin(\omega_0 n t + \phi_U_e_n) \]
+\[ U_a = \sum_{n=0}^\infty \hat{U}_a_n \cdot sin(\omega_0 n t + \phi_U_a_n) \]
+
+U = 1: Grundschwingung
+	\omega_0 = 2 \pi f_0, T = \frac1{f_0} = \frac{2\pi}{\omega_o}
+U > 0: Oberschwingungen
+
+Betragfrequenzgang: $|\underline{H}(\omega)| = \frac1{\sqrt{1 + \omega^2 R^2 C^2}}$ \\
+Phasenfrequenzgang: $\phi(\omega) = - arctan(\omega R C)$ \\
+Sinusreihe $u_e$ ist Eingangssignal, dann erhalten wir
+\[ u_a = \sum_{n=0}^\infty \frac1{\underbrace{\sqrt{1 + n\omega_0^2 R^2 C^2}}_{\hat{u}_a_n}} \cdot sin(n \omega_0 t + \underbrace{\phi_u_e_n - arctan(n \omega_0 R C)}_{\phi_u_a_n}) \]
+
+Das NW kann im Zeit- und im Frequenzbereich analysiert werden.
+
+Zeitbereich
+$RC \frac{d_U_a}{dt} + U_a = U_e$
+beliebige Signale
+
+Frequenzbereich
+periodische Signale
+\begin{enumerate}
+	\item Fourierreihenentwicklung des Eingangssignals
+	\item Anwendung der Übertragungsfaktoren $\underline{H}(n\omega_0)$
+	\item Fourierreihenentwicklung des Ausgangssignals
+\end{enumerate}
+
+%$U_a = U_e - U_R$, $U_R = R i_R = R C \frac{d_U_a}{dt}$
+%$ = U_e - RC \cdot \frac{d_U_a}{dt}$
+
+\section{Fourierreihen}
+Wir betrachten stückweise stetige Funktionen $f: \mathbb{R} \rightarrow \mathbb{R}$ mit der Periode $2\pi$, also $f(x+2\pi) = f(x)$. \\
+Die Funktion darf endlich viele Sprungstellen im $2\pi$-Intervall aufweisen, wobei die Grenzwerte existieren und endlich sein müssen. Die Funktion soll durch ein trigonometrisches Polynom vom Grad $N$
+\[ g_N(g) = \frac12 a_0 + \sum_{\nu = 1}^N a_\nu cos(\nu x) + b_\nu sin(\nu x)\]
+im quadratischen Sinne genähert werden, d.h.
+\[ \int_{-\pi}^{+\pi} (f(x) - g_N(x))^2 dx \not\eq Min. \]
+Lösung, Fourierkoeffizienten
+\begin{eqnarray*}
+	a_0 & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) dx \text{(Arithmetischer Mittelwert)} \\
+	a_\nu & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) cos(\nu x) dx, \nu = 1, \ldots, N \\
+	b_\nu & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) sin(\nu x) dx, \nu = 1, \ldots, N \\
+\end{eqnarray*}
+
+$f(x) ~= g_N(x)$: Approximation mit der $N$-ten Partialsumme der Fourierreihe $f(x) = g_N(x)$
+
+Bsp. Entwickle die Funktion $f(x) = x^2$, $0 \leq x \leq 2\pi$ in einer Fourierreihe mit der Periode $2\pi$.
+% Graph der Funktion
+Fourierkoeffizienten:
+\begin{eqnarray*}
+	a_0 & = & \frac1\pi \int_0^{2\pi} x^2 dx = \frac83 \pi^2 \\
+	a_\nu & = & \frac1\pi \int_0^{2\pi} x^2 cos(\nu x) dx = \frac4{\nu^2} \\
+	b_\nu & = & \frac1\pi \int_0^{2\pi} x^2 sin(\nu x) dx = \frac{-4\pi}{\nu} \\
+\end{eqnarray*}
+
+Die Fourierreihe lautet
+\[ f(x) = \frac86 \pi^2 + \sum_{\nu = 1}^\infty \left( \frac4{\nu^2} cos(\nu x) - \frac{4\pi}\nu sin(\nu x) \right) \]
+
+Was passiert bei der Unstetigkeitsstelle? \\
+Wir betrachten die Stelle $x = 0$
+\[ f(0) = \frac86 \pi^2 + \sum_{\nu=1}^\infty \frac4{\nu^2} = \frac86 \pi^2 + 4 \frac{\pi^2}6 = 2 \pi^2 \]
+
+Eine Funktion $f$ ist gerade, wenn gilt:
+\[ f(x) = f(-x) \]
+Bsp.: $x^{2n}, cos$
+
+Eine Funktion $f$ ist ungerade, wenn gilt:
+\[ f(x) = - f(-x) \]
+Bsp.: $x^{2n+1}, sin$
+
+Eien Funktion $f$ kann in einen geraden und einen ungeraden Anteil zerlegt werden:
+\begin{eqnarray*}
+	f(x) & = & g(x) + u(x) \\
+	g(x) & = & \frac12 (f(x) + f(-x)) \\
+	u(x) & = & \frac12 (f(x) - f(-x))
+\end{eqnarray*}
+
+Bsp.:
+\[ f(x) = \left\{ \array{l}{2, 0 < x < 3 \\ -2, -3 < x < 0} \right. \]
+\left.
+\begin{itemize}
+	\item alternierend
+	\item ungerade
+\end{itemize}
+\right\} $a_\nu = 0, b_{2\nu} = 0$
+
+\[ b_\nu = \frac26 \int_{-3}^0 (-2) sin(\frac{2\pi}6 \nu x) dx + \frac26 \int_0^3 2 \cdot sin(\frac{2\pi}6 \nu x) dx = \frac2{\pi\nu} ( 1 - cos(-\pi\nu) - \frac2{\pi\nu}(cos(\pi\nu) - 1) = \frac8{\pi\nu}, \nu ungerade\]
+\[ cos(-\pi\nu) = cos(\pi\nu) = \left\{ \begin{array}{ll} 1, & \nu = 0, 2, 4, \ldots \\ -1, & \nu = 1, 3, 5, \ldots \end{array} \right.\]
+
+\[ f(x) = \frac8{\pi} \sum_{\nu = 0}^\infty \frac1{2\nu + 1} sin(\frac{\pi}3 ( 2\nu + 1) x) \]
+
+\subsection{Differeniation und Integration von Fourierreihen}
+Differentiation
+\[ d(x) = \frac{d}{dx} f(x) = \frac{d}{dx} \left( \frac{a_0}2 + \sum_{\nu = 1}^\infty a_\nu cos(\nu x) + b_\nu sin(\nu x) \right)
+	= \sum_{\nu = 1}^\infty -a_\nu \nu sin(\nu x) + b_\nu \nu cos(\nu x) = \sum_{\nu = 1}^\infty a_\nu* cos(\nu x) + b_\nu* sin(\nu x) \]
+mit $a_\nu* = \nu b_\nu$ und $b_\nu* = - \nu a_\nu$
+
+Bsp.
+% graph einer komischen Rechtecksfunktion (i_C(t))
+% und u_c(t) als dreiecksfunktion durch (0,0) und je halbe höhe von i_C(t)
+$i_C(t)$ = Kondensatorstrom \\
+$i_C(t) = \sum_{\nu = 1}^\infty a_\nu cos(\nu \omega t) =_{Bronstein} \left\{ \begin{array}{ll} \frac{4\hat{i}}{\nu \pi}, & \nu = 1, 5, 9, \ldots \\ \frac{-4\hat{i}}{\nu \pi}, & 'nu = 3, 7, 11, \ldots \end{array} \right.$
+
+Die Kondensatorspannung wird mit $U_c(t) = \frac1c \int i_c(t) dt = \frac1c \int \sum_{\nu = 1}^\infty a_\nu cos(\nu \omega t) dt = \frac1c \sum_{\nu = 1}^\infty cos(\nu \omega t) dt = \frac1c \cdot \sum_{\nu = 1}^\infty \frac{a_\nu}{\nu \omega} \cdot sin(\nu \omega t) = \frac1c \sum_{\nu = 1}^\infty \underbrace{\frac{4\hat{i}}{\nu \omega} \underbrace{sin(\frac{\nu \pi}2)}_{=1 für \nu = 1,5,7, -1 für \nu = 3,7,11} \frac1{\nu \omega}}_{b_\nu} sin(\nu \omega t)$ berechnet.
 
 \end{document}
