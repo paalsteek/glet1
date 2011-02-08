@@ -1,6 +1,7 @@
 \documentclass[german]{article}
 
 \usepackage{amsmath}
+\usepackage{amsfonts}
 \usepackage{pst-circ}
 \usepackage[utf8]{inputenc}
 \usepackage{ulem}
@@ -1855,8 +1856,8 @@ $\frac{\delta U_L}{U_L} = \frac{\delta U_0}{U_L} \frac{1}{\frac{R_V}{R_L} + \fra
 %diagramm siehe daniel
 
 \begin{eqnarray*}
-	i(t) & = & \hat{i} \cdot sin(\omega t + \phi_i) \\
-	u(t) & = & u^ \cdot sin(\omega t + \phi_u) \\
+	i(t) & = & \hat{i} \cdot \sin(\omega t + \phi_i) \\
+	u(t) & = & u^ \cdot \sin(\omega t + \phi_u) \\
 	\phi = \phi_u - \phi_i \text{: Phasenwinkel}
 \end{eqnarray*}
 $\phi_i, \phi_u$: Winkel zum \underline{nächst}gelegenen Nulldurchgang mit anwachsender Funktion.
@@ -1869,13 +1870,13 @@ $\phi > 0$: Der Strom eilt der Spannung nach oder die Spannung eilt dem Strom vo
 
 \subsection{Mittelwerte von Sinusgrößen}
 Arith. Mittelwert:
-	\[ \tilde{i} = \frac1T \int_0^1 \hat{i} \cdot sin(\omega t) dt = \frac{\hat{i}}T \left( \left. \frac{- cos(\omega t)}\omega \right|_0^1 \right) = \frac{\hat{i}}T \left( cos(0) - \underbrace{cos(\omega T)}_{cos(2\pi)}\right) = 0 \]
+	\[ \tilde{i} = \frac1T \int_0^1 \hat{i} \cdot \sin(\omega t) dt = \frac{\hat{i}}T \left( \left. \frac{- \cos(\omega t)}\omega \right|_0^1 \right) = \frac{\hat{i}}T \left( \cos(0) - \underbrace{cos(\omega T)}_{cos(2\pi)}\right) = 0 \]
 
 Gleichrichtwert:
-	\[ | \tilde{i} | = \frac1T \int_0^1 |i(t)| dt = \frac1{\frac{T}2} \int_0^{\frac{T}2} \hat{i} sin(\omega t) dt = \ldots = \frac{2\hat{i}}\pi = 0,6366 \hat{i} \]
+	\[ | \tilde{i} | = \frac1T \int_0^1 |i(t)| dt = \frac1{\frac{T}2} \int_0^{\frac{T}2} \hat{i} \sin(\omega t) dt = \ldots = \frac{2\hat{i}}\pi = 0,6366 \hat{i} \]
 
 Effektivwert:
-	\[ I = \sqrt{ \frac1T \int_0^T \left( \hat{i} \cdot sin(\omega t) \right)^2 dt } = \sqrt{ \frac1T \underbrace{\int_0^T \frac{{\hat{i}}^2}2 dt}_{\frac{\hat{i}}2 \cdot T} - \underbrace{\frac1T \int_0^T \frac12 {\hat{i}}^2 \cdot cos(2\omega t) dt}_{=0 \text{arith. Mittelwert einer Wechselgröße}} } = \frac{\hat{i}}{\sqrt{2}} \approx 0,7071 \hat{i}\]
+	\[ I = \sqrt{ \frac1T \int_0^T \left( \hat{i} \cdot \sin(\omega t) \right)^2 dt } = \sqrt{ \frac1T \underbrace{\int_0^T \frac{{\hat{i}}^2}2 dt}_{\frac{\hat{i}}2 \cdot T} - \underbrace{\frac1T \int_0^T \frac12 {\hat{i}}^2 \cdot \cos(2\omega t) dt}_{=0 \text{arith. Mittelwert einer Wechselgröße}} } = \frac{\hat{i}}{\sqrt{2}} \approx 0,7071 \hat{i}\]
 	Spitzenwertfaktor: $\xi = \frac{\hat{i}}I = \sqrt{2}$ \\
 	Formfaktor: $F = \frac{I}{|\tilde{i}|} = \frac{\pi}{2 \sqrt{2}} = 1,111$
 
@@ -1889,7 +1890,7 @@ Zwischen welchen Grenzen läßt sich der Effektivwert $I$ einstellen, wenn $\alp
 $I(\alpha = 0) = 1,56 A$, $I(\alpha = \pi \frac{150}{180}) = 0,26A$
 
 Parameter sinusförmiger Größen, Zeigerdiagramme
-\[ i(t) = \hat{i} \cdot sin(\omega t + \phi i) \]
+\[ i(t) = \hat{i} \cdot \sin(\omega t + \phi i) \]
 Parameter: Kreisfrequenz $\omega$, $\omega = 2 \pi f$, $f:$ Frequenz
 Spitzenwert $\hat{i}$
 	$\rightarrow$ Effektivwert $I = \frac{\hat{i}}{\sqrt{2}}$
@@ -1901,7 +1902,7 @@ Phasenwinkel $\phi_i$
 Die symbolische Darstellung erfolgt mit dem Zeigerdiagramm.
 
 Wir analysieren in GLET1 {\it lineare} NW und gehen davon aus, dass {\it alle} Quellen {\it sinusförmige} Spannungen oder Ströme mit {\it derselben Frequenz} erzeugen. Dann sind alle Zweigspannungen und Zweigströme sinusförmig mit ebendieser Frequenz.
-\[ \sum_{\nu} \hat{u}_{\nu} sin( \omega_0 t + \phi_{\nu} ) = \hat{u} \cdot sin( \omega_0 t + \phi ) \]
+\[ \sum_{\nu} \hat{u}_{\nu} \sin( \omega_0 t + \phi_{\nu} ) = \hat{u} \cdot \sin( \omega_0 t + \phi ) \]
 komplex:
 \[ \sum_{\nu} a_{\nu} e^{j(\omega_0 t + \phi_{\nu})} = \sum_{\nu} a_{\nu} e^{...} \] %TODO
 
@@ -1912,10 +1913,10 @@ Gegeben sind zwei Spannungen mit gleicher Frequenz und wir berechnen die Summens
 
 \begin{eqnarray}
 	u_g(t) & = & u_1(t) + u_2(t) \\
-	\hat{u}_g \cdot sin(\omega t + \phi_g) & = & \hat{u}_1 \cdot sin(\omega t + \phi_1) + \hat{u}_2 \cdot sin(\omega t + \phi_2)
+	\hat{u}_g \cdot \sin(\omega t + \phi_g) & = & \hat{u}_1 \cdot \sin(\omega t + \phi_1) + \hat{u}_2 \cdot \sin(\omega t + \phi_2)
 \end{eqnarray}
 nach ermüdender Rechnung erhält man
-\[ \hat{u}_g = \sqrt{\hat{u}_1^2 + \hat{u}_2^2 + 2 \hat{u}_1 \hat{u}_2 cos(\phi_2 - \phi_1)}, \phi_g = arctan\left( \frac{\hat{u}_1 \cdot sin(\phi_1) + \hat{u}_2 \cdot sin(\phi_2)}{\hat{u}_1 \cdot cos(\phi_1) + \hat{u}_2 \cdot cos(\phi_2) } \right) \]
+\[ \hat{u}_g = \sqrt{\hat{u}_1^2 + \hat{u}_2^2 + 2 \hat{u}_1 \hat{u}_2 \cos(\phi_2 - \phi_1)}, \phi_g = \arctan\left( \frac{\hat{u}_1 \cdot \sin(\phi_1) + \hat{u}_2 \cdot \sin(\phi_2)}{\hat{u}_1 \cdot \cos(\phi_1) + \hat{u}_2 \cdot \cos(\phi_2) } \right) \]
 
 Spitzenwertzeiger $\underline{\hat{u}}$ \\
 Effektivwertzeiger $\underline{U} = \frac{\underline{\hat{u}}}{\sqrt{2}}$
@@ -1925,22 +1926,22 @@ Bsp.
 a) und b) schaltung mit 2 Spannungsquellen $u_1$ und $u_2$, bei a gleiche richtung, bei b entgegengesetzt
 
 Zur Vereinfachung der Rechnung setzen wir einen Winkel zu Null, z.B. $\phi_1 = 0$ \\
-a) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(60\degree)} = 70V \]
-\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(60\degree)}{50 + 30 \cdot cos(60\degree)} \right) = 21,79\degree \]
+a) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 \cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot \cos(60\degree)} = 70V \]
+\[ \phi_{1g} = \arctan\left( \frac{50 \cdot \sin(\phi_1) + 30 \cdot \sin(\phi_2)}{50 \cdot \cos(\phi_1) + 30 \cdot \cos(\phi_2)} \right) = \arctan\left( \frac{30 \cdot \sin(60\degree)}{50 + 30 \cdot \cos(60\degree)} \right) = 21,79\degree \]
 
-b) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot cos(-120\degree)} = 43,59V \]
-\[ \phi_{1g} = arctan\left( \frac{50 \cdot sin(\phi_1) + 30 \cdot sin(\phi_2)}{50 \cdot cos(\phi_1) + 30 \cdot cos(\phi_2)} \right) = arctan\left( \frac{30 \cdot sin(-120\degree)}{50 + 30 \cdot cos(-120\degree)} \right) = -36,59\degree \]
+b) \[U_g = \sqrt{U_1^2 + U_2^2 + 2 U_1 U_2 \cos(\phi_2 - \phi_1)} = \sqrt{50^2 + 30^2 + 2 \cdot 50 \cdot 30 \cdot \cos(-120\degree)} = 43,59V \]
+\[ \phi_{1g} = \arctan\left( \frac{50 \cdot \sin(\phi_1) + 30 \cdot \sin(\phi_2)}{50 \cdot \cos(\phi_1) + 30 \cdot \cos(\phi_2)} \right) = \arctan\left( \frac{30 \cdot \sin(-120\degree)}{50 + 30 \cdot \cos(-120\degree)} \right) = -36,59\degree \]
 
 \subsection{Differentiation und Integration von Sinusgrößen}
 \paragraph{Differentiation nach der Zeit}
-\[ f(t) = \frac{d}{dt} ( \hat{i} \cdot sin(\omega t + \phi_i) ) = \omega \cdot \hat{i} \cdot cos(\omega t + \phi_i) = \omega \cdot \hat{i} \cdot sin(\omega t + \phi_i + \frac{\pi}2 ) \]
+\[ f(t) = \frac{d}{dt} ( \hat{i} \cdot \sin(\omega t + \phi_i) ) = \omega \cdot \hat{i} \cdot \cos(\omega t + \phi_i) = \omega \cdot \hat{i} \cdot \sin(\omega t + \phi_i + \frac{\pi}2 ) \]
 \begin{itemize}
 	\item Wir erhalten eine Sinusschwingung mit derselben Frequenz, die der ursprünglich um $\frac{\pi}2$ oder $90\degree$ voreilt.
 	\item Die Amplitude entspricht dem $\omega$-fachen der Ursprungsamplitude.
 \end{itemize}
 
 \paragraph{Integration über der Zeit}
-\[ g(t) = \int \hat{i} \cdot sin(\omega t + \phi_i) dt = \frac{-1}{\omega} \hat{i} cos(\omega t + \phi_i) = \frac1{\omega} \hat{i} \cdot sin(\omega t + \phi_i - \frac{\pi}2) \]
+\[ g(t) = \int \hat{i} \cdot \sin(\omega t + \phi_i) dt = \frac{-1}{\omega} \hat{i} \cos(\omega t + \phi_i) = \frac1{\omega} \hat{i} \cdot \sin(\omega t + \phi_i - \frac{\pi}2) \]
 \begin{itemize}
 	\item Wir erhalten eine Sinusschwingung mit der selben Frequenz, die der ursprünglichen um $\frac{\pi}2$ oder $90\degree$ nacheilt.
 	\item Die Amplitude entspricht dem $\left( \frac1{\omega} \right)$-fachen der Ursprungsamplitude.
@@ -1956,7 +1957,7 @@ $[L] = \frac{V_s}A = H$
 Allg. $u = L \cdot \frac{di}{dt}$ $i = \frac1L \int u dt$
 
 Sinusförmige Größen
-Sei $i(t) = \hat{i} \cdot sin(\omega t + \phi_i)$, dann ist $u(t) = L \cdot \frac{d}{dt} i(t) = L \cdot \omega \cdot \hat{i} \cdot sin(\omega t + \phi_i + \frac{\pi}2) = \hat{u} \cdot sin(\omega t + \phi_u)$, $\hat{u} = L \omega \hat{i}$, $\phi_u = \phi_i + \frac{\pi}2$
+Sei $i(t) = \hat{i} \cdot \sin(\omega t + \phi_i)$, dann ist $u(t) = L \cdot \frac{d}{dt} i(t) = L \cdot \omega \cdot \hat{i} \cdot \sin(\omega t + \phi_i + \frac{\pi}2) = \hat{u} \cdot \sin(\omega t + \phi_u)$, $\hat{u} = L \omega \hat{i}$, $\phi_u = \phi_i + \frac{\pi}2$
 
 Kondensator, Kapazität
 %konsensator schaltzeichen
@@ -1966,7 +1967,7 @@ $i = c \cdot \frac{du}{dt}$
 $u = \frac1c \cdot \int i dt$
 
 Sinusförmige Größen
-Sei $u(t) = \hat{u} \cdot sin(\omega t + \phi_u)$, dann ist $i(t) = \hat{u} \cdot c \cdot \omega \cdot sin(\omega t + \phi_u + \frac{\pi}2) = \hat{i} \cdot sin(\omega t + \phi_i)$ mit $\hat{i} = \hat{u} \cdot c \cdot \omega$ und $\phi_i = \phi_u + \frac{\pi}2$
+Sei $u(t) = \hat{u} \cdot \sin(\omega t + \phi_u)$, dann ist $i(t) = \hat{u} \cdot c \cdot \omega \cdot \sin(\omega t + \phi_u + \frac{\pi}2) = \hat{i} \cdot \sin(\omega t + \phi_i)$ mit $\hat{i} = \hat{u} \cdot c \cdot \omega$ und $\phi_i = \phi_u + \frac{\pi}2$
 
 Rechenbeispiel
 %u(t) + i(t) + ((i_R(t) + R) || (i_L(t) + L))
@@ -1982,28 +1983,28 @@ kGl: $i(t) = i_L(t) + i_R(t)$
 $u(t) = \hat{u} \cdot(\omega t)$, $t \geq 0$, $i_L(t=0) = 0$
 
 \begin{enumerate}
-	\item \[ i_R(t) = \frac{u(t)}{R} = \frac{\hat{u} \cdot sin(\omega t)}{R} \]
-				\[ i_L(t) = \frac1L \int u(t) dt = \frac{\hat{u}}{L} \int sin(\omega t) dt = \frac{-\hat{u}}{\omega L} cos(\omega t) \]
-				\[ i(t) = \frac{\hat{u}}R sin(\omega t) - \frac{\hat{u}}{\omega L} cos(\omega t) \]
-				\[ p(t) = u(t) i(t) = \hat{u} \cdot sin(\omega t) \left( \frac{\hat{u}}R sin(\omega t) - \frac{\hat{u}}{\omega L} cos(\omega t) \right) = \frac{\hat{u}^2}R sin^2(\omega t) - \frac{\hat{u}^2}{2 \omega L} sin(2 \omega t) = \frac{\hat{u}^2}R \cdot \frac12 (Gleichanteil) - \frac{\hat{u}^2}{2R} cos(2 \omega t) (Wechselanteil)  - \frac{\hat{u}^2}{2\omega L} sin(2 \omega t) (Wechselanteil) \]
+	\item \[ i_R(t) = \frac{u(t)}{R} = \frac{\hat{u} \cdot \sin(\omega t)}{R} \]
+				\[ i_L(t) = \frac1L \int u(t) dt = \frac{\hat{u}}{L} \int \sin(\omega t) dt = \frac{-\hat{u}}{\omega L} \cos(\omega t) \]
+				\[ i(t) = \frac{\hat{u}}R \sin(\omega t) - \frac{\hat{u}}{\omega L} \cos(\omega t) \]
+				\[ p(t) = u(t) i(t) = \hat{u} \cdot \sin(\omega t) \left( \frac{\hat{u}}R \sin(\omega t) - \frac{\hat{u}}{\omega L} \cos(\omega t) \right) = \frac{\hat{u}^2}R \sin^2(\omega t) - \frac{\hat{u}^2}{2 \omega L} \sin(2 \omega t) = \frac{\hat{u}^2}R \cdot \frac12 (Gleichanteil) - \frac{\hat{u}^2}{2R} \cos(2 \omega t) (Wechselanteil)  - \frac{\hat{u}^2}{2\omega L} \sin(2 \omega t) (Wechselanteil) \]
 	\item \[ P = \frac1{\pi} \int_{t_0}^{t_0 + T} p(t) dt = \frac{\hat{u}^2}{2R} = \frac{U^2}R \]
 	\item Scheinleistung in der Induktivität
-		\[ S = U \cdot I = \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \hat{u}^2 \cdot sin^2(\omega t) dt} \cdot \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \frac{\hat{u}^2}{(\omega L)^2} cos^2(\omega t) dt} \cdot \frac{\hat{u}}{\sqrt{2}} \cdot \frac{\hat{u}}{\sqrt{2} \cdot \omega \cdot L} = \frac{U^2}{\omega L} \]
+		\[ S = U \cdot I = \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \hat{u}^2 \cdot \sin^2(\omega t) dt} \cdot \sqrt{ \frac1T \int_{t_0}^{t_0 + T} \frac{\hat{u}^2}{(\omega L)^2} \cos^2(\omega t) dt} \cdot \frac{\hat{u}}{\sqrt{2}} \cdot \frac{\hat{u}}{\sqrt{2} \cdot \omega \cdot L} = \frac{U^2}{\omega L} \]
 		$\omega L = |Z_L|$ Betrag der Impedanz der Induktivität
 \end{enumerate}
 
 \paragraph{Komplexe Zeiger}
-Euler: $\underline{z} = e^{jx} = cos(x) + j \cdot sin(x)$
+Euler: $\underline{z} = e^{jx} = \cos(x) + j \cdot \sin(x)$
 $Re\{\underline{z}\} = \frac12 (\underline{z} + \underline{z}^*)$
 $cos(x) = \frac12 (e^{jx} + e^{-jx})$
 $Im\{\underline{z}\} = \frac1{2j} (e^{jx} - e^{-jx})$
 $sin(x) = \frac1{2j} (e^{jx} - e^{-jx})$
 
 De Moivre:
-$(cos(\phi) + j sin(\phi))^n = cos(n\phi) + j \cdot sin(n \phi)$
+$(cos(\phi) + j \sin(\phi))^n = \cos(n\phi) + j \cdot \sin(n \phi)$
 
 komplexe Schwingung $\underline{u} = \hat{u} \cdot e^{j(\omega t + \phi_u)}$
-Zeitfunktion $u(t) = \hat{u} \cdot sin(\omega t + \phi_u) = Im\{\underline{u}\}$
+Zeitfunktion $u(t) = \hat{u} \cdot \sin(\omega t + \phi_u) = Im\{\underline{u}\}$
 
 Differentiation nach der Zeit $\rightarrow$ Multiplikation mit $j \omega = \omega \cdot e^{j \frac{\pi}2}$
 Integration über der Zeit $\rightarrow$ Multiplikation mit $\frac1{j \omega} = -j \frac1{\omega} = \frac1{\omega} e^{-j \frac{\pi}2}$
@@ -2023,12 +2024,12 @@ $\underline{z_1} = 0,3 + j0,4$ \\
 $\underline{z_2} = 1,2 - j1,6$
 
 Bsp.: Für $f = 50 Hz$ und $\phi_u = 60 \degree$ sollen bei $U = 230V$ der Spitzenwert $\hat{u}$ berechnet und die komplexe Darstellung angegeben werden. Zudem soll $u(t)$ an der Stelle $t = 12ms$ berechnet werden.
-reelle Darstellung: $u(t) = \hat{u} \cdot sin(\omega t + \phi_u)$
+reelle Darstellung: $u(t) = \hat{u} \cdot \sin(\omega t + \phi_u)$
 komplexe Darstellung: $\underline{u} = \hat{u} \cdot e^{j(\omega t + \phi_u)}$
 Zusammenhang: $u(t) = Im\{\underline{u}\}$
 \[ \hat{u} = \sqrt{2} \cdot U = 325,3V \]
 \[ \underline{u} = 325,3V \cdot e^{j(2\pi \cdot 50 \cdot \frac1s \cdot t - \frac{\pi}3)} = 325,3V \cdot e^{j(314 \frac1s - \frac{\pi}3)} \]
-\[ t(t = 12ms) = Im\{ 325,3V \cdot e^{j(314 \frac{0,012s}{s} \cdot \frac{\pi}3)}\} = 325,3V \cdot sin(314 \cdot 0,012 - \frac{\pi}3) = 132,3V \]
+\[ t(t = 12ms) = Im\{ 325,3V \cdot e^{j(314 \frac{0,012s}{s} \cdot \frac{\pi}3)}\} = 325,3V \cdot \sin(314 \cdot 0,012 - \frac{\pi}3) = 132,3V \]
 
 %% 21.01.2011
 \subsection{Komplexe Größen zur Analyse von Sinusstrom-NW}
@@ -2047,17 +2048,17 @@ $\phi_u, \phi_i$: Nullphasenwinkel
 
 \paragraph{Komplexe Widerstände (Impedanzen) und komplexe Leitwerte (Admittanzen)}
 \[ \underline{z} = \frac{\underline{U}}{\underline{I}} = \frac{U e^{j\phi_u}}{I e^{j\phi_i}} = \frac{U}{I} e^{j(\phi_u - \phi_i)} = \frac{U}{I} e^{j\phi} = z e^{j\phi} \hspace{10pt} z = \frac{U}{I} \]
-\[ \underline{z} = R + jX, |\underline{z}| = z = \sqrt{R^2 + X^2}, \phi = arctan\left( \frac{X}{U} \right) \]
+\[ \underline{z} = R + jX, |\underline{z}| = z = \sqrt{R^2 + X^2}, \phi = \arctan\left( \frac{X}{U} \right) \]
 
 $|\underline{z}| = z = \sqrt{R^2 + X^2}$: Scheinwiderstand \\
-$R = \underline{z} cos(\phi) = Re\{\underline{z}\}$: Wirkwiderstand \\
-$X = \underline{z} sin(\phi) = Im\{\underline{z}\}$: Blindwiderstand, Reaktanz
+$R = \underline{z} \cos(\phi) = Re\{\underline{z}\}$: Wirkwiderstand \\
+$X = \underline{z} \sin(\phi) = Im\{\underline{z}\}$: Blindwiderstand, Reaktanz
 
 Komplexer Leitwert: $\underline{y} = \frac{\underline{I}}{\underline{U}} = \frac{I \cdot e^{j\phi_i}}{U \cdot e^{j\phi_u}} = \frac{I}{U} e^{j(\phi_i - \phi_u)} = \frac{I}{U} e^{-j\phi} = \frac{I}{U} e^{j\phi_y}$
-Kartesische Koordinaten: $\underline{y} = G + jB$, $\phi_y = arctan\left( \frac{R}{G} \right)$ \\
+Kartesische Koordinaten: $\underline{y} = G + jB$, $\phi_y = \arctan\left( \frac{R}{G} \right)$ \\
 $\underline{y}$: komplexer Leitwert, $Y = |\underline{y}| = \sqrt{G^2 + R^2}$: Scheinleitwert \\
-$G = Re\{\underline{y}\} = \underline{y} cos(\phi_y)$: Wirkleitwert, Konduktanz \\
-$B = Im\{\underline{y}\} = \underline{y} sin(\phi_y)$: Blindleitwert, Suszeptanz
+$G = Re\{\underline{y}\} = \underline{y} \cos(\phi_y)$: Wirkleitwert, Konduktanz \\
+$B = Im\{\underline{y}\} = \underline{y} \sin(\phi_y)$: Blindleitwert, Suszeptanz
 
 Zusammenhang zwischen $\underline{z}$ und $\underline{y}$: $\underline{y} = \frac1{\underline{y}} = \frac1z e^{-j\phi}$, $\underline{y} = \frac1z e^{j\phi_y}$ mit $\phi_y = -\phi$
 
@@ -2117,15 +2118,15 @@ Reihenschaltungen
 		% \underline{I} + R + L
 		MGl: $\underline{U} = \underline{U}_R + \underline{U}_L = R \underline{I} + j\omega L \underline{I} = \underline{I} (R + j\omega L)$ \\
 		Impedanz: $\underline{Z} = R + j \omega L = Z e^{j\phi}$ \\
-		Scheinwiderstand: $Z = \frac{U}{I} = \sqrt{R^2 + (\omega L)^2}$, $\phi = arctan\left( \frac{\omega L}{R} \right)$ \\
+		Scheinwiderstand: $Z = \frac{U}{I} = \sqrt{R^2 + (\omega L)^2}$, $\phi = \arctan\left( \frac{\omega L}{R} \right)$ \\
 		Admittanz: $\underline{Y} = \frac1{\underline{Y}} = \frac1{R + j\omega L} = \frac{R}{R^2 + (\omega L)^2} + j \frac{-\omega L}{R^2 + (\omega L)^2}$ \\
 		Komplexleistung: $\underline{S} = P + j Q = RI^2 + j\omega L I^2 = \frac{R}{Z^2} - j\frac{\omega L}{Z^2}$ \\
-		Leistungsfaktor: $\frac{P}{S} = cos(\phi) = \frac{R}{\sqrt{R^2 + (\omega L)^2}}$
+		Leistungsfaktor: $\frac{P}{S} = \cos(\phi) = \frac{R}{\sqrt{R^2 + (\omega L)^2}}$
 	\item RC-Reihenschaltung
 		% \underline{I} + \underline{U}_R + \underline{U}_C
 		MGl: $\underline{U} = \underline{U}_R + \underline{U}_C = R\underline{I} + \frac1{j\omega C} \underline{I}$ \\
 		Impedanz: $\underline{Z} = R + j \frac{-1}{\omega C} = \sqrt{R^2 + \left( \frac1{\omega C} \right)^2} e^{j\phi}$ \\
-		Scheinwiderstand: $Z = \sqrt{R^2 + \left( \frac1{\omega C} \right)^2}$, $\phi = - arctan\left( \frac1{\omega CR} \right)$ \\
+		Scheinwiderstand: $Z = \sqrt{R^2 + \left( \frac1{\omega C} \right)^2}$, $\phi = - \arctan\left( \frac1{\omega CR} \right)$ \\
 		Admittanz: $\underline{Y} = \frac1{\underline{Z}} = \frac1{R - j \frac1{\omega C}} = \frac{R}{R^2 + \left( \frac1{\omega C} \right)^2} + j \frac{\frac1{\omega C}}{R^2 + \left( \frac1{\omega C} \right)^2}$ \\
 		Komplexleistung: $\underline{S} = R I^2 = \frac{j}{\omega C} I^2 = \sqrt{R^2 + \left( \frac1{\omega C} \right)^2} I^2 e^{j\phi}$
 	\item RLC-Reihenschaltung
@@ -2133,7 +2134,7 @@ Reihenschaltungen
 		MGl: $\underline{U} = \underline{U}_R + \underline{U}_L + \underline{U}_C = R \underline{I} + j \omega L \underline{I} + \frac1{j \omega C} \underline{I}$ \\
 		$| \omega L | > | \frac1{\omega C} |$ \\
 		Impedanz: $\underline{Z} = R + j(\omega L - \frac1{\omega C})$ \\
-		Scheinwiderstand: $Z = \sqrt{R^2 + \left( \omega L - \frac1{\omega C} \right)^2}$, $\phi = arctan\left( \frac{\omega L - \frac1{\omega C}}R \right)$ \\
+		Scheinwiderstand: $Z = \sqrt{R^2 + \left( \omega L - \frac1{\omega C} \right)^2}$, $\phi = \arctan\left( \frac{\omega L - \frac1{\omega C}}R \right)$ \\
 		Admittanz: $\underline{Y} = \frac{R}{R^2 + \left( \omega L - \frac1{\omega C} \right)^2} + j \frac{\frac1{\omega C} - \omega L}{R^2 + \left( \omega L - \frac1{\omega C} \right)^2}$ \\
 		Komplexleistung: $\underline{S} = P + j(Q_L + Q_C) = RI^2 + jI^2 \left( \omega L - \frac1{\omega C} \right)$ \\
 		Leistungsfaktor: $cos(\phi) = \frac{R}{\sqrt{R^2 + \left( \omega L - \frac1{\omega C} \right)^2}}$
@@ -2151,14 +2152,14 @@ Parallelschaltungen
 		KGl: $\underline{I} = \underline{I}_G + \underline{I}_C = \underline{U} G + \underline{U} j \omega G$ \\
 		Komplexer Leitwert: $\underline{Y} = G + j \omega C$ \\
 		Impedanz: $\underline{Z} = \frac{G}{G^2 + ( \omega C )^2} + j \frac{- \omega C}{G^2 + (\omega C)^2} = \frac{G}{Y^2 = \underline{Y}\underline{Y}^*} + j \frac{- \omega C}{Y^2}$ \\
-		Scheinleitwert: $Y = \sqrt{G^2 + (\omega C)^2}$, $\phi_Y = - \phi = arctan\left( \frac{\omega C}{G} \right)$ \\
+		Scheinleitwert: $Y = \sqrt{G^2 + (\omega C)^2}$, $\phi_Y = - \phi = \arctan\left( \frac{\omega C}{G} \right)$ \\
 		komplexe Leistung: $\underline{S} = GU^2 - j\omega C U^2 = Y^{\it *} U^2 = \sqrt{G^2 + \omega^2 C^2} U^2 \cdot e^{\it j\phi_y}$ %da steht noch irgendwas \\
 		Leistungsfaktor: $cos(\phi) = \frac{G}{\sqrt{G^2 + (\omega C)^2}}$
 	\item GL-Parallelschaltung
 		%\underline{I} + (G || L)
 		KGl: $\underline{I} = \underline{I}_G + \underline{I}_L = \underline{U}G + \frac1{j\omega L} \underline{U}$ \\
 		Admittanz: $\underline{Y} = G - j \frac1{\omega L}$ \\
-		Scheinleitwert: $Y = \sqrt{G^2 + \frac1{(\omega L)^2}}$, $\phi_Y = arctan\left( \frac{-1}{G\omega L} \right)$ \\
+		Scheinleitwert: $Y = \sqrt{G^2 + \frac1{(\omega L)^2}}$, $\phi_Y = \arctan\left( \frac{-1}{G\omega L} \right)$ \\
 		Impedanz: $\underline{Z} = \frac{G}{Y^2} + j \frac{\frac1{\omega L}}{Y^2}$ \\
 		komplexe Leistung: $\underline{S} = \underline{Y}^{\it *} U^2 = \sqrt{G^2 + \frac1{(\omega L)^2}} U^2 e^{{\it -}j\phi_Y}$ \\
 		Leistungsfaktor: $cos(\phi) = \frac{G}{\sqrt{G^2 + \frac1{(\omega L)^2}}}$
@@ -2166,7 +2167,7 @@ Parallelschaltungen
 		%\underline{I} + (G || L || C)
 		KGl: $\underline{I} = \underline{I}_G + \underline{I}_C = \underline{I}_L = G \underline{U} + j \omega C \underline{U} + \frac1{j \omega L} \underline{U} = G\underline{U} + j \left(\omega C + \frac1{\omega L}\right)\underline{U}$ \\
 		Admittanz: $\underline{Y} = G + j\left( \omega C - \frac1{\omega L} \right)$ \\
-		Scheinleitwert: $Y = \sqrt{G^2 + \left( \omega C - \frac1{\omega l} \right)^2}$, $\phi_Y = arctan\left( \frac{\omega C - \frac1{\omega L}}{G} \right)$ \\
+		Scheinleitwert: $Y = \sqrt{G^2 + \left( \omega C - \frac1{\omega l} \right)^2}$, $\phi_Y = \arctan\left( \frac{\omega C - \frac1{\omega L}}{G} \right)$ \\
 		Impedanz: $\underline{Z} = \frac{G}{Y^2} + j \frac{\frac1{\omega L} - \omega C}{Y^2}$ \\
 		komplexe Leistung: $\underline{S} = GU^2 + j U^2 \left( \frac1{\omega L} - \omega C \right)$ \\
 		Leistungsfaktor: $cos(\phi) = \frac{G}{\sqrt{G^2 + \left( \frac1{\omega L} - \omega C \right)^2}}$
@@ -2311,8 +2312,8 @@ Viele technische Ströme und Spannungen sind zwar periodisch, nicht aber sinusf�
 	\item ...
 \end{itemize}
 
-$U_e = \hat{U}_e \cdot sin(\omega_0 t + \phi_U_e)$
-$U_a = \hat{U}_a \cdot sin(\omega_0 t + \phi_U_a)$
+$U_e = \hat{U}_e \cdot \sin(\omega_0 t + \phi_{U_e})$
+$U_a = \hat{U}_a \cdot \sin(\omega_0 t + \phi_{U_a})$
 \begin{pspicture}(5,3)
 	\pnode(1,1){A}
 	\pnode(2,1){B}
@@ -2328,22 +2329,22 @@ $U_a = \hat{U}_a \cdot sin(\omega_0 t + \phi_U_a)$
 	\wire[arrows=o-](A)(B)
 	\wire[arrows=-o](C)(D)
 \end{pspicture}
-\[ U_e = \sum_{n=0}^\infty \hat{U}_e_n \cdot sin(\omega_0 n t + \phi_U_e_n) \]
-\[ U_a = \sum_{n=0}^\infty \hat{U}_a_n \cdot sin(\omega_0 n t + \phi_U_a_n) \]
+\[ U_e = \sum_{n=0}^\infty \hat{U}_{e_n} \cdot \sin(\omega_0 n t + \phi_{U_{e_n}}) \]
+\[ U_a = \sum_{n=0}^\infty \hat{U}_{a_n} \cdot \sin(\omega_0 n t + \phi_{U_{a_n}}) \]
 
 U = 1: Grundschwingung
-	\omega_0 = 2 \pi f_0, T = \frac1{f_0} = \frac{2\pi}{\omega_o}
+	$\omega_0 = 2 \pi f_0, T = \frac1{f_0} = \frac{2\pi}{\omega_o}$
 U > 0: Oberschwingungen
 
 Betragfrequenzgang: $|\underline{H}(\omega)| = \frac1{\sqrt{1 + \omega^2 R^2 C^2}}$ \\
-Phasenfrequenzgang: $\phi(\omega) = - arctan(\omega R C)$ \\
+Phasenfrequenzgang: $\phi(\omega) = - \arctan(\omega R C)$ \\
 Sinusreihe $u_e$ ist Eingangssignal, dann erhalten wir
-\[ u_a = \sum_{n=0}^\infty \frac1{\underbrace{\sqrt{1 + n\omega_0^2 R^2 C^2}}_{\hat{u}_a_n}} \cdot sin(n \omega_0 t + \underbrace{\phi_u_e_n - arctan(n \omega_0 R C)}_{\phi_u_a_n}) \]
+\[ u_a = \sum_{n=0}^\infty \frac1{\underbrace{\sqrt{1 + n\omega_0^2 R^2 C^2}}_{\hat{u}_{a_n}}} \cdot \sin(n \omega_0 t + \underbrace{\phi_{u_{e_n}} - \arctan(n \omega_0 R C)}_{\phi_{u_{a_n}}}) \]
 
 Das NW kann im Zeit- und im Frequenzbereich analysiert werden.
 
 Zeitbereich
-$RC \frac{d_U_a}{dt} + U_a = U_e$
+$RC \frac{d_{U_a}}{dt} + U_a = U_e$
 beliebige Signale
 
 Frequenzbereich
@@ -2360,14 +2361,14 @@ periodische Signale
 \section{Fourierreihen}
 Wir betrachten stückweise stetige Funktionen $f: \mathbb{R} \rightarrow \mathbb{R}$ mit der Periode $2\pi$, also $f(x+2\pi) = f(x)$. \\
 Die Funktion darf endlich viele Sprungstellen im $2\pi$-Intervall aufweisen, wobei die Grenzwerte existieren und endlich sein müssen. Die Funktion soll durch ein trigonometrisches Polynom vom Grad $N$
-\[ g_N(g) = \frac12 a_0 + \sum_{\nu = 1}^N a_\nu cos(\nu x) + b_\nu sin(\nu x)\]
-im quadratischen Sinne genähert werden, d.h.
-\[ \int_{-\pi}^{+\pi} (f(x) - g_N(x))^2 dx \not\eq Min. \]
+\[ g_N(g) = \frac12 a_0 + \sum_{\nu = 1}^N a_\nu \cos(\nu x) + b_\nu \sin(\nu x)\]
+im quadratischen sinne genähert werden, d.h.
+\[ \int_{-\pi}^{+\pi} (f(x) - g_N(x))^2 dx \not = Min. \]
 Lösung, Fourierkoeffizienten
 \begin{eqnarray*}
 	a_0 & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) dx \text{(Arithmetischer Mittelwert)} \\
-	a_\nu & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) cos(\nu x) dx, \nu = 1, \ldots, N \\
-	b_\nu & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) sin(\nu x) dx, \nu = 1, \ldots, N \\
+	a_\nu & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) \cos(\nu x) dx, \nu = 1, \ldots, N \\
+	b_\nu & = & \frac1{\pi} \int_{-\pi}^{\pi} f(x) \sin(\nu x) dx, \nu = 1, \ldots, N \\
 \end{eqnarray*}
 
 $f(x) ~= g_N(x)$: Approximation mit der $N$-ten Partialsumme der Fourierreihe $f(x) = g_N(x)$
@@ -2377,12 +2378,12 @@ Bsp. Entwickle die Funktion $f(x) = x^2$, $0 \leq x \leq 2\pi$ in einer Fourierr
 Fourierkoeffizienten:
 \begin{eqnarray*}
 	a_0 & = & \frac1\pi \int_0^{2\pi} x^2 dx = \frac83 \pi^2 \\
-	a_\nu & = & \frac1\pi \int_0^{2\pi} x^2 cos(\nu x) dx = \frac4{\nu^2} \\
-	b_\nu & = & \frac1\pi \int_0^{2\pi} x^2 sin(\nu x) dx = \frac{-4\pi}{\nu} \\
+	a_\nu & = & \frac1\pi \int_0^{2\pi} x^2 \cos(\nu x) dx = \frac4{\nu^2} \\
+	b_\nu & = & \frac1\pi \int_0^{2\pi} x^2 \sin(\nu x) dx = \frac{-4\pi}{\nu} \\
 \end{eqnarray*}
 
 Die Fourierreihe lautet
-\[ f(x) = \frac86 \pi^2 + \sum_{\nu = 1}^\infty \left( \frac4{\nu^2} cos(\nu x) - \frac{4\pi}\nu sin(\nu x) \right) \]
+\[ f(x) = \frac86 \pi^2 + \sum_{\nu = 1}^\infty \left( \frac4{\nu^2} \cos(\nu x) - \frac{4\pi}\nu \sin(\nu x) \right) \]
 
 Was passiert bei der Unstetigkeitsstelle? \\
 Wir betrachten die Stelle $x = 0$
@@ -2390,11 +2391,11 @@ Wir betrachten die Stelle $x = 0$
 
 Eine Funktion $f$ ist gerade, wenn gilt:
 \[ f(x) = f(-x) \]
-Bsp.: $x^{2n}, cos$
+Bsp.: $x^{2n}, \cos$
 
 Eine Funktion $f$ ist ungerade, wenn gilt:
 \[ f(x) = - f(-x) \]
-Bsp.: $x^{2n+1}, sin$
+Bsp.: $x^{2n+1}, \sin$
 
 Eien Funktion $f$ kann in einen geraden und einen ungeraden Anteil zerlegt werden:
 \begin{eqnarray*}
@@ -2404,31 +2405,32 @@ Eien Funktion $f$ kann in einen geraden und einen ungeraden Anteil zerlegt werde
 \end{eqnarray*}
 
 Bsp.:
-\[ f(x) = \left\{ \array{l}{2, 0 < x < 3 \\ -2, -3 < x < 0} \right. \]
-\left.
+\[ f(x) = \left\{ \begin{array}{l}2, 0 < x < 3 \\ -2, -3 < x < 0\end{array} \right. \]
+%$\left.
 \begin{itemize}
 	\item alternierend
 	\item ungerade
 \end{itemize}
-\right\} $a_\nu = 0, b_{2\nu} = 0$
+%\right\}
+$a_\nu = 0, b_{2\nu} = 0$
 
-\[ b_\nu = \frac26 \int_{-3}^0 (-2) sin(\frac{2\pi}6 \nu x) dx + \frac26 \int_0^3 2 \cdot sin(\frac{2\pi}6 \nu x) dx = \frac2{\pi\nu} ( 1 - cos(-\pi\nu) - \frac2{\pi\nu}(cos(\pi\nu) - 1) = \frac8{\pi\nu}, \nu ungerade\]
-\[ cos(-\pi\nu) = cos(\pi\nu) = \left\{ \begin{array}{ll} 1, & \nu = 0, 2, 4, \ldots \\ -1, & \nu = 1, 3, 5, \ldots \end{array} \right.\]
+\[ b_\nu = \frac26 \int_{-3}^0 (-2) \sin(\frac{2\pi}6 \nu x) dx + \frac26 \int_0^3 2 \cdot \sin(\frac{2\pi}6 \nu x) dx = \frac2{\pi\nu} ( 1 - \cos(-\pi\nu) - \frac2{\pi\nu}(cos(\pi\nu) - 1) = \frac8{\pi\nu}, \nu ungerade\]
+\[ \cos(-\pi\nu) = \cos(\pi\nu) = \left\{ \begin{array}{ll} 1, & \nu = 0, 2, 4, \ldots \\ -1, & \nu = 1, 3, 5, \ldots \end{array} \right.\]
 
-\[ f(x) = \frac8{\pi} \sum_{\nu = 0}^\infty \frac1{2\nu + 1} sin(\frac{\pi}3 ( 2\nu + 1) x) \]
+\[ f(x) = \frac8{\pi} \sum_{\nu = 0}^\infty \frac1{2\nu + 1} \sin(\frac{\pi}3 ( 2\nu + 1) x) \]
 
 \subsection{Differeniation und Integration von Fourierreihen}
 Differentiation
-\[ d(x) = \frac{d}{dx} f(x) = \frac{d}{dx} \left( \frac{a_0}2 + \sum_{\nu = 1}^\infty a_\nu cos(\nu x) + b_\nu sin(\nu x) \right)
-	= \sum_{\nu = 1}^\infty -a_\nu \nu sin(\nu x) + b_\nu \nu cos(\nu x) = \sum_{\nu = 1}^\infty a_\nu* cos(\nu x) + b_\nu* sin(\nu x) \]
+\[ d(x) = \frac{d}{dx} f(x) = \frac{d}{dx} \left( \frac{a_0}2 + \sum_{\nu = 1}^\infty a_\nu \cos(\nu x) + b_\nu \sin(\nu x) \right)
+	= \sum_{\nu = 1}^\infty -a_\nu \nu \sin(\nu x) + b_\nu \nu \cos(\nu x) = \sum_{\nu = 1}^\infty a_\nu* \cos(\nu x) + b_\nu* \sin(\nu x) \]
 mit $a_\nu* = \nu b_\nu$ und $b_\nu* = - \nu a_\nu$
 
 Bsp.
 % graph einer komischen Rechtecksfunktion (i_C(t))
 % und u_c(t) als dreiecksfunktion durch (0,0) und je halbe höhe von i_C(t)
 $i_C(t)$ = Kondensatorstrom \\
-$i_C(t) = \sum_{\nu = 1}^\infty a_\nu cos(\nu \omega t) =_{Bronstein} \left\{ \begin{array}{ll} \frac{4\hat{i}}{\nu \pi}, & \nu = 1, 5, 9, \ldots \\ \frac{-4\hat{i}}{\nu \pi}, & 'nu = 3, 7, 11, \ldots \end{array} \right.$
+$i_C(t) = \sum_{\nu = 1}^\infty a_\nu \cos(\nu \omega t) =_{Bronstein} \left\{ \begin{array}{ll} \frac{4\hat{i}}{\nu \pi}, & \nu = 1, 5, 9, \ldots \\ \frac{-4\hat{i}}{\nu \pi}, & 'nu = 3, 7, 11, \ldots \end{array} \right.$
 
-Die Kondensatorspannung wird mit $U_c(t) = \frac1c \int i_c(t) dt = \frac1c \int \sum_{\nu = 1}^\infty a_\nu cos(\nu \omega t) dt = \frac1c \sum_{\nu = 1}^\infty cos(\nu \omega t) dt = \frac1c \cdot \sum_{\nu = 1}^\infty \frac{a_\nu}{\nu \omega} \cdot sin(\nu \omega t) = \frac1c \sum_{\nu = 1}^\infty \underbrace{\frac{4\hat{i}}{\nu \omega} \underbrace{sin(\frac{\nu \pi}2)}_{=1 für \nu = 1,5,7, -1 für \nu = 3,7,11} \frac1{\nu \omega}}_{b_\nu} sin(\nu \omega t)$ berechnet.
+%Die Kondensatorspannung wird mit $U_c(t) = \frac1c \int i_c(t) dt = \frac1c \int \sum_{\nu = 1}^\infty a_\nu \cos(\nu \omega t) dt = \frac1c \sum_{\nu = 1}^\infty \cos(\nu \omega t) dt = \frac1c \cdot \sum_{\nu = 1}^\infty \frac{a_\nu}{\nu \omega} \cdot \sin(\nu \omega t) = \frac1c \sum_{\nu = 1}^\infty \underbrace{\frac{4\hat{i}}{\nu \omega} \underbrace{sin(\frac{\nu \pi}2)}_{=1 für \nu = 1,5,7, -1 für \nu = 3,7,11} \frac1{\nu \omega}}_{b_\nu} \sin(\nu \omega t)$ berechnet.
 
 \end{document}
