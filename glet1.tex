@@ -2431,6 +2431,13 @@ Bsp.
 $i_C(t)$ = Kondensatorstrom \\
 $i_C(t) = \sum_{\nu = 1}^\infty a_\nu \cos(\nu \omega t) =_{Bronstein} \left\{ \begin{array}{ll} \frac{4\hat{i}}{\nu \pi}, & \nu = 1, 5, 9, \ldots \\ \frac{-4\hat{i}}{\nu \pi}, & 'nu = 3, 7, 11, \ldots \end{array} \right.$
 
-%Die Kondensatorspannung wird mit $U_c(t) = \frac1c \int i_c(t) dt = \frac1c \int \sum_{\nu = 1}^\infty a_\nu \cos(\nu \omega t) dt = \frac1c \sum_{\nu = 1}^\infty \cos(\nu \omega t) dt = \frac1c \cdot \sum_{\nu = 1}^\infty \frac{a_\nu}{\nu \omega} \cdot \sin(\nu \omega t) = \frac1c \sum_{\nu = 1}^\infty \underbrace{\frac{4\hat{i}}{\nu \omega} \underbrace{sin(\frac{\nu \pi}2)}_{=1 für \nu = 1,5,7, -1 für \nu = 3,7,11} \frac1{\nu \omega}}_{b_\nu} \sin(\nu \omega t)$ berechnet.
+Die Kondensatorspannung wird mit 
+\[
+	U_c(t) = \frac1c \int i_c(t) dt = \frac1c \int \sum_{\nu = 1}^\infty a_\nu \cos(\nu \omega t) dt = \frac1c \sum_{\nu = 1}^\infty \cos(\nu \omega t) dt = \frac1c \cdot \sum_{\nu = 1}^\infty \frac{a_\nu}{\nu \omega} \cdot \sin(\nu \omega t)
+\]
+\[
+	= \frac1c \sum_{\nu = 1}^\infty \underbrace{\frac{4\hat{i}}{\nu \omega} \underbrace{sin(\frac{\nu \pi}2)}_{=1 \text{ für } \nu = 1,5,7, -1 \text{ für } \nu = 3,7,11} \frac1{\nu \omega}}_{b_{\nu}} \sin(\nu \omega t)
+\]
+berechnet.
 
 \end{document}
